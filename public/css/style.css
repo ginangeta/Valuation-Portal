@@ -2926,7 +2926,6 @@ input[type="text"]:focus {
 
 .custom-select .dropdown-toggle:after {
     border: none;
-    content: '\e874';
     font-family: "Linearicons-Free";
     display: block;
     line-height: 20px;
@@ -7844,7 +7843,7 @@ ul.icon li::before {
 .compare-table .table td,
 .compare-table .table th {
     border-top: none;
-    min-width:
+    /* min-width: */
 }
 
 .compare-table .compare_title {
@@ -15257,11 +15256,14 @@ transition: .6s;
 }
 
 .login-form{
-    padding: 4rem 5rem !important;
+    /* padding: 4rem 5rem !important; */
     border: 1px solid #80808052;
     border-radius: 7px;
 }
 .mt-50{
     margin-top: 50px;
     margin-bottom: 50px;
+}
+label{
+    font-weight: 400 !important;
 }
