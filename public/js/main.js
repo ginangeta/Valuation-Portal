@@ -7,6 +7,7 @@
 
     });
 
+
     /*----------------------------------------
                         Tooltip
     ------------------------------------------*/
@@ -24,93 +25,110 @@
         todayHighlight: true
     });
 
+    /*=====================================
+            In Words
+    ======================================*/
+
+    var a = ['', 'one ', 'two ', 'three ', 'four ', 'five ', 'six ', 'seven ', 'eight ', 'nine ', 'ten ', 'eleven ', 'twelve ', 'thirteen ', 'fourteen ', 'fifteen ', 'sixteen ', 'seventeen ', 'eighteen ', 'nineteen '];
+    var b = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+    function inWords(num) {
+        if ((num = num.toString()).length > 9) return 'overflow';
+        n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+        if (!n) return;
+        var str = '';
+        str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'crore ' : '';
+        str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'lakh ' : '';
+        str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'thousand ' : '';
+        str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'hundred ' : '';
+        str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) + 'only ' : '';
+        return str;
+    }
+
 
     /*=====================================
             Ratable Owner Filter
     ======================================*/
+    if ($('#check-yes').is(':checked')) {
+        $('#check-yes').val('true');
+    } else if ($('#check-no').is(':checked')) {
+        $('#check-no').val('false');
+    }
+
     $('input[name="ratable-owner"]').on('click', function () {
         if ($('#check-yes').is(':checked')) {
+            $('#check-yes').val('true');
             $('.non-ratable-owner').addClass('d-none');
-            $('.ratable-owner').removeClass('d-none');
+            $('.ratable-owner').addClass('col-lg-12');
         } else if ($('#check-no').is(':checked')) {
+            $('#check-no').val('false');
             $('.non-ratable-owner').removeClass('d-none');
-            $('.ratable-owner').addClass('d-none');
+            $('.ratable-owner').removeClass('col-lg-12').addClass('col-lg-6');
+
         }
     });
+
 
     /*=====================================
             Clone Script
     ======================================*/
-    $('body').on('click', '.btn-add-duplicate', function(){
-        var clickedIndex=$(this).parent().prev().index();
-        var cloneItem=$(this).parent().prev().find('.CloneMe');
+    $('body').on('click', '.btn-add-duplicate', function () {
+        var clickedIndex = $(this).parent().prev().index();
+        var cloneItem = $(this).parent().prev().find('.CloneMe');
         $(cloneItem);
 
         //this area clones the new input fields
         $(cloneItem).clone(true, true).appendTo($('.clone-container')).addClass('gina');
         $('.gina').removeClass('d-none').removeClass('CloneMe');
-     });
-    
-     $('body').on('click','.permit-form .form-header div.clickMe', function(){
-        var theIndex=$(this).index();
+        $('.gina input').attr("name", "reasons");
+    });
+
+    $('body').on('click', '.permit-form .form-header div.clickMe', function () {
+        var theIndex = $(this).index();
         $('.permit-form fieldset').eq(theIndex).removeClass('d-none').siblings('fieldset').addClass('d-none');
         $(this).addClass('active').siblings().removeClass('active')
-    
+
     });
-    $('.permit-form fieldset .btn-next').on('click', function(){
-        
-    
-        var theParent=$(this).parent().parent().parent();
-        var theParentIndex=theParent.index();	
-        var numOfChildren=$('.permit-form').children('fieldset').last().index();
-    
-        var theNavigation=$('.permit-form .form-header div').eq(theParentIndex);
-        
-        if(theParentIndex!==numOfChildren){
+    $('.permit-form fieldset .btn-next').on('click', function () {
+
+
+        var theParent = $(this).parent().parent().parent();
+        var theParentIndex = theParent.index();
+        var numOfChildren = $('.permit-form').children('fieldset').last().index();
+
+        var theNavigation = $('.permit-form .form-header div').eq(theParentIndex);
+
+        if (theParentIndex !== numOfChildren) {
             $(this).parent().parent().parent().addClass('d-none');
-            theParent.next().removeClass('d-none');	
-            theNavigation.addClass('active').addClass('clickMe').siblings().removeClass('active');	
+            theParent.next().removeClass('d-none');
+            theNavigation.addClass('active').addClass('clickMe').siblings().removeClass('active');
             theNavigation.prev().addClass('filled').addClass('clickMe')
         }
-    
-    
+
+
     });
-    
-    $('.permit-form fieldset .btn-prev').on('click', function(){
-        
-    
-        var theParent=$(this).parent().parent().parent();
-        var theParentIndex=theParent.index();	
-        var numOfChildren=$('.permit-form').children('fieldset').last().index();
-        var theNavigation=$('.permit-form .form-header div').eq(theParentIndex-2);
-        
-        if(theParentIndex!==1){
+
+    $('.permit-form fieldset .btn-prev').on('click', function () {
+
+
+        var theParent = $(this).parent().parent().parent();
+        var theParentIndex = theParent.index();
+        var numOfChildren = $('.permit-form').children('fieldset').last().index();
+        var theNavigation = $('.permit-form .form-header div').eq(theParentIndex - 2);
+
+        if (theParentIndex !== 1) {
             $(this).parent().parent().parent().addClass('d-none');
             theParent.prev().removeClass('d-none');
             theNavigation.addClass('active').siblings().removeClass('active');
-            
+
         }
-    
-    
+
+
     });
 
-    $('#button-addon2').on('click', function(){
-		$('.phoner').text($('#phone-wallet').val());
-		setTimeout(function(){
-			$('#mpesa-modal .confirmed-payment').removeClass('d-none').siblings().addClass('d-none');
-			$('.waiting-payment p').text("Transaction was successful. Click the button below to download receipt.");
-            $('#mpesa-modal .modal-footer').removeClass('d-none')
-		},8000);
-		
-		
-	});
-
-    $('#search-property').on('click',function(){
-        $('.2nd-Property').removeClass('d-none');
-    });
-
-    $('.btn-remove-property').on('click',function(){
-        $(this).parent().parent().addClass('d-none');
+    $('.btn-remove-property').on('click', function () {
+        alert('Gina')
+        $(this).parent().parent().addClass('.d-none');
     });
 
     /*=====================================
@@ -887,41 +905,34 @@
         $('.mapPlace').children('.map-container').eq(theIndex).removeClass('d-none').siblings().addClass('d-none');
     }
 
-    //initializing flat picker
-    $(".flatDate").flatpickr({
-        altInput: true,
-        altFormat: "F j, Y",
-        dateFormat: "Y-m-d",
-    });
-
     // date range picker manenos
-    $(function () {
+    // $(function () {
 
-        var start = moment().subtract(29, 'days');
-        var end = moment();
-        var today = moment();
+    //     var start = moment().subtract(29, 'days');
+    //     var end = moment();
+    //     var today = moment();
 
-        function cb(start, end) {
-            $('#reportrange span').html(start.format('MMM D, YYYY') + ' - ' + end.format('MMM D, YYYY'));
-        }
 
-        $('#reportrange').daterangepicker({
-            startDate: start,
-            endDate: end,
-            minDate: today,
-            ranges: {
-                'Today': [moment(), moment()],
-                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                'Next 7 Days': [moment(), moment().add(6, 'days')],
-                'Next 30 Days': [moment(), moment().add(29, 'days')],
-                'This Month': [moment(), moment().endOf('month')],
-                'Next Month': [moment().add(1, 'month').startOf('month'), moment().add(1, 'month').endOf('month')]
-            }
-        }, cb);
+    //     function cb(start, end) {
+    //     }
 
-        cb(start, end);
+    //     $('#reportrange').daterangepicker({
+    //         startDate: start,
+    //         endDate: end,
+    //         minDate: today,
+    //         ranges: {
+    //             'Today': [moment(), moment()],
+    //             'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+    //             'Next 7 Days': [moment(), moment().add(6, 'days')],
+    //             'Next 30 Days': [moment(), moment().add(29, 'days')],
+    //             'This Month': [moment(), moment().endOf('month')],
+    //             'Next Month': [moment().add(1, 'month').startOf('month'), moment().add(1, 'month').endOf('month')]
+    //         }
+    //     }, cb);
 
-    });
+    //     cb(start, end);
+
+    // });
 
     // date range manenos end
 

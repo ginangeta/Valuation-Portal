@@ -10,13 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="LionCoders" />
     <!-- Links -->
-    <link rel="icon" type="image/png" href="images/logo-white.png" />
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-white.png') }}" />
+    <!-- FlatIcon -->
+    <link href="{{ asset('icons/font/flaticon.css') }}" />
     <!-- google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
     <!-- Plugins CSS -->
-    <link href="css/plugin.css" rel="stylesheet" />
+    <link href="{{ asset('css/plugin.css') }}" rel="stylesheet" />
     <!-- style CSS -->
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
 
     <!-- Document Title -->
     <title>NCCG Draft Valuation</title>
@@ -197,12 +199,20 @@
 
     <!--Scripts starts-->
     <!--plugin js-->
-    <script src="js/plugin.js"></script>
+    <script src="{{ asset('js/plugin.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <!--google maps-->
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_8C7p0Ws2gUu7wo0b6pK9Qu7LuzX2iWY&amp;libraries=places&amp;callback=initAutocomplete"></script>
+    {{-- <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_8C7p0Ws2gUu7wo0b6pK9Qu7LuzX2iWY&amp;libraries=places&amp;callback=initAutocomplete">
+    </script> --}}
+
+    <!--Moment Script-->
+    <script src="{{asset('vendors/moment/moment.min.js')}}"></script>
+
     <!--Main js-->
     <script src="js/main.js"></script>
+    @yield('scripts')
     <!--Scripts ends-->
 </body>
 

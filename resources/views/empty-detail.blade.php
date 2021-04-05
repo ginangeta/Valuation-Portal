@@ -1,4 +1,40 @@
-@extends('layouts.frame')
+{{-- {{ $array = ['LrNo' => LRNo] }}
+{{ route('createObjections', $serializeArray) }}
+{{ $serializeArray = serialize($array) }} --}}
+
+{{-- [object%20Object],[object%20Object]
+
+var LRNoArray = [];
+$('.LRNo').each(function(index, value) {
+    var ItemNumber = $(this).text();
+    LRNoArray.push({LRNO: ItemNumber});
+});
+
+let url ="createObjections/:LRNoArray";
+var JsonLrArray = JSON.stringify(LRNoArray)
+url = url.replace(':LRNoArray', LRNoArray);
+document.location.href = url; --}}
+
+{{-- // function createObjectionArray() {
+    //     var LRNoArray = [];
+    //     $('.LRNo').each(function(index, value) {
+    //         var ItemNumber = $(this).text();
+    //         var ItemID = $('.LRId').text();
+    //         LRNoArray.push({
+    //             LRNO: ItemNumber,
+    //             LRID: ItemID
+    //         });
+    //     });
+
+    //     let url = "createObjections/:LRNoArray";
+    //     alert(LRNoArray);
+    //     var JsonLrArray = JSON.stringify(LRNoArray);
+    //     alert('JSON: ' + JsonLrArray);
+    //     url = url.replace(':LRNoArray', JsonLrArray);
+    //     document.location.href = url;
+    // } --}}
+
+    @extends('layouts.frame')
 
 @section('content')
     <!-- Modal -->
@@ -46,17 +82,16 @@
                             </p>
                         @endif
 
-                        <input class="d-none" type="text" name="receipt_no">
-                        <input class="d-none" type="text" name="receipt_name">
-                        <input class="d-none" type="text" name="receipt_amount">
-                        <input class="d-none" type="text" name="receipt_amount_words">
-                        <input class="d-none" type="text" name="receipt_desc">
-                        <input class="d-none" type="text" name="receipt_date">
-                        <button type="submit" class="btn btn-block btn-primary">Get Receipt</button>
+                        <input type="text" name="receipt_no">
+                        <input type="text" name="receipt_name">
+                        <input type="text" name="receipt_amount">
+                        <input type="text" name="receipt_desc">
+
                     </form>
                 </div>
                 <div class="modal-footer d-none">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Get Receipt</button>
                 </div>
             </div>
         </div>
@@ -90,16 +125,7 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 construction-form">
                         <h2 class="site-heading text-black mb-5">Fill the <strong>Form</strong></h2>
-                        <form class="p-5 bg-white permit-form">
-                            @csrf
-                            @if (Session::has('success'))
-                                <p class="alert alert-success">
-                                    {{ Session::get('success') }}</p>
-                            @endif
-                            @if (Session::has('errors'))
-                                <p class="alert alert-danger">{{ Session::get('errors') }}
-                                </p>
-                            @endif
+                        <form>
                             <div class="form-header">
                                 <div class="active">
                                     <span class="flaticon-commentator"></span>
@@ -230,9 +256,6 @@
                                                             <p class="d-none">1</p>
                                                             <div class="row Seen">
                                                                 <div class="col-12">
-                                                                    <label class="mb-0"><strong>Reason for
-                                                                            rejecting</strong></label>
-
                                                                     <ul class="list-group list-group-horizontal-sm-down">
                                                                         @foreach ($objectingList as $objectingItem)
                                                                             <li class="list-group-item">
@@ -246,8 +269,10 @@
                                                                     </ul>
 
                                                                     <div class="form-group">
+                                                                        <label class="mb-0"><strong>Reason for
+                                                                                rejecting</strong></label>
                                                                         <input type="text" name="reasons"
-                                                                            class="form-control filter-input mb-0 mt-1"
+                                                                            class="form-control filter-input mb-0 mt-0"
                                                                             placeholder="Enter your reason for rejecting the USV">
                                                                     </div>
                                                                 </div>
@@ -275,7 +300,6 @@
                                                     <div class="file-uploads">
                                                         <label class="mb-0"><strong>Supporting
                                                                 Documents</strong></label>
-                                                        <p class="mb-2 mt-0">Can select multiple files.</p>
                                                         <div class="input-file ownership-docs">
                                                             <label for="ownership-docs">
                                                                 <div class="selected-file d-none">
@@ -371,7 +395,6 @@
                                     <span>Step 4 of 4</span>
                                 </div>
                             </fieldset>
-
                         </form>
                     </div>
                 </div>
@@ -381,7 +404,6 @@
     </div>
     <!--Blog section ends-->
 @endsection
-
 
 @section('scripts')
     <script type="text/javascript">
@@ -407,24 +429,21 @@
                 var objectionnumber = 0;
 
                 $(properties).each(function(index, value) {
-                    if ($(this).is(':checked')) {
-                        var property_no = $(this).siblings('label').text()
-                        var row = $('<div class="col-sm-12 col-lg-6"></div>');
-                        row.append('<h6><strong>L.R.No</strong></h6>');
-                        row.append('<p class="mb-0">' + property_no + '</p>');
-                        row.append('<h6><strong>Objection Reasons</strong></h6>');
-                        row.append('<ul>');
-                        $(reasons).each(function(index, value) {
-                            var objection = $(this).val()
-                            row.append('<li>' + objection + '</li>');
-                        });
-                        row.append('</ul>');
-                        $('.objection-summary').append(row);
+                    var property_no = $(this).siblings('label').text()
+                    var row = $('<div class="col-sm-12 col-lg-6"></div>');
+                    row.append('<h6><strong>L.R.No</strong></h6>');
+                    row.append('<p class="mb-0">' + property_no + '</p>');
+                    row.append('<h6><strong>Objection Reasons</strong></h6>');
+                    row.append('<ul>');
+                    $(reasons).each(function(index, value) {
+                        var objection = $(this).val()
+                        row.append('<li>' + objection + '</li>');
+                    });
+                    row.append('</ul>');
+                    $('.objection-summary').append(row);
 
-                        objectionnumber = objectionnumber + 1;
-                    }
+                    objectionnumber = objectionnumber + 1;
                 });
-
 
                 objectioncost = objectionnumber * 500;
 
@@ -437,8 +456,6 @@
     <script type="text/javascript">
         $('.btn-payment').on('click', function(e) {
             e.preventDefault();
-            var date = moment().format('DD-MM-YYYY');
-
             var Sendfunction = 'CustomerPayBillOnlinePush';
             var PayBillNumber = '367776';
             var Amount = '1';
@@ -524,12 +541,10 @@
                 var token = "{{ $session }}";
 
                 $(properties).each(function(index, value) {
-                    if ($(this).is(':checked')) {
-                        var property_no = $(this).siblings('label').text();
-                        if (property_no != '' || property_no != undefined || property_no != null) {
-                            console.log('PropItem: ' + property_no);
-                            propertiesArray.push(property_no);
-                        }
+                    var property_no = $(this).siblings('label').text();
+                    if (property_no != '' || property_no != undefined || property_no != null) {
+                        console.log('PropItem: ' + property_no);
+                        propertiesArray.push(property_no);
                     }
                 });
 
@@ -584,12 +599,10 @@
                             $('.waiting-payment p').text(
                                 "Transaction was successful. Click the button below to download receipt."
                             );
-                            $('#mpesa-modal #objections-form').removeClass('d-none');
-
+                            $('#mpesa-modal .modal-footer').removeClass('d-none');
 
                         } else {
                             swal('Error!', data.msg, 'error');
-                            $('#mpesa-modal #objections-form').removeClass('d-none');
                             return;
                         }
                     }
@@ -598,6 +611,7 @@
             }
 
             function checkpayment(reference, names) {
+                var date = moment().format('DD-MM-YYYY');
                 console.log(date);
 
                 $.ajax({
@@ -654,15 +668,7 @@
                             receipt_name = FullNames;
                             receipt_amount = Amount;
                             receipt_desc = TransactionDesc;
-                            receipt_date = date;
                             receipt_amount_words = inWords(receipt_amount);
-
-                            $('input[name="receipt_no"]').val(receipt_no);
-                            $('input[name="receipt_name"]').val(receipt_name);
-                            $('input[name="receipt_date"]').val(receipt_date);
-                            $('input[name="receipt_amount"]').val(receipt_amount);
-                            $('input[name="receipt_amount_words"]').val(receipt_amount_words);
-                            $('input[name="receipt_desc"]').val(receipt_desc);
 
                         } else if (data.data > 0) {
                             swal('Error!', 'Payment not found', 'error');
@@ -673,6 +679,10 @@
                 });
             }
 
+            $('input[name="receipt_no"]').val();
+            $('input[name="receipt_name"]').val();
+            $('input[name="receipt_amount"]').val();
+            $('input[name="receipt_desc"]').val();
 
             event.preventDefault();
         });

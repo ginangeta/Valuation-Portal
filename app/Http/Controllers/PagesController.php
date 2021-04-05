@@ -13,6 +13,9 @@ class PagesController extends Controller
     public function details(){
         return view('details');
     }
+    public function usv(){
+        return view('usv');
+    }
 
     public function objections(){
         $data = 'LR-45512 & LR-15485';

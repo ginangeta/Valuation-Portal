@@ -28,6 +28,7 @@ Route::get('home', 'PagesController@home')->name('home');
 Route::get('details', 'PagesController@details')->name('details');
 Route::get('objections', 'PagesController@objections')->name('objections');
 Route::get('receipt', 'PagesController@receipt')->name('receipt');
+Route::get('usv', 'PagesController@usv')->name('usv');
 Route::get('404', 'PagesController@error')->name('404');
 
 // Authentication
@@ -39,6 +40,14 @@ Route::get('change-password', 'AuthController@changePassword')->name('password.c
 Route::post('password-reset', 'AuthController@resetPassword')->name('password.reset');
 
 Route::get('logout', 'AuthController@logout')->name('logout');
+
+// Property Details
+Route::get('searchProperty', 'PropertiesController@searchProperty')->name('searchProperty');
+Route::get('usv.singleproperty/{lr_no}', 'PropertiesController@singlePropertyUsv')->name('usv.singleproperty');
+Route::post('createObjections', 'PropertiesController@createObjections')->name('createObjections');
+
+// Objections
+Route::post('getReceipt', 'ObjectionController@getReceipt')->name('getReceipt');
 
 
 

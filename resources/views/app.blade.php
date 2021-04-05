@@ -2,7 +2,7 @@
 
 @section('content')
     <!--Hero section starts-->
-    <div class="hero-parallax  bg-fixed" style="background-image: url(images/header/header_11.jpg)">
+    <div class="hero-parallax  bg-fixed" style="background-image: url({{ asset('images/header/header_11.jpg') }})">
         <div class="overlay op-1"></div>
         <div class="container hero-kev">
             <div class="row">
@@ -68,7 +68,7 @@
 
                                         <div class="res-box col-12 text-center">
                                             <a href="#" data-toggle="modal" data-target="#user-registration-popup" tabindex="
-                                                                                5">Don't Have an Account?</a>
+                                                                                    5">Don't Have an Account?</a>
                                         </div>
                                     </form>
                                 </div>
@@ -94,27 +94,14 @@
                     <div class="swiper-container partner-wrap">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide single-partner">
-                                <img src="images/nairobi-county.png" alt="...">
+                                <img src="{{ asset('images/nairobi-county.png') }}" alt="...">
                             </div>
                             <div class="swiper-slide single-partner">
-                                <img src="images/nms.png" alt="...">
+                                <img src="{{ asset('images/nms.png') }}" alt="...">
                             </div>
                             <div class="swiper-slide single-partner">
-                                <img src="images/kra.png" alt="...">
+                                <img src="{{ asset('images/kra.png') }}" alt="...">
                             </div>
-
-                            <!-- <div class="swiper-slide single-partner">
-                                                            <img src="images/partners/partner_2.jpg" alt="...">
-                                                        </div>
-                                                        <div class="swiper-slide single-partner">
-                                                            <img src="images/partners/partner_1.jpg" alt="...">
-                                                        </div>
-                                                        <div class="swiper-slide single-partner">
-                                                            <img src="images/partners/partner_4.jpg" alt="...">
-                                                        </div>
-                                                        <div class="swiper-slide single-partner">
-                                                            <img src="images/partners/partner_9.jpg" alt="...">
-                                                        </div> -->
 
                         </div>
                     </div>
@@ -223,8 +210,7 @@
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <form id="register-form" action="{{ route('registration') }}"
-                                                            method="POST"
-                                                            class="bg-white w-100 filter v3 listing-filter">
+                                                            method="POST" class="bg-white w-100 filter v3 listing-filter">
                                                             @csrf
                                                             @if (Session::has('success'))
                                                                 <p class="alert alert-success">
@@ -242,11 +228,13 @@
                                                                                 class="text-danger">*</strong>
                                                                         </label>
                                                                         <div class="input-email-login">
-                                                                            <input name="first_name" type="name" class="form-control"
-                                                                                placeholder="Enter your first name" required>
+                                                                            <input name="first_name" type="name"
+                                                                                class="form-control"
+                                                                                placeholder="Enter your first name"
+                                                                                required>
                                                                         </div>
                                                                     </div>
-                                                                </div> 
+                                                                </div>
                                                                 <div class="col-lg-6 col-sm-12">
                                                                     <div class="form-group">
                                                                         <label>
@@ -254,11 +242,12 @@
                                                                                 class="text-danger">*</strong>
                                                                         </label>
                                                                         <div class="input-email-login">
-                                                                            <input name="last_name" type="name" class="form-control"
+                                                                            <input name="last_name" type="name"
+                                                                                class="form-control"
                                                                                 placeholder="Enter your last name" required>
                                                                         </div>
                                                                     </div>
-                                                                </div> 
+                                                                </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>
@@ -277,8 +266,7 @@
                                                                         class="text-danger">*</strong>
                                                                 </label>
                                                                 <div class="input-pass-login">
-                                                                    <input name="phone" type="number"
-                                                                        class="form-control"
+                                                                    <input name="phone" type="number" class="form-control"
                                                                         placeholder="Enter your mobile number" required>
                                                                 </div>
                                                             </div>

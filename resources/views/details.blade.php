@@ -180,15 +180,15 @@
     <!-- reverse_payment_warning modal -->
     <!--Header ends-->
     <!--Breadcrumb section starts-->
-    <div class="breadcrumb-section bg-h" style="background-image: url(images/breadcrumb/breadcrumb_1.jpg)">
+    <div class="breadcrumb-section bg-h" style="background-image: url({{ asset('images/breadcrumb/breadcrumb_1.jpg') }})">
         <div class="overlay op-5"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2 text-center">
                     <div class="breadcrumb-menu">
                         <h2>Property details</h2>
-                        <span><a href="index.html">Home</a></span>
-                        <span>property details (LR-45512)</span>
+                        <span><a href="{{ route('home') }}">Home</a></span>
+                        <span>property details</span>
                     </div>
                 </div>
             </div>
@@ -205,16 +205,18 @@
 
                             <div class="">
                                 <div class="form-group">
-                                    <h3 class="site-heading text-black mb-0">Seach For Property</h3>
+                                    <h3 class="site-heading text-black mb-0">Search For Property</h3>
                                     <p class="mb-2 mt-0">Fill in the input below to search for a particular
                                         property. Once obtained, one can search for yet another property which will allow
                                         multiple property objection.</p>
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control filter-input mt-0"
-                                            placeholder="Enter L.R Number">
+                                        <input type="text" id="searchcriteria" name="searchcriteria"
+                                            class="form-control filter-input mt-0"
+                                            placeholder="Search by serial number, lr no or owner name">
 
-                                        <button class="btn btn-primary btn-payment" type="button"
-                                            id="search-property">Search for Property</button>
+                                        <button type="button"
+                                            class="btn btn-primary btn-payment btn-searchcriteria text-white"
+                                            id="search-property">Search for Property</a>
                                     </div>
                                 </div>
                             </div>
@@ -222,58 +224,57 @@
                             <!--Listing Details starts-->
                             <div class="list-details-wrap bg-white">
                                 <div id="description" class="list-details-section">
-                                    <h4>Property details</h4>
-                                    <div class="overview-content">
+                                    <h4 class="overview-content-header">Property details</h4>
+                                    <div class="overview-content-details">
                                         <p class="">Below are the details on the searched property.</p>
                                     </div>
-                                    <div>
-                                        <div class="mt-20">
-                                            <ul class="listing-address">
-                                                <li>LR No : <span>LR-45512</span></li>
-                                                <li>Location : <span>Kasarani - Kasarani Road</span></li>
-                                                <li>Owner : <span>Reliable Reality Managers Limited</span></li>
-                                                <li>P.O. BOX : <span>58504</span></li>
-                                                <li>Postal Code : <span>00200</span></li>
-                                                <li>Area(Ha) : <span>0.0256</span></li>
-                                                <li>
-                                                    <p class="mt-5 mt-35">Property Unimproved Site Value(USV) in KES</p>
-                                                    <div class="trend-open">
-                                                        <p>KES 4,876,300.00 </p>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <button class="btn btn-sm btn-warning btn-remove-property"><i
-                                                    class="lnr lnr-cross text-black"></i> Remove</button>
+                                    <form id="properties-form" action="{{ route('createObjections') }}" method="POST"
+                                        class="bg-white w-100 filter v3 listing-filter">
+                                        @csrf
+                                        @if (Session::has('success'))
+                                            <p class="alert alert-success">
+                                                {{ Session::get('success') }}</p>
+                                        @endif
+                                        @if (Session::has('errors'))
+                                            <p class="alert alert-danger">{{ Session::get('errors') }}
+                                            </p>
+                                        @endif
+
+                                        <div class="d-flex justify-content-center">
+                                            <label for="searchcriteria" class="search-image">
+                                                <img src="images/bg/search.jpg">
+                                            </label>
                                         </div>
-                                    </div>
-                                    <div class="2nd-Property d-none">
-                                        <hr>
-                                        <div class="mt-20">
-                                            <ul class="listing-address">
-                                                <li>LR No : <span>LR-15485</span></li>
-                                                <li>Location : <span>Kasarani - Kasarani Road</span></li>
-                                                <li>Owner : <span>Reliable Reality Managers Limited</span></li>
-                                                <li>P.O. BOX : <span>2558</span></li>
-                                                <li>Postal Code : <span>00610</span></li>
-                                                <li>Area(Ha) : <span>0.0256</span></li>
-                                                <li>
-                                                    <p class="mt-5 mt-35">Property Unimproved Site Value (USV)</p>
-                                                    <div class="trend-open">
-                                                        <p>KES 4,876,300.00 </p>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <button class="btn btn-sm btn-warning btn-remove-property"><i
-                                                    class="lnr lnr-cross text-black"></i> Remove</button>
+
+                                        <div class="table-responsive d-none">
+                                            <table class="table table-sm table-bordered input-table table-striped"
+                                                id="data-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>LR No.</th>
+                                                        <th>Situation</th>
+                                                        <th>Owner</th>
+                                                        <th>Address</th>
+                                                        <th>Approx. Area(Ha)</th>
+                                                        <th>Property Unimproved Site Value (USV)</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
                                         </div>
-                                    </div>
+                                        <div class="usv-btns d-none">
+                                            <button type="submit"
+                                                class="btn btn-danger center mb-3 py-2 btn-control">Object
+                                                USV</a>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <!--Listing Details starts-->
-
-                            <div class="usv-btns">
-                                <a class="btn btn-danger" href="objection.html">Object USV</a>
-                            </div>
+                            <!--Listing Details ends-->
                         </div>
                     </div>
 
@@ -284,4 +285,108 @@
 
     </div>
     <!--Blog section ends-->
+@endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        $('.btn-searchcriteria').on('click', function(e) {
+            e.preventDefault();
+            var searchcriteria = $('#searchcriteria').val();
+            if (searchcriteria == '' || searchcriteria == null) {
+                return;
+            } else {
+                console.log(searchcriteria);
+
+                $.ajax({
+                    url: "{{ config('global.url') }}" + 'properties/?q=' + searchcriteria,
+                    type: "GET",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
+
+                        // console.log(data);
+                        if (data == "") {
+                            swal('Error!', 'Property not found', 'error');
+                            $('#searchcriteria').val('');
+
+                            return;
+                        }
+                        if (data.count == 0) {
+                            swal('Error!', 'Property not found', 'error');
+                            $('#searchcriteria').val('');
+
+                            return;
+
+                        } else if (data.count > 0) {
+                            $('#searchcriteria').val('');
+                            $('.search-image').addClass('d-none');
+                            $('.table-responsive').removeClass('d-none');
+                            $('.usv-btns').removeClass('d-none');
+
+                            $.each(data.results, function(index, results) {
+                                var rn = $('<tr class=""></tr>');
+                                var item_num = index + 1;
+                                // var LRNo = $('.LRNo').html();
+
+                                //first approach to add data (not flexible)
+                                rn.append('<td>' + item_num + '</td>');
+                                rn.append('<td class="LRId d-none">' + results.id +
+                                    '<input name="LRId[]" class="d-none" value="' + results
+                                    .id + '" required> </td>');
+                                rn.append('<td class="LRNo">' + results.lr_no +
+                                    '<input name="LRNo[]" class="d-none" value="' + results
+                                    .lr_no + '" required> </td>');
+                                var Link = 5;
+                                rn.append('<td><p class="mb-0">' + results.situation +
+                                    '</p></td>');
+                                rn.append('<td>' + results.owner + '</td>');
+                                rn.append('<td><p class="mb-0">' + results.po_box +
+                                    '</p><p class="mb-0"><small>' +
+                                    results.address + '</small></p></td>');
+                                rn.append('<td>' + results.approx_area + '</td>');
+                                rn.append('<td>KES ' + numberWithCommas(results.usv) + '</td>');
+                                // var LrNoString = results.lr_no.split('/');
+                                // + LrNoString[0] + ','+LrNoString[1]+
+                                rn.append(
+                                    '<td><button onclick="printUSV(' + results.serial_no +
+                                    ');"' +
+                                    `class="btn btn-info btn-sm btn--icon-text btn-print-usv ml-2"><i
+                                                                                        class="zmdi zmdi-eye"></i>Print</button>
+                                                                                        <button type="button" class="btn btn-danger btn-sm btn--icon-text ml-2 btn-remove-property"><i
+                                                                                                class="zmdi zmdi-block"></i>Remove</button></td>`
+                                );
+                                $('#data-table tbody').append(rn);
+
+                                $('.btn-remove-property').on('click', function(e) {
+                                    e.preventDefault();
+                                    $(this).parent().parent().remove();
+                                });
+
+                            });
+
+                            return;
+                        }
+                    }
+                });
+            }
+        });
+
+    </script>
+    <script>
+        function printUSV(SerialNo) {
+            // alert(LRNo1);
+            let url =
+                "usv.singleproperty/:LRNo";
+            url = url.replace(':LRNo', SerialNo + '.0');
+            document.location.href = url;
+        }
+
+    </script>
+    <script type="text/javascript">
+    </script>
 @endsection
