@@ -36,10 +36,17 @@ class PropertiesController extends Controller
 
         $objectingArray = array_combine($request->LRId, $request->LRNo);
 
+        $url = config('global.url').'towns';
+
+        $response = Http::withToken(Session::get('token'))->get($url);
+
+        $towns  = json_decode($response->body());
+
         $session = Session::get('token');
 
         return view('objections', [
             'objectingList' => $objectingArray, 
-            'session' => $session]);
+            'session' => $session,
+            'towns' => $towns->results]);
     }
 }

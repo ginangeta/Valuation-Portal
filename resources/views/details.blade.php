@@ -267,8 +267,7 @@
                                             </table>
                                         </div>
                                         <div class="usv-btns d-none">
-                                            <button type="submit"
-                                                class="btn btn-danger center mb-3 py-2 btn-control">Object
+                                            <button type="submit" class="btn btn-danger center mb-3 py-2 btn-control">Object
                                                 USV</a>
                                         </div>
                                     </form>
@@ -331,15 +330,41 @@
                             $.each(data.results, function(index, results) {
                                 var rn = $('<tr class=""></tr>');
                                 var item_num = index + 1;
+
+
                                 // var LRNo = $('.LRNo').html();
+
+                                // var term = results.id; // term you're searching for
+                                // var column = 0; // which column to search
+                                // var pattern = new RegExp(term,
+                                //     'g'); // make search more flexible 
+                                // var table = document.getElementById('dataTable');
+                                // if (document.getElementById("dataTable").rows.length != 0) {
+                                //     var tr = table.getElementsByTagName('tr');
+                                //     for (var i = 0; i < tr.length; i++) {
+                                //         var td = tr[i].getElementsByTagName('TD');
+                                //         for (var j = 0; j < td.length; j++) {
+                                //             if (j == column && td[j].innerHTML == term) {
+
+                                //                 // for more flexibility use match() function and the pattern built above
+                                //                 // if(j == column && td[j].innerHTML.match(pattern)){
+
+                                //                 console.log('Found it: ' + td[j].innerHTML);
+                                //             }
+                                //         }
+                                //     }
+                                // }
+
 
                                 //first approach to add data (not flexible)
                                 rn.append('<td>' + item_num + '</td>');
                                 rn.append('<td class="LRId d-none">' + results.id +
-                                    '<input name="LRId[]" class="d-none" value="' + results
+                                    '<input name="LRId[]" class="d-none" value="' +
+                                    results
                                     .id + '" required> </td>');
                                 rn.append('<td class="LRNo">' + results.lr_no +
-                                    '<input name="LRNo[]" class="d-none" value="' + results
+                                    '<input name="LRNo[]" class="d-none" value="' +
+                                    results
                                     .lr_no + '" required> </td>');
                                 var Link = 5;
                                 rn.append('<td><p class="mb-0">' + results.situation +
@@ -349,16 +374,16 @@
                                     '</p><p class="mb-0"><small>' +
                                     results.address + '</small></p></td>');
                                 rn.append('<td>' + results.approx_area + '</td>');
-                                rn.append('<td>KES ' + numberWithCommas(results.usv) + '</td>');
+                                rn.append('<td>KES ' + numberWithCommas(results.usv) +
+                                    '</td>');
                                 // var LrNoString = results.lr_no.split('/');
                                 // + LrNoString[0] + ','+LrNoString[1]+
                                 rn.append(
-                                    '<td><button onclick="printUSV(' + results.serial_no +
-                                    ');"' +
-                                    `class="btn btn-info btn-sm btn--icon-text btn-print-usv ml-2"><i
-                                                                                        class="zmdi zmdi-eye"></i>Print</button>
-                                                                                        <button type="button" class="btn btn-danger btn-sm btn--icon-text ml-2 btn-remove-property"><i
-                                                                                                class="zmdi zmdi-block"></i>Remove</button></td>`
+                                    '<td><a onclick="printUSV(' + results.serial_no +');"' +
+                                    `class="btn btn-info btn-sm btn--icon-text btn-print-usv ml-2 text-white"><i
+                                        class="zmdi zmdi-eye"></i>Print</a>
+                                        <button type="button" class="btn btn-danger btn-sm btn--icon-text ml-2 btn-remove-property"><i
+                                                class="zmdi zmdi-block"></i>Remove</button></td>`
                                 );
                                 $('#data-table tbody').append(rn);
 

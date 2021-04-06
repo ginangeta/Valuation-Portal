@@ -12,7 +12,7 @@
     <!-- Links -->
     <link rel="icon" type="image/png" href="{{ asset('images/logo-white.png') }}" />
     <!-- FlatIcon -->
-    <link href="{{ asset('icons/font/flaticon.css') }}" />
+    <link href="{{ asset('icons/font/flaticon.css" rel="stylesheet') }}" />
     <!-- google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
     <!-- Plugins CSS -->

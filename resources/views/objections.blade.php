@@ -196,10 +196,11 @@
                                             <label class="mb-0"><strong>Select town</strong></label>
                                             <select name="City" id="" name="town_id" title="Please select your postal city"
                                                 class="form-control custom-select city" placeholder="Country">
-                                                <option value="1">Nairobi</option>
-                                                <option value="2">Kisumu</option>
-                                                <option value="3">Eldoret</option>
-                                                <option value="4">Nakuru</option>
+                                                @foreach ($towns as $town)
+                                                    <option id="{{ $town->id }}" value="{{ $town->id }}"
+                                                        data-content="{{ $town->name}}">
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -266,7 +267,7 @@
 
                                                         <div class="col-12 d-flex justify-flex-end mb-20">
                                                             <button type="button"
-                                                                class="btn  btn-primary btn-add-duplicate">Add
+                                                                class="btn btn-primary btn-add-duplicate">Add
                                                                 a reason</button>
                                                         </div>
                                                     </div>
@@ -304,7 +305,7 @@
                                 </div>
                             </fieldset>
 
-                            <fieldset class="d-none animated  summary-container fadeInLeft">
+                            <fieldset class="d-none animated summary-container fadeInLeft">
                                 <div class="fieldset-content">
                                     <div class="row">
                                         <div class="col-12">
@@ -324,10 +325,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="fieldset-footer">
                                     <div class="step-btns">
                                         <span class="btn  btn-outline-primary btn-prev">Previous step</span>
-                                        <span class="btn btn-primary btn-next btn-submit-objection">Checkout step</span>
+                                        <span class="btn btn-primary btn-submit-objection">Checkout step</span>
                                     </div>
                                     <span>Step 3 of 4</span>
                                 </div>
@@ -533,6 +535,8 @@
                     }
                 });
 
+                console.log(propertiesArray);
+
                 $(reasons).each(function(index, value) {
                     var objection = $(this).val();
                     if (objection != '' || objection != undefined || objection != null) {
@@ -550,6 +554,7 @@
                 $.ajax({
                     url: "{{ config('global.url') }}" + 'property/objection/',
                     type: "POST",
+                    // dataType: 'json',
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                         "Authorization": 'JWT {{ $session }}',
@@ -562,8 +567,8 @@
                         postal_address: postal_address,
                         phone: phone,
                         town_id: town_id,
-                        reasons: JsonReasArray,
-                        properties: JsonPropArray,
+                        reasons: "['Hi']",
+                        properties: "['20856/19']",
                         files: files
                     },
 
@@ -588,7 +593,13 @@
 
 
                         } else {
-                            swal('Error!', data.msg, 'error');
+                            // swal('Error!', data.msg, 'error');
+                            $('#mpesa-modal .confirmed-payment').removeClass(
+                                'd-none').siblings().addClass(
+                                'd-none');
+                            $('.waiting-payment p').text(
+                                "Transaction was successful. Click the button below to download receipt."
+                            );
                             $('#mpesa-modal #objections-form').removeClass('d-none');
                             return;
                         }
@@ -599,33 +610,43 @@
 
             function checkpayment(reference, names) {
                 console.log(date);
+                var checkPaymentFuntion = 'checkPaymentVerification';
 
                 $.ajax({
-                    url: "{{ config('global.url') }}" + 'payment_callback/',
+                    url: "https://payme.revenuesure.co.ke/index.php",
                     type: "POST",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                        "Authorization": 'JWT {{ $session }}',
                     },
                     data: {
-                        reference_number: names,
-                        bill_number: reference,
-                        amount: 1,
-                        receipt_number: reference,
-                        payment_date: date,
+                        function: checkPaymentFuntion,
+                        account_reference: reference,
+
                     },
 
                     success: function(data) {
+                        var response = JSON.parse(data);
+                        console.log('CheckPayment: ' + data);
 
-                        console.log('CheckPayment' + data);
-
-                        if (data == "") {
-                            swal('Error!', 'Objection not submitted', 'error');
-                            swal('Error!', data.msg, 'error');;
+                        if (response == "") {
+                            console.log("Recalled");
+                            swal('Error!', 'Push not Sent', 'error');
+                            $('#mpesa-modal').modal('hide');
                             return;
-                        } else {
-                            console.log("Payment");
-                            getReceipt(data.bill_number);
+                        } else if (response.success == false) {
+                            console.log("Recalled");
+                            checkpayment(reference, names);
+
+                        } else if (response.data.callback_returned == "UNPAID") {
+                            console.log("Cancelled");
+                            swal('Error!', 'Payment Cancelled', 'error');
+                            $('#mpesa-modal').modal('hide');
+                        } else if (response.data.callback_returned == "PENDING") {
+                            console.log("Pending");
+                            checkpayment(reference, names);
+
+                        } else if (response.data.callback_returned == "PAID") {
+                            getReceipt(response.data.ref);
 
                         }
                     }
@@ -677,5 +698,11 @@
             event.preventDefault();
         });
 
+    </script>
+
+    <script type="text/javascript">
+    $('.btn-submit-objection').on('click', function(e){
+        
+    });
     </script>
 @endsection
