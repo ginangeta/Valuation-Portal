@@ -251,7 +251,6 @@
                                                 id="data-table">
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
                                                         <th>LR No.</th>
                                                         <th>Situation</th>
                                                         <th>Owner</th>
@@ -355,7 +354,7 @@
 
 
                                 //first approach to add data (not flexible)
-                                rn.append('<td>' + item_num + '</td>');
+                                // rn.append('<td>' + item_num + '</td>');
                                 rn.append('<td class="LRId d-none">' + results.id +
                                     '<input name="LRId[]" class="d-none" value="' +
                                     results

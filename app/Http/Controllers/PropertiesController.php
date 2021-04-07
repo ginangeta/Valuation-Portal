@@ -37,18 +37,8 @@ class PropertiesController extends Controller
         $objectingArray = array_combine($request->LRId, $request->LRNo);
 
         $url = config('global.url').'towns';
-        $billerurl = 'https://pilot.revenuesure.co.ke/users/authenticate';
-
-        $data = [
-            'email' => "valuation@gmail.com",
-            'password' => "123456789"
-        ];
 
         $response = Http::withToken(Session::get('token'))->get($url);
-
-        $BillerResponse = Http::withToken(Session::get('token'))->post($billerurl,$data);
-
-        $BillerResponseData = json_decode($BillerResponse->body());
 
         $towns  = json_decode($response->body());
 
@@ -57,7 +47,7 @@ class PropertiesController extends Controller
         return view('objections', [
             'objectingList' => $objectingArray, 
             'session' => $session,
-            'towns' => $towns->results,
-            'billerResponse' => $BillerResponseData->data->auth_token]);
+            'towns' => $towns->results]);
     }
+    
 }

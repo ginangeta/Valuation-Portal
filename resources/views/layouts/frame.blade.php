@@ -18,7 +18,11 @@
     <!-- style CSS -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     <!-- FlatIcon -->
-    <link href="{{ asset('icons/font/flaticon.css')}}" rel="stylesheet" />
+    <link href="{{ asset('icons/font/flaticon.css') }}" rel="stylesheet" />
+    <!-- ZMDI -->
+    <link rel="stylesheet"
+        href="{{ asset('vendors/material-design-iconic-font/css/material-design-iconic-font.min.css') }}">
+
 
     <!-- Document Title -->
     <title>NCCG Draft Valuation</title>
@@ -59,6 +63,10 @@
                                                 <a href="#">Contacts</a>
                                             </li>
                                             <li class="">
+                                                <a href="#" onclick="showFAQs()">FAQs</a>
+                                            </li>
+
+                                            <li class="">
                                                 <a href="{{ route('logout') }}">Logout</a>
                                             </li>
 
@@ -89,6 +97,103 @@
             <!--Main Menu ends-->
         </header>
         <!--Header ends-->
+
+        <div class="ma-backdrop d-none"></div>
+        <div class="map-asides">
+            <!-- map info content for street parking -->
+            <aside class="map-info-cont animated slideInLeft right-100" id="FAQs-info">
+
+                <!-- show this when loading the new data -->
+                <div class="map-loader d-none">
+                    <div class="lds-ripple">
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="map-cont-header">
+                    <i class="zmdi zmdi-close close-aside"></i>
+                    <h2 class="chat__title">FAQs</h2>
+                </div>
+
+                <div class="scroll-wrapper scrollbar-inner">
+
+                    <div class="listview">
+                        <div class="dropdown">
+
+                            <ul class="navigation">
+                                <li class="navigation__sub">
+                                    <a href="#"><i class="flaticon-parking-7"></i>How do I check the valuation report?</a>
+                                    <ul class="d-none">
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+                                    </ul>
+                                </li>
+                                <li class="navigation__sub">
+                                    <a href="#"><i class="flaticon-parking-7"></i>How do I challenge/object the valuation?</a>
+                                    <ul class="d-none">
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+
+
+                                    </ul>
+                                </li>
+                                <li class="navigation__sub">
+                                    <a href="#"><i class="flaticon-parking-7"></i>Where can I report if I am not happy with my property valuation?</a>
+                                    <ul class="d-none">
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+
+
+                                    </ul>
+                                </li>
+                                <li class="navigation__sub">
+                                    <a href="#"><i class="flaticon-parking-7"></i>Which improvements add the most to a property’s value?</a>
+                                    <ul class="d-none">
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+
+                                    </ul>
+                                </li>
+                                <li class="navigation__sub">
+                                    <a href="#"><i class="flaticon-parking-7"></i>What can I do to get ready for an appraisal?</a>
+                                    <ul class="d-none">
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+
+                                    </ul>
+                                </li>
+                                <li class="navigation__sub">
+                                    <a href="#"><i class="flaticon-parking-7"></i>What can I download from the NCCG Valuation Portal</a>
+                                    <ul class="">
+                                        <li><i class="zmdi zmdi-check mx-2"></i>Property USV Report</li>
+                                        <li><i class="zmdi zmdi-check mx-2"></i>USV Objection Invoice</li>
+                                        <li><i class="zmdi zmdi-check mx-2"></i>USV Objection Recipt</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-cont-footer">
+                </div>
+            </aside>
+        </div>
 
         @yield('content');
 

@@ -108,7 +108,7 @@
                                 </div>
                             </div>
 
-                            <fieldset class="payment-container d-none animated fadeInLeft">
+                            <fieldset class="payment-container animated fadeInLeft">
                                 <div class="fieldset-content">
                                     <div class="row">
                                         <div class="payment-methods col-12">
@@ -137,7 +137,7 @@
                                                         <p class="">Enter your mobile money number below to proceed
                                                             with the transaction.</p>
 
-                                                        <input type="text" name="mpesa-number"
+                                                        <input type="text" name="mpesa_number"
                                                             class="form-control filter-input mt-0" id="phone-wallet"
                                                             placeholder="Enter mobile money number">
 
@@ -151,7 +151,7 @@
                                                         </p>
                                                         <div class="payment-information">
                                                             <p><strong>MPESA</strong></p>
-                                                            <p>Paybill: <strong>175555</strong></p>
+                                                            <p>Paybill: <strong>367776</strong></p>
                                                             <p>Account No: <strong
                                                                     class="OB_bill_no">{{ $ObjectionBillInfo->bill_no }}</strong>
                                                             </p>
@@ -195,12 +195,19 @@
             var MpesaAmount = $('.objection-cost').text();
 
             var Sendfunction = 'CustomerPayBillOnlinePush';
-            var PayBillNumber = '175555';
+            console.log("Push Sendfunction: " + Sendfunction);
+            var PayBillNumber = '367776';
+            console.log("Push PayBillNumber: " + PayBillNumber);
             var Amount = '1';
-            var PhoneNumber = $('input[name="mpesa-number"]').val();
-            var AccountReference = $('#OB_bill_no').val();;
-            var TransactionDesc = "Property objection Fee";
-            var FullNames = $('input[name="fullname"]').val();
+            console.log("Push Amount: " + Amount);
+            var PhoneNumber = $('input[name="mpesa_number"]').val();
+            console.log("Push Number: " + PhoneNumber);
+            var AccountReference = $('#OB_bill_no').text();
+            console.log("Push AccountReference: " + AccountReference);
+            var TransactionDesc = "Property objection Fee For: " + AccountReference;
+            console.log("Push TransactionDesc: " + TransactionDesc);
+            var FullNames = '---';
+            console.log("Push FullNames: " + FullNames);
 
             $('#mpesa-modal').modal('show');
             $('.phoner').text(PhoneNumber);
@@ -233,7 +240,7 @@
 
                     $('.phoner').text(PhoneNumber);
                     var response = JSON.parse(data);
-                    // console.log(response);
+                    console.log("Push Response: " + response);
 
                     if (response == "") {
                         swal('Error!', 'Objection not submitted', 'error');
@@ -243,7 +250,7 @@
 
                     if (response.status == 200) {
                         checkpayment(response.data, FullNames);
-                        // console.log('Here');
+                        console.log('Here');
 
                     } else {
                         console.log('Failed');
@@ -255,7 +262,7 @@
 
 
             function checkpayment(reference, names) {
-                console.log(date);
+                console.log("Checking Payment");
                 var checkPaymentFuntion = 'checkPaymentVerification';
 
                 $.ajax({
@@ -292,7 +299,7 @@
                             checkpayment(reference, names);
 
                         } else if (response.data.callback_returned == "PAID") {
-                            getReceipt(response.data.ref);
+                            getReceipt(reference);
 
                         }
                     }
@@ -301,37 +308,43 @@
             }
 
             function getReceipt(bill_number) {
+                console.log(bill_number);
+                console.log('{{ $billerResponse }}')
                 $.ajax({
-                    url: "https://pilot.revenuesure.co.ke/invoice/receipt",
+                    url: "https://pilot.revenuesure.co.ke/billing/invoice",
                     type: "POST",
-                    // dataType: 'json',
+                    contentType: "application/json",
+                    dataType: "json",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                         "Authorization": '{{ $billerResponse }}',
                     },
-                    data: {
-                        "billNo": bill_number,
-                        "payReferenceNo": "",
-                        "receiptNo": "",
-                        "multi": ""
-                    },
+                    data: JSON.stringify({
+                        billNo: bill_number,
+                    }),
 
                     success: function(data) {
-
                         console.log(data);
                         if (data == "") {
                             swal('Error!', 'Payment not found', 'error');
                             return;
                         }
-                        if (data.success == true) {
+                        if (data.status == 200) {
                             confirmationModal();
 
+                            var results = data.data.header;
+                            var d = new Date("2021-04-07T16:14:09.000Z");
+
+                            var new_date = results.dateCreated.split("T"); 
+
                             receipt_no = bill_number;
-                            receipt_name = FullNames;
-                            receipt_amount = Amount;
-                            receipt_desc = TransactionDesc;
-                            receipt_date = date;
+                            receipt_name = results.payerName;
+                            receipt_amount = results.billAmount;
+                            receipt_desc = 'Objection Fee';
+                            receipt_date = new_date[0];
                             receipt_amount_words = inWords(receipt_amount);
+
+                            console.log(receipt_amount_words);
 
                             $('input[name="receipt_no"]').val(receipt_no);
                             $('input[name="receipt_name"]').val(receipt_name);
@@ -350,6 +363,7 @@
             }
 
             function confirmationModal() {
+                console.log('Modal');
                 $('#mpesa-modal .confirmed-payment').removeClass(
                     'd-none').siblings().addClass('d-none');
                 $('.waiting-payment p').text(

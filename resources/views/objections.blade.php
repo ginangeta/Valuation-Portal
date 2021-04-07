@@ -276,21 +276,21 @@
                                                         <label class="mb-0"><strong>Supporting
                                                                 Documents</strong></label>
                                                         <p class="mb-2 mt-0">Can select multiple files.</p>
-                                                        <div class="input-file ownership-docs">
-                                                            <label for="ownership-docs">
-                                                                <div class="selected-file d-none">
-                                                                    <i class="flaticon-add"></i>
-                                                                    <p>File selected</p>
+                                                        <label class="input-file form-attach" for="ownership-docs">
+                                                            <div class="id-container img-container">
+                                                                <span><img src="{{ asset('images/contract.svg') }}"></span>
+                                                                <h5>Objection Documents</h5>
+                                                                <p><strong>.All file types</strong> are accepted</p>
+                                                                <small class="text-danger"><strong>No file
+                                                                        selected</strong></small>
+                                                                <!-- national id input box -->
+                                                                <input type="file" id="ownership-docs" multiple="multiple"
+                                                                    class="d-none">
+                                                                <input type="text" name="files" class="d-none">
 
-                                                                </div>
-                                                                <img src="images/bg/objection-doc.png">
-                                                                <p>Objection Documents</p>
-                                                            </label>
-                                                            <input type="file" id="ownership-docs" multiple="multiple"
-                                                                class="d-none">
+                                                            </div>
+                                                        </label>
 
-                                                            <input type="text" name="files" class="d-none">
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

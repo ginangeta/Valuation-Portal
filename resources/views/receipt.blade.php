@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 </head>
 
 <body data-new-gr-c-s-check-loaded="8.872.0" data-gr-ext-installed="">
@@ -127,8 +127,7 @@
             by</span><span style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">
         </span><br></div>
     <div style="position:absolute;top:5.26in;left:1.07in;width:0.09in;line-height:0.13in;"><span
-            style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">Jane
-            Doe</span><span style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">
+            style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">NCCG Draft Valuation System</span><span style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">
         </span><br></div>
     <div style="position:absolute;top:5.26in;left:1.72in;width:1.27in;line-height:0.13in;"><span
             style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">Bill No
@@ -139,7 +138,11 @@
                 style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000"> </span><br>
         </div>
     </div>
-    <div style="position:absolute;top:5.26in;left:3.44in;width:1.45in;line-height:0.13in;"><span
+    <div style="position:absolute;top:5.26in;left:4.2in;width:1.45in;line-height:0.13in;"><span
+        style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">Acc No: <strong>1-2101</strong></span><span style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">
+    </span><br></div>
+
+    <div style="position:absolute;top:5.26in;left:3.1in;width:1.45in;line-height:0.13in;"><span
             style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">{{ $receipt->receipt_date }}</span><span style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">
         </span><br></div>
     <img style="position:absolute;top: 5.25in;left:5.15in;width: 0.64in;/* height:0.34in */" src="receipt/NBk.png">

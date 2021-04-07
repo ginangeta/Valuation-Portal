@@ -45,6 +45,33 @@
         return str;
     }
 
+    //File Picker JS
+    $(".form-attach input").on('change', function () {
+
+        var file = $(this).val();
+        var fullPath = $(this).val();
+
+        var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+        var filename = fullPath.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+
+        if (file == "") {
+            alert("No files selected");
+            $(this).parent().removeClass("activated");
+            $(this).parent().children("small").text("No file selected");
+            $(this).parent().children("small").addClass("text-danger").removeClass("text-success");
+
+
+        } else {
+            $(this).parent().addClass("activated");
+            $(this).parent().children("small").text("File (" + filename + ") Selected");
+            $(this).parent().children("small").addClass("text-success").removeClass("text-danger");
+        }
+        //id-container
+    });
+    //File Picker JS
 
     /*=====================================
             Ratable Owner Filter
@@ -55,7 +82,7 @@
         $('#check-no').val('false');
     }
 
-    $('input[name="ratable-owner"]').on('click', function () {
+    $('input[name="ratable_owner"]').on('click', function () {
         if ($('#check-yes').is(':checked')) {
             $('#check-yes').val('true');
             $('.non-ratable-owner').addClass('d-none');
@@ -100,8 +127,8 @@
         if (theParentIndex !== numOfChildren) {
             $(this).parent().parent().parent().addClass('d-none');
             theParent.next().removeClass('d-none');
-            theNavigation.prev().addClass('filled').addClass('clickMe');
             theNavigation.addClass('active').addClass('clickMe').siblings().removeClass('active');
+            theNavigation.prev().addClass('filled').addClass('clickMe');
         }
 
 
@@ -124,6 +151,17 @@
 
 
     });
+
+    $('.close-aside').on('click', function () {
+        $(this).parent().parent().addClass('right-100');
+        $('.ma-backdrop').addClass('d-none');
+    });
+
+    function showFAQs() {
+        //functions related to cars goes here
+        $('#FAQs-info').removeClass('right-100').siblings().addClass('right-100');
+        $('.ma-backdrop').removeClass('d-none');
+    }
 
     $('.btn-remove-property').on('click', function () {
         alert('Gina')
