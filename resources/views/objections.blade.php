@@ -90,7 +90,8 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 construction-form">
                         <h2 class="site-heading text-black mb-5">Fill the <strong>Form</strong></h2>
-                        <form class="p-5 bg-white permit-form">
+                        <form id="objection-form" action="{{ route('sendObjection') }}" method="POST"
+                            class="p-5 bg-white permit-form">
                             @csrf
                             @if (Session::has('success'))
                                 <p class="alert alert-success">
@@ -100,6 +101,7 @@
                                 <p class="alert alert-danger">{{ Session::get('errors') }}
                                 </p>
                             @endif
+
                             <div class="form-header">
                                 <div class="active">
                                     <span class="flaticon-commentator"></span>
@@ -116,10 +118,6 @@
                                     <h4>Objection Summary</h4>
                                 </div>
 
-                                <div class="">
-                                    <span class="flaticon-cellphone"></span>
-                                    <h4>Checkout</h4>
-                                </div>
                             </div>
 
                             <fieldset class="animated fadeInLeft">
@@ -139,12 +137,12 @@
                                                 </label>
                                                 <div class="d-flex ">
                                                     <div class="form-inline">
-                                                        <input id="check-yes" type="radio" checked name="ratable-owner">
+                                                        <input id="check-yes" type="radio" checked name="ratable_owner">
                                                         <label for="check-yes">Yes</label>
                                                     </div>
 
                                                     <div class="form-inline ml-3">
-                                                        <input id="check-no" type="radio" name="ratable-owner">
+                                                        <input id="check-no" type="radio" name="ratable_owner">
                                                         <label for="check-no">No</label>
                                                     </div>
                                                 </div>
@@ -194,11 +192,11 @@
 
                                         <div class="col-md-6">
                                             <label class="mb-0"><strong>Select town</strong></label>
-                                            <select name="City" id="" name="town_id" title="Please select your postal city"
+                                            <select name="town_id" id="" name="town_id"
+                                                title="Please select your postal city"
                                                 class="form-control custom-select city" placeholder="Country">
                                                 @foreach ($towns as $town)
-                                                    <option id="{{ $town->id }}" value="{{ $town->id }}"
-                                                        data-content="{{ $town->name}}">
+                                                    <option value="{{ $town->id }}" data-content="{{ $town->name }}">
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -209,7 +207,7 @@
                                     <div class="step-btns">
                                         <span class="btn btn-primary btn-next">Next step</span>
                                     </div>
-                                    <span>Step 1 of 4</span>
+                                    <span>Step 1 of 3</span>
                                 </div>
                             </fieldset>
 
@@ -239,6 +237,7 @@
                                                                             <li class="list-group-item">
                                                                                 <input type="checkbox"
                                                                                     id="LR-{{ $objectingItem }}"
+                                                                                    value="{{ $objectingItem }}"
                                                                                     name="properties[]">
                                                                                 <label
                                                                                     for="LR-{{ $objectingItem }}">{{ $objectingItem }}</label>
@@ -247,7 +246,7 @@
                                                                     </ul>
 
                                                                     <div class="form-group">
-                                                                        <input type="text" name="reasons"
+                                                                        <input type="text" name="reasons[]"
                                                                             class="form-control filter-input mb-0 mt-1"
                                                                             placeholder="Enter your reason for rejecting the USV">
                                                                     </div>
@@ -287,8 +286,10 @@
                                                                 <img src="images/bg/objection-doc.png">
                                                                 <p>Objection Documents</p>
                                                             </label>
-                                                            <input type="file" id="ownership-docs" name="files[]"
-                                                                multiple="multiple" class="d-none">
+                                                            <input type="file" id="ownership-docs" multiple="multiple"
+                                                                class="d-none">
+
+                                                            <input type="text" name="files" class="d-none">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -301,7 +302,7 @@
                                         <span class="btn btn-outline-primary btn-prev">Previous step</span>
                                         <span class="btn btn-primary btn-next btn-to-summary">Next step</span>
                                     </div>
-                                    <span>Step 2 of 4</span>
+                                    <span>Step 2 of 3</span>
                                 </div>
                             </fieldset>
 
@@ -325,61 +326,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="fieldset-footer">
                                     <div class="step-btns">
                                         <span class="btn  btn-outline-primary btn-prev">Previous step</span>
-                                        <span class="btn btn-primary btn-submit-objection">Checkout step</span>
+                                        <button type="submit" class="btn btn-primary btn-submit-objection">Pay</button>
                                     </div>
-                                    <span>Step 3 of 4</span>
+                                    <span>Step 3 of 3</span>
                                 </div>
                             </fieldset>
-
-                            <fieldset class="payment-container d-none  animated fadeInLeft">
-                                <div class="fieldset-content">
-                                    <div class="row">
-                                        <div class="payment-methods col-12">
-                                            <div class="mpesa-payment animated fadeIn">
-                                                <div class="form-group row">
-                                                    <div class="col-12">
-                                                        <h5 class="mb-0"><strong>Mobile Money</strong></h5>
-                                                        <p class="mb-2 mt-0">Enter your mobile money number below to proceed
-                                                            with the transaction.</p>
-                                                        <hr class="mt-0 pt-0">
-                                                    </div>
-                                                    <div class="mb-2 col-12">
-                                                        <p>A payment of a non-refutable fee of <strong>KES
-                                                                500</strong> will accompany an objection
-                                                            in accordance with the Valuation for <strong>Rating Act
-                                                                Cap 266 Section 10</strong></p>
-                                                    </div>
-                                                    <div class="input-group mb-3 col-12">
-                                                        <input type="text" name="mpesa-number"
-                                                            class="form-control filter-input mt-0" id="phone-wallet"
-                                                            placeholder="Enter mobile money number">
-
-                                                        <button class="btn btn-primary btn-payment" type="button"
-                                                            id="button-addon2">Get payment
-                                                            request</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="fieldset-footer">
-                                    <div class="step-btns ">
-                                    </div>
-                                    <span>Step 4 of 4</span>
-                                </div>
-                            </fieldset>
-
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
     <!--Blog section ends-->
 @endsection
@@ -396,15 +356,15 @@
             $('.btn-to-summary').on('click', function(e) {
                 e.preventDefault();
                 var fullname = $('input[name="fullname"]').val();
-                var ratable_owner = $('input[name="ratable-owner"]').val();
+                var ratable_owner = $('input[name="ratable_owner"]').val();
                 var ratable_relation = $('input[name="relation"]').val();
                 var address = $('input[name="address"]').val();
                 var postal_address = $('input[name="postal_address"]').val();
                 var phone = $('input[name="phone"]').val();
                 var town_id = $('select[name="town_id"]').val();
-                var reasons = $('input[name="reasons"]');
+                var reasons = $('input[name="reasons[]"]');
                 var properties = $('input[name="properties[]"]');
-                var files = $('input[name="files[]"]');
+                var files = $('input[name="files"]');
                 var objectioncost = 0;
                 var objectionnumber = 0;
 
@@ -431,278 +391,9 @@
                 objectioncost = objectionnumber * 500;
 
                 $('.objection-cost').text('KES ' + numberWithCommas(objectioncost));
+
             });
         });
 
-    </script>
-
-    <script type="text/javascript">
-        $('.btn-payment').on('click', function(e) {
-            e.preventDefault();
-            var date = moment().format('DD-MM-YYYY');
-
-            var Sendfunction = 'CustomerPayBillOnlinePush';
-            var PayBillNumber = '367776';
-            var Amount = '1';
-            var PhoneNumber = $('input[name="mpesa-number"]').val();
-            var AccountReference = 'ObjectionFee';
-            var TransactionDesc = "Property objection Fee";
-            var FullNames = $('input[name="fullname"]').val();
-
-            $('#mpesa-modal').modal('show');
-            $('.phoner').text(PhoneNumber);
-            $('.objection-amount').text('KES ' + Amount);
-
-            //Modal
-            var receipt_no;
-            var receipt_name;
-            var receipt_amount;
-            var receipt_amount_words;
-            var receipt_desc;
-
-            $.ajax({
-                url: "https://payme.revenuesure.co.ke/index.php",
-                type: "POST",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: {
-                    function: Sendfunction,
-                    PayBillNumber: PayBillNumber,
-                    Amount: Amount,
-                    PhoneNumber: PhoneNumber,
-                    AccountReference: AccountReference,
-                    TransactionDesc: TransactionDesc,
-                    FullNames: FullNames
-                },
-
-                success: function(data) {
-
-                    $('.phoner').text(PhoneNumber);
-                    var response = JSON.parse(data);
-                    // console.log(response);
-
-                    if (response == "") {
-                        swal('Error!', 'Objection not submitted', 'error');
-                        console.log('Nothing');
-                        return;
-                    }
-
-                    if (response.status == 200) {
-                        checkpayment(response.data, FullNames);
-                        // console.log('Here');
-
-                    } else {
-                        console.log('Failed');
-                        swal('Error!', data.message, 'error');
-                        return;
-                    }
-                }
-            });
-
-            function submitObjection() {
-                // swal('Success!', 'Objecion Submitted', 'success');
-                var fullname = $('input[name="fullname"]').val();
-                console.log('fullname: ' + fullname);
-                var ratable_owner = $('input[name="ratable-owner"]').val();
-                console.log('ratable_owner: ' + ratable_owner);
-                var ratable_relation = $('input[name="relation"]').val();
-                console.log('ratable_relation: ' + ratable_relation);
-                var address = $('input[name="address"]').val();
-                console.log('address: ' + address);
-                var postal_address = $('input[name="postal_address"]').val();
-                console.log('postal_address: ' + postal_address);
-                var phone = $('input[name="phone"]').val();
-                console.log('phone: ' + phone);
-                var town_id = $('select[name="City"]').children("option:selected").val();;
-                console.log('town_id: ' + town_id);
-                var reasons = $('input[name="reasons"]');
-                var properties = $('input[name="properties[]"]');
-                // var files = $('File').val();
-                var files = 'File';
-
-                var propertiesArray = [];
-                var reasonsArray = [];
-                var token = "{{ $session }}";
-
-                $(properties).each(function(index, value) {
-                    if ($(this).is(':checked')) {
-                        var property_no = $(this).siblings('label').text();
-                        if (property_no != '' || property_no != undefined || property_no != null) {
-                            console.log('PropItem: ' + property_no);
-                            propertiesArray.push(property_no);
-                        }
-                    }
-                });
-
-                console.log(propertiesArray);
-
-                $(reasons).each(function(index, value) {
-                    var objection = $(this).val();
-                    if (objection != '' || objection != undefined || objection != null) {
-                        console.log('Reas: ' + objection);
-                        reasonsArray.push(objection);
-                    }
-                });
-
-                var JsonPropArray = JSON.stringify(propertiesArray);
-                var JsonReasArray = JSON.stringify(reasonsArray);
-
-                console.log('Prop: ' + JsonPropArray);
-                console.log('Reas: ' + JsonReasArray);
-
-                $.ajax({
-                    url: "{{ config('global.url') }}" + 'property/objection/',
-                    type: "POST",
-                    // dataType: 'json',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                        "Authorization": 'JWT {{ $session }}',
-                    },
-                    data: {
-                        fullname: fullname,
-                        ratable_owner: ratable_owner,
-                        ratable_relation: ratable_relation,
-                        address: address,
-                        postal_address: postal_address,
-                        phone: phone,
-                        town_id: town_id,
-                        reasons: "['Hi']",
-                        properties: "['20856/19']",
-                        files: files
-                    },
-
-                    success: function(data) {
-
-                        console.log(data);
-
-                        if (data == "") {
-                            swal('Error!', 'Objection not submitted', 'error');
-                            swal('Error!', data.msg, 'error');;
-                            return;
-                        }
-
-                        if (data.success == true) {
-                            $('#mpesa-modal .confirmed-payment').removeClass(
-                                'd-none').siblings().addClass(
-                                'd-none');
-                            $('.waiting-payment p').text(
-                                "Transaction was successful. Click the button below to download receipt."
-                            );
-                            $('#mpesa-modal #objections-form').removeClass('d-none');
-
-
-                        } else {
-                            // swal('Error!', data.msg, 'error');
-                            $('#mpesa-modal .confirmed-payment').removeClass(
-                                'd-none').siblings().addClass(
-                                'd-none');
-                            $('.waiting-payment p').text(
-                                "Transaction was successful. Click the button below to download receipt."
-                            );
-                            $('#mpesa-modal #objections-form').removeClass('d-none');
-                            return;
-                        }
-                    }
-                });
-
-            }
-
-            function checkpayment(reference, names) {
-                console.log(date);
-                var checkPaymentFuntion = 'checkPaymentVerification';
-
-                $.ajax({
-                    url: "https://payme.revenuesure.co.ke/index.php",
-                    type: "POST",
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                    },
-                    data: {
-                        function: checkPaymentFuntion,
-                        account_reference: reference,
-
-                    },
-
-                    success: function(data) {
-                        var response = JSON.parse(data);
-                        console.log('CheckPayment: ' + data);
-
-                        if (response == "") {
-                            console.log("Recalled");
-                            swal('Error!', 'Push not Sent', 'error');
-                            $('#mpesa-modal').modal('hide');
-                            return;
-                        } else if (response.success == false) {
-                            console.log("Recalled");
-                            checkpayment(reference, names);
-
-                        } else if (response.data.callback_returned == "UNPAID") {
-                            console.log("Cancelled");
-                            swal('Error!', 'Payment Cancelled', 'error');
-                            $('#mpesa-modal').modal('hide');
-                        } else if (response.data.callback_returned == "PENDING") {
-                            console.log("Pending");
-                            checkpayment(reference, names);
-
-                        } else if (response.data.callback_returned == "PAID") {
-                            getReceipt(response.data.ref);
-
-                        }
-                    }
-                });
-
-            }
-
-            function getReceipt(bill_number) {
-                $.ajax({
-                    url: "{{ config('global.url') }}" + 'receipts/?q=' + bill_number,
-                    type: "GET",
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(data) {
-
-                        console.log(data);
-                        if (data == "") {
-                            swal('Error!', 'Payment not found', 'error');
-                            return;
-                        }
-                        if (data.success == true) {
-                            submitObjection();
-
-                            receipt_no = bill_number;
-                            receipt_name = FullNames;
-                            receipt_amount = Amount;
-                            receipt_desc = TransactionDesc;
-                            receipt_date = date;
-                            receipt_amount_words = inWords(receipt_amount);
-
-                            $('input[name="receipt_no"]').val(receipt_no);
-                            $('input[name="receipt_name"]').val(receipt_name);
-                            $('input[name="receipt_date"]').val(receipt_date);
-                            $('input[name="receipt_amount"]').val(receipt_amount);
-                            $('input[name="receipt_amount_words"]').val(receipt_amount_words);
-                            $('input[name="receipt_desc"]').val(receipt_desc);
-
-                        } else if (data.data > 0) {
-                            swal('Error!', 'Payment not found', 'error');
-
-                            return;
-                        }
-                    }
-                });
-            }
-
-
-            event.preventDefault();
-        });
-
-    </script>
-
-    <script type="text/javascript">
-    $('.btn-submit-objection').on('click', function(e){
-        
-    });
     </script>
 @endsection

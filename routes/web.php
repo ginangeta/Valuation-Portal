@@ -48,6 +48,11 @@ Route::post('createObjections', 'PropertiesController@createObjections')->name('
 
 // Objections
 Route::post('getReceipt', 'ObjectionController@getReceipt')->name('getReceipt');
+Route::post('sendObjection', 'ObjectionController@sendObjection')->name('sendObjection');
+
+//Bill
+Route::get('objectionBill/{BillNo}', 'ObjectionController@objectionBill')->name('objectionBill');
+
 
 
 

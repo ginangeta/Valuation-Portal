@@ -16,8 +16,10 @@ return [
     */
 
     // 'url' => 'http://10.20.2.10:8020/api/',
-
     // 'url' => 'http://10.12.49.121:5006/api/',
-    'url' => 'http://10.12.49.121:86/api/',
+    // 'url' => 'http://10.12.49.121:86/api/',
+
+    'url' => 'https://osha.biller.co.ke:8443/api/',
+
 
 ];

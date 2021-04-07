@@ -689,3 +689,125 @@ document.location.href = url; --}}
 
     </script>
 @endsection
+
+<script type="text/javascript">
+    // $('.btn-submit-objection').on('click', function(e) {
+    //     e.preventDefault();
+    //     console.log('Submiting...')
+    //     submitObjection();
+
+    //     function submitObjection() {
+    //         // swal('Success!', 'Objecion Submitted', 'success');
+    //         var fullname = $('input[name="fullname"]').val();
+    //         console.log('fullname: ' + fullname);
+    //         var ratable_owner = $('input[name="ratable_owner"]').val();
+    //         console.log('ratable_owner: ' + ratable_owner);
+    //         var ratable_relation = $('input[name="relation"]').val();
+    //         console.log('ratable_relation: ' + ratable_relation);
+    //         var address = $('input[name="address"]').val();
+    //         console.log('address: ' + address);
+    //         var postal_address = $('input[name="postal_address"]').val();
+    //         console.log('postal_address: ' + postal_address);
+    //         var phone = $('input[name="phone"]').val();
+    //         console.log('phone: ' + phone);
+    //         var town_id = $('select[name="City"]').children("option:selected").val();;
+    //         console.log('town_id: ' + town_id);
+    //         var reasons = $('input[name="reasons[]"]');
+    //         var properties = $('input[name="properties[]"]');
+    //         // var files = $('File').val();
+    //         var files = 'File';
+
+    //         var propertiesArray = [];
+    //         var reasonsArray = [];
+    //         var token = "{{ $session }}";
+
+    //         $(properties).each(function(index, value) {
+    //             if ($(this).is(':checked')) {
+    //                 var property_no = $(this).siblings('label').text();
+    //                 if (property_no != '' || property_no != undefined || property_no != null) {
+    //                     console.log('PropItem: ' + property_no);
+    //                     propertiesArray.push(property_no);
+    //                 }
+    //             }
+    //         });
+
+    //         console.log(propertiesArray);
+
+    //         $(reasons).each(function(index, value) {
+    //             var objection = $(this).val();
+    //             if (objection != '' || objection != undefined || objection != null) {
+    //                 console.log('Reas: ' + objection);
+    //                 reasonsArray.push(objection);
+    //             }
+    //         });
+
+    //         var JsonPropArray = JSON.stringify(propertiesArray);
+    //         var JsonReasArray = JSON.stringify(reasonsArray);
+
+    //         console.log('Prop: ' + JsonPropArray);
+    //         console.log('Reas: ' + JsonReasArray);
+
+    //         $.ajax({
+    //             url: "{{ config('global.url') }}" + 'property/objection/',
+    //             type: "POST",
+    //             // dataType: 'json',
+    //             headers: {
+    //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+    //                 "Authorization": 'JWT {{ $session }}',
+    //             },
+    //             data: {
+    //                 fullname: fullname,
+    //                 ratable_owner: ratable_owner,
+    //                 ratable_relation: ratable_relation,
+    //                 address: address,
+    //                 postal_address: postal_address,
+    //                 phone: phone,
+    //                 town_id: town_id,
+    //                 reasons: "['Hi']",
+    //                 properties: "['20856/19']",
+    //                 files: files
+    //             },
+
+    //             success: function(data) {
+
+    //                 console.log(data);
+
+    //                 if (data == "") {
+    //                     swal('Error!', 'Objection not submitted', 'error');
+    //                     swal('Error!', data.msg, 'error');;
+    //                     return;
+    //                 }
+
+    //                 if (data.success == true) {
+    //                     var MpesaAmount = $('.objection-cost').text();
+    //                     $('.Payment_Amount').text(MpesaAmount);
+
+    //                 } else {
+    //                     // swal('Error!', data.msg, 'error');
+    //                     var theParent = $(this).parent().parent().parent();
+    //                     var theParentIndex = theParent.index();
+    //                     var numOfChildren = $('.permit-form').children('fieldset').last().index();
+
+    //                     var theNavigation = $('.permit-form .form-header div').eq(theParentIndex);
+
+    //                     if (theParentIndex !== numOfChildren) {
+    //                         $('.summary-container').addClass('d-none');
+    //                         $('.summary-container').next().removeClass('d-none');
+    //                         console.log('Here');
+    //                         $(theNavigation).addClass('active').addClass('clickMe').siblings()
+    //                             .removeClass('active');
+    //                         $(theNavigation).prev().addClass('filled').addClass('clickMe');
+    //                     }
+
+
+    //                     var MpesaAmount = $('.objection-cost').text();
+    //                     $('.Payment_Amount').text(MpesaAmount);
+    //                     return;
+    //                 }
+    //             }
+    //         });
+
+    //     }
+    // });
+
+</script>

@@ -255,7 +255,6 @@
                                                         <th>LR No.</th>
                                                         <th>Situation</th>
                                                         <th>Owner</th>
-                                                        <th>Address</th>
                                                         <th>Approx. Area(Ha)</th>
                                                         <th>Property Unimproved Site Value (USV)</th>
                                                         <th>Actions</th>
@@ -267,8 +266,7 @@
                                             </table>
                                         </div>
                                         <div class="usv-btns d-none">
-                                            <button type="submit" class="btn btn-danger center mb-3 py-2 btn-control">Object
-                                                USV</a>
+                                            <button type="submit" class="btn btn-danger center mb-3 py-2 btn-control">Submit Objection To USV</a>
                                         </div>
                                     </form>
                                 </div>
@@ -370,16 +368,13 @@
                                 rn.append('<td><p class="mb-0">' + results.situation +
                                     '</p></td>');
                                 rn.append('<td>' + results.owner + '</td>');
-                                rn.append('<td><p class="mb-0">' + results.po_box +
-                                    '</p><p class="mb-0"><small>' +
-                                    results.address + '</small></p></td>');
                                 rn.append('<td>' + results.approx_area + '</td>');
                                 rn.append('<td>KES ' + numberWithCommas(results.usv) +
                                     '</td>');
                                 // var LrNoString = results.lr_no.split('/');
                                 // + LrNoString[0] + ','+LrNoString[1]+
                                 rn.append(
-                                    '<td><a onclick="printUSV(' + results.serial_no +');"' +
+                                    '<td class="d-flex flex-row align-content-center"><a onclick="printUSV(' + results.serial_no +');"' +
                                     `class="btn btn-info btn-sm btn--icon-text btn-print-usv ml-2 text-white"><i
                                         class="zmdi zmdi-eye"></i>Print</a>
                                         <button type="button" class="btn btn-danger btn-sm btn--icon-text ml-2 btn-remove-property"><i

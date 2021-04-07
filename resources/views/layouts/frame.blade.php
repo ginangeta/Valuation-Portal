@@ -11,14 +11,14 @@
     <meta name="author" content="LionCoders" />
     <!-- Links -->
     <link rel="icon" type="image/png" href="{{ asset('images/logo-white.png') }}" />
-    <!-- FlatIcon -->
-    <link href="{{ asset('icons/font/flaticon.css" rel="stylesheet') }}" />
     <!-- google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
     <!-- Plugins CSS -->
     <link href="{{ asset('css/plugin.css') }}" rel="stylesheet" />
     <!-- style CSS -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+    <!-- FlatIcon -->
+    <link href="{{ asset('icons/font/flaticon.css')}}" rel="stylesheet" />
 
     <!-- Document Title -->
     <title>NCCG Draft Valuation</title>
@@ -208,7 +208,7 @@
     </script> --}}
 
     <!--Moment Script-->
-    <script src="{{asset('vendors/moment/moment.min.js')}}"></script>
+    <script src="{{ asset('vendors/moment/moment.min.js') }}"></script>
 
     <!--Main js-->
     <script src="js/main.js"></script>

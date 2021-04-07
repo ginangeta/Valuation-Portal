@@ -15337,6 +15337,29 @@ label{
     font-weight: 500 !important;
 }
 
-.list-group-horizontal-sm-down .list-group-item label input{
+.pay-now{
+    border-bottom: 1px solid #3e3d3dc7;
+    padding-bottom: 40px;
+}
 
+.payment-information{
+    display: flex;
+    margin-top: 20px;
+    padding-right: 20px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.payment-modes{
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.payment-information p{
+    font-size: 15px;
+    white-space: nowrap;
 }
