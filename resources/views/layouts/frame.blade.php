@@ -57,7 +57,7 @@
                                     <div class="container">
                                         <ul class="site-menu js-clone-nav d-none d-lg-block">
                                             <li class="">
-                                                <a href="index.html">Home</a>
+                                                <a href="{{route('home')}}">Home</a>
                                             </li>
                                             <li class="">
                                                 <a href="#">Contacts</a>
