@@ -46,7 +46,7 @@
                                             {{-- <input name="user_name" value="{{old('user_name')}}" type="email" class="form-control" placeholder="Enter your email address" required> --}}
                                             <div class="input-email-login">
                                                 <input name="email" type="email" class="form-control"
-                                                    value="qihyrup@robot-mail.com" placeholder="Enter your email address"
+                                                    placeholder="Enter your email address"
                                                     required>
                                             </div>
 
@@ -59,7 +59,7 @@
                                             {{-- <input name="password" type="password" value="{{old('password')}}" class="form-control" placeholder="Enter your password" required> --}}
                                             <div class="input-pass-login">
                                                 <input name="password" type="password" class="form-control"
-                                                    value="5775fhfhfhfh" placeholder="Enter your password" required>
+                                                    placeholder="Enter your password" required>
                                             </div>
                                         </div>
                                         <button type="submit"
