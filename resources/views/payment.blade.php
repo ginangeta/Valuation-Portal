@@ -156,7 +156,7 @@
                                                                     class="OB_bill_no">{{ $ObjectionBillInfo->bill_no }}</strong>
                                                             </p>
                                                             <p>Amount: <strong
-                                                                    class="Payment_Amount">{{ $ObjectionBillInfo->total }}</strong>
+                                                                    class="Payment_Amount">KES {{ $ObjectionBillInfo->total }}</strong>
                                                             </p>
                                                             <p>Enter your pin</p>
                                                             <p>OK</p>
@@ -193,12 +193,14 @@
             e.preventDefault();
             var date = moment().format('DD-MM-YYYY');
             var MpesaAmount = $('.objection-cost').text();
+            var BillTotal  =  '{{ $ObjectionBillInfo->total }}'
+            var BillCost = BillTotal.split(".");
 
             var Sendfunction = 'CustomerPayBillOnlinePush';
             console.log("Push Sendfunction: " + Sendfunction);
             var PayBillNumber = '367776';
             console.log("Push PayBillNumber: " + PayBillNumber);
-            var Amount = '1';
+            var Amount = BillCost[0];
             console.log("Push Amount: " + Amount);
             var PhoneNumber = $('input[name="mpesa_number"]').val();
             console.log("Push Number: " + PhoneNumber);
@@ -336,10 +338,11 @@
                             var d = new Date("2021-04-07T16:14:09.000Z");
 
                             var new_date = results.dateCreated.split("T"); 
+                            var billAmount = results.billAmount.split(".");
 
                             receipt_no = bill_number;
                             receipt_name = results.payerName;
-                            receipt_amount = results.billAmount;
+                            receipt_amount = billAmount[0];
                             receipt_desc = 'Objection Fee';
                             receipt_date = new_date[0];
                             receipt_amount_words = inWords(receipt_amount);
