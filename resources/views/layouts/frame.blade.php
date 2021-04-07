@@ -316,7 +316,7 @@
     <script src="{{ asset('vendors/moment/moment.min.js') }}"></script>
 
     <!--Main js-->
-    <script src="js/main.js"></script>
+    <script src="{{asset('js/main.js')}}"></script>
     @yield('scripts')
     <!--Scripts ends-->
 </body>
