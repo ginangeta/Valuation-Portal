@@ -43,6 +43,11 @@ class AuthController extends Controller
             return redirect()->back()->with('errors', $created->msg);
         }
 
+        if(is_null($created->data)){
+
+            return redirect()->back()->with('errors', $created->msg);
+        }
+
         // dd($created);
 
         Session::put('user', $created->data);
