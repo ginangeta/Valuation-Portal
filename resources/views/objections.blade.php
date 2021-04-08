@@ -232,7 +232,7 @@
                                                                     <label class="mb-0"><strong>Reason for
                                                                             rejecting</strong></label>
 
-                                                                    <ul class="list-group list-group-horizontal-sm-down">
+                                                                    <ul class="list-group property-list list-group-horizontal-sm-down">
                                                                         @foreach ($objectingList as $objectingItem)
                                                                             <li class="list-group-item">
                                                                                 <input type="checkbox"

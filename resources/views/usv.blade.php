@@ -96,7 +96,7 @@
             </div>
         </div>
 
-        <div style="display: flex; flex-flow: column; align-content:end;">
+        <div style="display: flex; flex-flow: column; align-content:end; position: absolute; top: 150px;  right: 54px;">
             <span style="font-size: 10px;">P. O. Box 30037-00100, NAIROBI</span>
             <span style="font-size: 10px;" id="today">DATE: <… /DD/MM/YYYY/…></span>
         </div>

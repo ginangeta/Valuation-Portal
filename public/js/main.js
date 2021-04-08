@@ -96,6 +96,16 @@
     });
 
 
+    $('.property-list input').on('click', function(){
+        if ($('.property-list input').is(':checked')){
+            $(this).attr("name", "properties[]");
+        }else {
+            $(this).removeAttr('name');
+        }
+
+    });
+
+
     /*=====================================
             Clone Script
     ======================================*/
