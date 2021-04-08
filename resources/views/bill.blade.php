@@ -209,7 +209,7 @@
         <div style="position:absolute;left:269.29px;top:129.97px" class="cls_003"><span class="cls_003">Tel No:
                 020-2222181</span></div>
         <div style="position:absolute;left:396.85px;top:127.37px" class="cls_006"><span class="cls_006">Date Issued
-                {{ $bill->header->billDate }}</span></div>
+                {{date('d-m-Y', strtotime( $bill->header->billDate ))}}</span></div>
         <div style="position:absolute;left:170.08px;top:155.07px" class="cls_007"><span class="cls_007">CUSTOMER
                 SERVICES OFFICE</span></div>
         <div style="position:absolute;left:170.08px;top:171.19px" class="cls_008"><span class="cls_008">The Customer
@@ -270,7 +270,7 @@
         <div style="position:absolute;left:269.29px;top:458.14px" class="cls_004"><span class="cls_004">Tel No:
                 020-2222181</span></div>
         <div style="position:absolute;left:396.85px;top:456.19px" class="cls_006"><span class="cls_006">Date Issued
-                {{ date('d-m-Y') }}</span></div>
+                {{date('d-m-Y', strtotime( $bill->header->billDate ))}}</span></div>
         <div style="position:absolute;left:170.08px;top:483.89px" class="cls_007"><span class="cls_007">CUSTOMER
                 SERVICES OFFICE</span></div>
         <div style="position:absolute;left:170.08px;top:500.01px" class="cls_008"><span class="cls_008">The Customer
