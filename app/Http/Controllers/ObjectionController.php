@@ -66,6 +66,8 @@ class ObjectionController extends Controller
             return redirect()->route('details')->with('errors', 'An error occured. Please try again');
         }
 
+        // dd($created);
+
         if(!$created->success)
         {
             return redirect()->route('details')->with('errors', $created->msg);
