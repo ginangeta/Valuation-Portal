@@ -62,12 +62,13 @@ class ObjectionController extends Controller
 
         if(is_null($created))
         {
-            return redirect()->route('createObjections')->with('errors', 'An error occured.');
+            // dd($created);
+            return redirect()->route('details')->with('errors', 'An error occured. Please try again');
         }
 
-        if($created->success = false)
+        if(!$created->success)
         {
-            return redirect()->back()->with('errors', $created->msg);
+            return redirect()->route('details')->with('errors', $created->msg);
         }
 
         if(is_null($created->data)){
