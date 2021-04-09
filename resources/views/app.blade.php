@@ -14,9 +14,7 @@
                                     <h1>Nairobi City County </h1>
                                     <span>NCCG Draft Valuation Roll Inspection Online</span>
 
-                                    <p>The purpose of this platform is to enable a ratable owner with property
-                                        within the boundaries of Nairobi County to inspect and if necessary object
-                                        to the Draft Valuation Roll.
+                                    <p>
                                         The ratable owner is required within 28 days to raise an objection from the
                                         date of the publication of the notice. </p>
                                     <br>

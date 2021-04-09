@@ -198,9 +198,10 @@
 
             var Sendfunction = 'CustomerPayBillOnlinePush';
             console.log("Push Sendfunction: " + Sendfunction);
-            var PayBillNumber = '367776';
+            var PayBillNumber = '175555';
             console.log("Push PayBillNumber: " + PayBillNumber);
             var Amount = BillCost[0];
+            // var Amount = "2";
             console.log("Push Amount: " + Amount);
             var PhoneNumber = $('input[name="mpesa_number"]').val();
             console.log("Push Number: " + PhoneNumber);
@@ -223,7 +224,7 @@
             var receipt_desc;
 
             $.ajax({
-                url: "https://payme.revenuesure.co.ke/index.php",
+                url: "https://payme.revenuesure.co.ke/api/index.php",
                 type: "POST",
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -268,7 +269,7 @@
                 var checkPaymentFuntion = 'checkPaymentVerification';
 
                 $.ajax({
-                    url: "https://payme.revenuesure.co.ke/index.php",
+                    url: "https://payme.revenuesure.co.ke/api/index.php",
                     type: "POST",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),

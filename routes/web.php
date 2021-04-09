@@ -44,6 +44,7 @@ Route::get('logout', 'AuthController@logout')->name('logout');
 // Property Details
 Route::get('searchProperty', 'PropertiesController@searchProperty')->name('searchProperty');
 Route::get('usv.singleproperty/{lr_no}', 'PropertiesController@singlePropertyUsv')->name('usv.singleproperty');
+Route::get('objection.singleproperty/{lr_no}', 'PropertiesController@singlePropertyObjection')->name('objection.singleproperty');
 Route::post('createObjections', 'PropertiesController@createObjections')->name('createObjections');
 
 // Objections

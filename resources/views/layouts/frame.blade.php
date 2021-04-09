@@ -49,7 +49,7 @@
                                         alt="logo" class="img-fluid"></a>
                                 <div class="logo-text">
                                     <h4 class="text-white m-0 p-0 text-nowrap">NCCG Draft Valuation</h4>
-                                    <p class="text-white text-nowrap">Nairobi City Council</p>
+                                    <p class="text-white text-nowrap">Nairobi City County</p>
                                 </div>
                             </div>
                             <div class="col-lg-8 col-md-1 col-3  order-3 order-xl-8 order-lg-2 order-md-3 pl-xs-0">

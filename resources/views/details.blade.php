@@ -265,7 +265,8 @@
                                             </table>
                                         </div>
                                         <div class="usv-btns d-none">
-                                            <button type="submit" class="btn btn-danger center mb-3 py-2 btn-control">Submit Objection To USV</a>
+                                            <button type="submit" class="btn btn-danger center mb-3 py-2 btn-control">Submit
+                                                Objection To USV</a>
                                         </div>
                                     </form>
                                 </div>
@@ -370,14 +371,15 @@
                                 rn.append('<td>' + results.approx_area + '</td>');
                                 rn.append('<td>KES ' + numberWithCommas(results.usv) +
                                     '</td>');
-                                // var LrNoString = results.lr_no.split('/');
-                                // + LrNoString[0] + ','+LrNoString[1]+
                                 rn.append(
-                                    '<td class="d-flex flex-row align-content-center"><a onclick="printUSV(' + results.serial_no +');"' +
-                                    `class="btn btn-info btn-sm btn--icon-text btn-print-usv ml-2 text-white"><i
-                                        class="zmdi zmdi-eye"></i>Print</a>
-                                        <button type="button" class="btn btn-danger btn-sm btn--icon-text ml-2 btn-remove-property"><i
-                                                class="zmdi zmdi-block"></i>Remove</button></td>`
+                                    '<td class="d-flex flex-row align-content-center"><a onclick="printUSV(' +
+                                    results.serial_no + ');"' +
+                                    `class="btn-print-usv ml-2 text-success font-24"><i
+                                                class="zmdi zmdi-print"></i></a>`+
+                                                '<a class="ml-2 text-warning font-24" onclick="objectSingleUsv(' +results.serial_no + ');"><i'+
+                                                        ` class="zmdi zmdi-alert-triangle"></i></a>
+                                                <a class="ml-2 btn-remove-property text-info font-24"><i
+                                                class="zmdi zmdi-delete text-danger"></i></a></td>`
                                 );
                                 $('#data-table tbody').append(rn);
 
@@ -407,5 +409,13 @@
 
     </script>
     <script type="text/javascript">
+        function objectSingleUsv(SerialNo) {
+            // alert(LRNo1);
+            let url =
+                "objection.singleproperty/:LRNo";
+            url = url.replace(':LRNo', SerialNo + '.0');
+            document.location.href = url;
+        }
+
     </script>
 @endsection

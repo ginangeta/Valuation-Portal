@@ -90,8 +90,8 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 construction-form">
                         <h2 class="site-heading text-black mb-5">Fill the <strong>Form</strong></h2>
-                        <form id="objection-form" action="{{ route('sendObjection') }}" method="POST"
-                            class="p-5 bg-white permit-form">
+                        <form id="objection-form" action="{{ route('sendObjection') }}" enctype="multipart/form-data"
+                            method="POST" class="p-5 bg-white permit-form">
                             @csrf
                             @if (Session::has('success'))
                                 <p class="alert alert-success">
@@ -125,8 +125,8 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <h5 class="mb-0"><strong>Objector Details</strong></h5>
-                                            <p class="mb-2 mt-0">Please fill in the inputs below with the objector's
-                                                information.</p>
+                                            <p class="mb-2 mt-0">Enter the form below. Fields with <strong
+                                                    class="text-danger">(*)</strong> are required.</p>
                                             <hr class="mt-0 pt-0">
                                         </div>
 
@@ -151,15 +151,17 @@
 
                                         <div class="col-lg-12 col-sm-12 ratable-owner">
                                             <div class="form-group">
-                                                <label class="mb-0"><strong>Objector</strong></label>
+                                                <label class="mb-0"><strong>Objector</strong><strong class="text-danger">
+                                                        *</strong></label>
                                                 <input type="text" name="fullname" class="form-control filter-input mt-0"
-                                                    placeholder="Enter your name in full">
+                                                    placeholder="Enter your name in full" required>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-6 col-sm-12 non-ratable-owner d-none">
                                             <div class="form-group">
-                                                <label class="mb-0"><strong>Relation</strong></label>
+                                                <label class="mb-0"><strong>Relation</strong><strong class="text-danger">
+                                                        *</strong></label>
                                                 <input type="text" name="relation" class="form-control filter-input mt-0"
                                                     placeholder="Enter relation to ratable owner">
                                             </div>
@@ -167,34 +169,38 @@
 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="mb-0"><strong>Address</strong></label>
+                                                <label class="mb-0"><strong>Address</strong><strong class="text-danger">
+                                                        *</strong></label>
                                                 <input type="text" name="address" class="form-control filter-input mt-0"
-                                                    placeholder="Address of your current address">
+                                                    placeholder="Address of your current address" required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="mb-0"><strong>Phone number</strong></label>
+                                                <label class="mb-0"><strong>Phone number</strong><strong
+                                                        class="text-danger"> *</strong></label>
                                                 <input type="text" name="phone" class="form-control filter-input mt-0"
-                                                    placeholder="Enter your phone number">
+                                                    placeholder="Enter your phone number" required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="mb-0"><strong>Postal address</strong></label>
+                                                <label class="mb-0"><strong>Postal address</strong><strong
+                                                        class="text-danger"> *</strong></label>
                                                 <input type="text" name="postal_address"
                                                     class="form-control filter-input mt-0"
-                                                    placeholder="Enter your postal address">
+                                                    placeholder="Enter your postal address" required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
-                                            <label class="mb-0"><strong>Select town</strong></label>
+                                            <label class="mb-0"><strong>Select town</strong><strong class="text-danger">
+                                                    *</strong></label>
                                             <select name="town_id" id="" name="town_id"
                                                 title="Please select your postal city"
-                                                class="form-control custom-select city" placeholder="Country">
+                                                class="form-control custom-select city" placeholder="Country" required>
                                                 @foreach ($towns as $town)
                                                     <option value="{{ $town->id }}" data-content="{{ $town->name }}">
                                                     </option>
@@ -230,9 +236,11 @@
                                                             <div class="row Seen">
                                                                 <div class="col-12">
                                                                     <label class="mb-0"><strong>Reason for
-                                                                            rejecting</strong></label>
+                                                                            rejecting</strong><strong class="text-danger">
+                                                                            *</strong></label>
 
-                                                                    <ul class="list-group property-list list-group-horizontal-sm-down">
+                                                                    <ul
+                                                                        class="list-group property-list list-group-horizontal-sm-down">
                                                                         @foreach ($objectingList as $objectingItem)
                                                                             <li class="list-group-item">
                                                                                 <input type="checkbox"
@@ -248,7 +256,8 @@
                                                                     <div class="form-group">
                                                                         <input type="text" name="reasons[]"
                                                                             class="form-control filter-input mb-0 mt-1"
-                                                                            placeholder="Enter your reason for rejecting the USV">
+                                                                            placeholder="Enter your reason for rejecting the USV"
+                                                                            required>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -265,9 +274,8 @@
                                                         </div>
 
                                                         <div class="col-12 d-flex justify-flex-end mb-20">
-                                                            <button type="button"
-                                                                class="btn btn-primary btn-add-duplicate">Add
-                                                                a reason</button>
+                                                            <span class="btn btn-primary btn-add-duplicate">Add
+                                                                a reason</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -278,15 +286,16 @@
                                                         <p class="mb-2 mt-0">Can select multiple files.</p>
                                                         <label class="input-file form-attach" for="ownership-docs">
                                                             <div class="id-container img-container">
-                                                                <span><img src="{{ asset('images/contract.svg') }}"></span>
+                                                                <span><img
+                                                                        src="{{ asset('images/contract.svg') }}"></span>
                                                                 <h5>Objection Documents</h5>
                                                                 <p><strong>.All file types</strong> are accepted</p>
                                                                 <small class="text-danger"><strong>No file
                                                                         selected</strong></small>
                                                                 <!-- national id input box -->
                                                                 <input type="file" id="ownership-docs" multiple="multiple"
-                                                                    class="d-none">
-                                                                <input type="text" name="files" class="d-none">
+                                                                    name="files[]" class="d-none">
+                                                                <input type="text" name="files-former" class="d-none">
 
                                                             </div>
                                                         </label>
@@ -393,7 +402,26 @@
                 $('.objection-cost').text('KES ' + numberWithCommas(objectioncost));
 
             });
+
+
         });
+
+    </script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var form = document.getElementById('objection-form');
+            $('.btn-submit-objection').on('click', function() {
+                for (var i = 0; i < form.elements.length; i++) {
+                    if (form.elements[i].value === '' && form.elements[i].hasAttribute('required')) {
+                        alert('There are some required fields!');
+                        $(this).css("border", "1px solid red");
+                        return false;
+                    }
+                }
+                form.submit();
+            });
+        };
 
     </script>
 @endsection

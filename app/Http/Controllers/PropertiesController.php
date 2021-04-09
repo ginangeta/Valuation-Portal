@@ -32,6 +32,43 @@ class PropertiesController extends Controller
         // return view('usv')->with($lr_no);
     }
 
+    public function singlePropertyObjection($lr_no){
+        $url = config('global.url').'properties/?q='.$lr_no;
+
+        $response = Http::withToken(Session::get('token'))->get($url);
+
+        $created  = json_decode($response->body());
+
+        $objectionsArray = array($created->results[0]->lr_no);
+
+        // dd($objectionsArray);
+
+        $Townurl = config('global.url').'towns';
+
+        $Townresponse = Http::withToken(Session::get('token'))->get($Townurl);
+
+        $towns  = json_decode($Townresponse->body());
+
+        $session = Session::get('token');
+
+
+        if(is_null($created))
+        {
+            return redirect()->back()->with('errors', 'An error occured.');
+        }
+
+        if($created->count = 0)
+        {
+            return redirect()->back()->with('errors', 'Obtaining property usv failed');
+        }
+
+        return view('objections', [
+            'objectingList' => $objectionsArray,
+            'session' => $session,
+            'towns' => $towns->results]);
+        // return view('usv')->with($lr_no);
+    }
+
     public function createObjections(Request $request){
 
         $objectingArray = array_combine($request->LRId, $request->LRNo);
