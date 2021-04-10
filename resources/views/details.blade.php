@@ -227,6 +227,11 @@
                                     <h4 class="overview-content-header">Property details</h4>
                                     <div class="overview-content-details">
                                         <p class="">Below are the details on the searched property.</p>
+                                        <small>Click either: 
+                                            <span class="zmdi zmdi-print text-success font-12"> To print property USV</span> ,
+                                            <span class="zmdi zmdi-alert-triangle text-warning font-12"> For single property objection</span> ,
+                                            <span class="zmdi zmdi-delete text-danger font-12"> To delete item from the objection table</span>
+                                        </small>
                                     </div>
                                     <form id="properties-form" action="{{ route('createObjections') }}" method="POST"
                                         class="bg-white w-100 filter v3 listing-filter">

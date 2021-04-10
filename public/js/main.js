@@ -66,7 +66,7 @@
 
         } else {
             $(this).parent().addClass("activated");
-            $(this).parent().children("small").text("File (" + filename + ") Selected");
+            $(this).parent().children("small").text("File Selected");
             $(this).parent().children("small").addClass("text-success").removeClass("text-danger");
         }
         //id-container

@@ -44,9 +44,9 @@ class ObjectionController extends Controller
         // $response = Http::withToken("JWT ".Session::get('token'))->post($url,$data);
         // dd("JWT ".Session::get('token'));
         
-        // $created = json_decode($this->to_curl($url, $data));
-        $response = Http::withToken(Session::get('token'))->post($url,$data);
-        $created = json_decode($response->body());
+        $created = json_decode($this->to_curl($url, $data));
+        // $response = Http::withToken(Session::get('token'))->post($url,$data);
+        // $created = json_decode($response->body());
 
         // dd($created);
         $billerurl = 'https://pilot.revenuesure.co.ke/users/authenticate';
@@ -162,4 +162,119 @@ class ObjectionController extends Controller
             return $output;
         }
     }
+
+    // public function sendObjection(Request $request){
+    //     // dd($request->all());
+    //     $url = config('global.url').'property/objection/';
+
+    //     $data = [
+    //         'token' => Session::get('token'),
+    //         'fullname' => $request->fullname,
+    //         'ratable_owner' => filter_var($request->ratable_owner, FILTER_VALIDATE_BOOLEAN),
+    //         'ratable_relation' => $request->ratable_relation,
+    //         'address' => $request->address,
+    //         'postal_address' => $request->postal_address,
+    //         'phone' => $request->phone,
+    //         'town_id' => $request->town_id,
+    //         'reasons' => $request->reasons,
+    //         'properties' => $request->properties,
+    //         'files' => ""
+    //     ];
+
+        
+    //     $imgs = $_FILES['files'];
+    //     $file_name = [];
+    //     $file_content = [];
+    //     // dd($img);
+
+    //     function reArrayFiles($file)
+    //     {
+    //         $file_ary = array();
+    //         $file_count = count($file['name']);
+    //         $file_key = array_keys($file);
+
+    //         for($i=0;$i<$file_count;$i++)
+    //         {
+    //             foreach($file_key as $val)
+    //             {
+    //                 // dd($val);
+    //                 $file_ary[$i][$val] = $file[$val][$i];
+    //             }
+    //         }
+    //         return $file_ary;
+
+    //     }
+    
+    //     if(!empty($img))
+    //     {
+    //         $img_desc = reArrayFiles($img);
+    //         // dd($img_desc);
+
+    //         $file_count = count($img_desc);
+    //         $file_key = array_keys($img_desc);
+    //         // dd($file_count);
+
+    //         foreach($img_desc as $file)
+    //         {
+    //             // dd($file);
+    //             $name = $file['name'];
+    //             $content = fopen($file['tmp_name'], 'r');
+    //             array_push($file_name, $name);
+    //             array_push($file_content, $content);
+    //         }
+
+    //         // dd($file_content);
+        
+    //     }
+
+    //     $files = $request->files;
+
+    //     // $response = Http::withToken(Session::get('token'));
+    //     //     foreach($files as $k => $file)
+    //     //     {
+    //     //              $response = $response->attach('file['.$k.']', $file);
+    //     //     }
+    //     //     $response = $response->post($url, $data);
+            
+    //     // $response = Http::withToken(Session::get('token'))->attach('files', $file_name, $file_content)->post($url, $data);
+
+    //     $response = Http::withToken(Session::get('token'))->post($url, $data);
+    //     $created = json_decode($response->body());
+
+    //     // dd($created);
+    //     $billerurl = 'https://pilot.revenuesure.co.ke/users/authenticate';
+
+    //     $billerdata = [
+    //         'email' => "valuation@gmail.com",
+    //         'password' => "123456789"
+    //     ];
+
+
+    //     $BillerResponse = Http::withToken(Session::get('token'))->post($billerurl,$billerdata);
+    //     $BillerResponseData = json_decode($BillerResponse->body());
+    //     // dd($BillerResponseData);
+
+    //     if(is_null($created))
+    //     {
+    //         // dd($created);
+    //         return redirect()->route('details')->with('errors', 'An error occured. Please try again');
+    //     }
+
+    //     // dd($created);
+
+    //     if(!$created->success)
+    //     {
+    //         return redirect()->route('details')->with('errors', $created->msg);
+    //     }
+
+    //     if(is_null($created->data)){
+    //         dd($created);
+    //     }
+
+    //     return view('payment', [
+    //         'ObjectionBillInfo' => $created->data->bill_info,
+    //         'billerResponse' => $BillerResponseData->data->auth_token]);
+
+    //     // dd(Session::all());
+    // }
 }

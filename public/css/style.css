@@ -15492,6 +15492,10 @@ label {
 }
 
 .font-24{
-    font-size: 20px;
-    padding-right: 8px;
+    font-size: 20px !important;
+    padding-right: 8px !important;
+}
+
+.font-12{
+    font-size: 12px !important;
 }
