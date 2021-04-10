@@ -379,11 +379,11 @@
                                 rn.append(
                                     '<td class="d-flex flex-row align-content-center"><a onclick="printUSV(' +
                                     results.serial_no + ');"' +
-                                    `class="btn-print-usv ml-2 text-success font-24"><i
+                                    `class="btn-print-usv ml-2 text-success" style="font-size: 20px !important; padding-right: 8px !important;"><i
                                                 class="zmdi zmdi-print"></i></a>`+
-                                                '<a class="ml-2 text-warning font-24" onclick="objectSingleUsv(' +results.serial_no + ');"><i'+
+                                                '<a class="ml-2 text-warning" style="font-size: 20px !important; padding-right: 8px !important;" onclick="objectSingleUsv(' +results.serial_no + ');"><i'+
                                                         ` class="zmdi zmdi-alert-triangle"></i></a>
-                                                <a class="ml-2 btn-remove-property text-info font-24"><i
+                                                <a class="ml-2 btn-remove-property text-info" style="font-size: 20px !important; padding-right: 8px !important;"><i
                                                 class="zmdi zmdi-delete text-danger"></i></a></td>`
                                 );
                                 $('#data-table tbody').append(rn);
