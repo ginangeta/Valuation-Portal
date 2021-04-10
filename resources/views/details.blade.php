@@ -184,9 +184,9 @@
         <div class="overlay op-5"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2 text-center">
+                <div class="col-md-8 mt-30">
                     <div class="breadcrumb-menu">
-                        <h2>Property details</h2>
+                        <h2>Search Property</h2>
                         <span><a href="{{ route('home') }}">Home</a></span>
                         <span>property details</span>
                     </div>
@@ -224,14 +224,25 @@
                             <!--Listing Details starts-->
                             <div class="list-details-wrap bg-white">
                                 <div id="description" class="list-details-section">
-                                    <h4 class="overview-content-header">Property details</h4>
-                                    <div class="overview-content-details">
-                                        <p class="">Below are the details on the searched property.</p>
-                                        <small>Click either: 
-                                            <span class="zmdi zmdi-print text-success font-12"> To print property USV</span> ,
-                                            <span class="zmdi zmdi-alert-triangle text-warning font-12"> For single property objection</span> ,
-                                            <span class="zmdi zmdi-delete text-danger font-12"> To delete item from the objection table</span>
-                                        </small>
+                                    <div class="row property-heading d-none">
+                                        <div class="col-sm-12 col-lg-7">
+                                            <h4 class="overview-content-header">Property details</h4>
+                                            <div class="overview-content-details">
+                                                <p class="">Below are the details on the searched property.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-lg-5">
+                                            <div class="row d-flex justify-content-end">
+                                                <span class="zmdi zmdi-print text-success"> To print property
+                                                    USV</span> &nbsp; &nbsp;
+                                                <span class="zmdi zmdi-alert-triangle text-warning"> For single
+                                                    property
+                                                    objection</span> &nbsp; &nbsp;
+                                                <span class="zmdi zmdi-delete text-danger"> To delete item from the
+                                                    objection table</span>
+                                            </div>
+
+                                        </div>
                                     </div>
                                     <form id="properties-form" action="{{ route('createObjections') }}" method="POST"
                                         class="bg-white w-100 filter v3 listing-filter">
@@ -252,15 +263,14 @@
                                         </div>
 
                                         <div class="table-responsive d-none">
-                                            <table class="table table-sm table-bordered input-table table-striped"
-                                                id="data-table">
+                                            <table class="table table-sm table-bordered input-table" id="data-table">
                                                 <thead>
                                                     <tr>
                                                         <th>LR No.</th>
                                                         <th>Situation</th>
                                                         <th>Owner</th>
                                                         <th>Approx. Area(Ha)</th>
-                                                        <th>Property Unimproved Site Value (USV)</th>
+                                                        <th>Unimproved Site Value (USV)</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                 </thead>
@@ -336,62 +346,52 @@
 
 
                                 // var LRNo = $('.LRNo').html();
+                                var term = results.id; // term you're searching for
+                                var table = $("#data-table");
+                                var firstTd = $("td:first", table);
+                                var secondTd = firstTd.next();
 
-                                // var term = results.id; // term you're searching for
-                                // var column = 0; // which column to search
-                                // var pattern = new RegExp(term,
-                                //     'g'); // make search more flexible 
-                                // var table = document.getElementById('dataTable');
-                                // if (document.getElementById("dataTable").rows.length != 0) {
-                                //     var tr = table.getElementsByTagName('tr');
-                                //     for (var i = 0; i < tr.length; i++) {
-                                //         var td = tr[i].getElementsByTagName('TD');
-                                //         for (var j = 0; j < td.length; j++) {
-                                //             if (j == column && td[j].innerHTML == term) {
-
-                                //                 // for more flexibility use match() function and the pattern built above
-                                //                 // if(j == column && td[j].innerHTML.match(pattern)){
-
-                                //                 console.log('Found it: ' + td[j].innerHTML);
-                                //             }
-                                //         }
-                                //     }
-                                // }
-
-
-                                //first approach to add data (not flexible)
-                                // rn.append('<td>' + item_num + '</td>');
-                                rn.append('<td class="LRId d-none">' + results.id +
-                                    '<input name="LRId[]" class="d-none" value="' +
-                                    results
-                                    .id + '" required> </td>');
-                                rn.append('<td class="LRNo">' + results.lr_no +
-                                    '<input name="LRNo[]" class="d-none" value="' +
-                                    results
-                                    .lr_no + '" required> </td>');
-                                var Link = 5;
-                                rn.append('<td><p class="mb-0">' + results.situation +
-                                    '</p></td>');
-                                rn.append('<td>' + results.owner + '</td>');
-                                rn.append('<td>' + results.approx_area + '</td>');
-                                rn.append('<td>KES ' + numberWithCommas(results.usv) +
-                                    '</td>');
-                                rn.append(
-                                    '<td class="d-flex flex-row align-content-center"><a onclick="printUSV(' +
-                                    results.serial_no + ');"' +
-                                    `class="btn-print-usv ml-2 text-success" style="font-size: 20px !important; padding-right: 8px !important;"><i
-                                                class="zmdi zmdi-print"></i></a>`+
-                                                '<a class="ml-2 text-warning" style="font-size: 20px !important; padding-right: 8px !important;" onclick="objectSingleUsv(' +results.serial_no + ');"><i'+
-                                                        ` class="zmdi zmdi-alert-triangle"></i></a>
-                                                <a class="ml-2 btn-remove-property text-info" style="font-size: 20px !important; padding-right: 8px !important;"><i
-                                                class="zmdi zmdi-delete text-danger"></i></a></td>`
-                                );
-                                $('#data-table tbody').append(rn);
+                                if (firstTd.text() == term) {
+                                    alert("Error: You're trying to add the same entry");
+                                } else {
+                                    //first approach to add data (not flexible)
+                                    // rn.append('<td>' + item_num + '</td>');
+                                    rn.append('<td class="LRId d-none">' + results.id +
+                                        '<input name="LRId[]" class="d-none" value="' +
+                                        results
+                                        .id + '" required> </td>');
+                                    rn.append('<td class="LRNo">' + results.lr_no +
+                                        '<input name="LRNo[]" class="d-none" value="' +
+                                        results
+                                        .lr_no + '" required> </td>');
+                                    var Link = 5;
+                                    rn.append('<td><p class="mb-0">' + results.situation +
+                                        '</p></td>');
+                                    rn.append('<td>' + results.owner + '</td>');
+                                    rn.append('<td>' + results.approx_area + '</td>');
+                                    rn.append('<td>KES ' + numberWithCommas(results.usv) +
+                                        '</td>');
+                                    rn.append(
+                                        '<td class="d-flex flex-row align-content-center"><a onclick="printUSV(' +
+                                        results.serial_no + ');"' +
+                                        `class="btn-print-usv ml-2 text-success" style="font-size: 20px !important; padding-right: 8px !important;"><i
+                                                                                                    class="zmdi zmdi-print"></i></a>` +
+                                        '<a class="ml-2 text-warning" style="font-size: 20px !important; padding-right: 8px !important;" onclick="objectSingleUsv(' +
+                                        results.serial_no + ');"><i' +
+                                        ` class="zmdi zmdi-alert-triangle"></i></a>
+                                        <a class="ml-2 btn-remove-property text-info" style="font-size: 20px !important; padding-right: 8px !important;"><i
+                                        class="zmdi zmdi-delete text-danger"></i></a></td>`
+                                    );
+                                    $('#data-table tbody').append(rn);
+                                    $('.property-heading').removeClass('d-none');
+                                    $('.alert').addClass('d-none');
+                                }
 
                                 $('.btn-remove-property').on('click', function(e) {
                                     e.preventDefault();
                                     $(this).parent().parent().remove();
                                 });
+
 
                             });
 
@@ -403,7 +403,7 @@
         });
 
     </script>
-    <script>
+    <script type="text/javascript">
         function printUSV(SerialNo) {
             // alert(LRNo1);
             let url =
@@ -411,6 +411,19 @@
             url = url.replace(':LRNo', SerialNo + '.0');
             document.location.href = url;
         }
+
+    </script>
+
+    <script type="text/javascript">
+        $('#searchcriteria').bind("enterKey", function(e) {
+            $('.btn-searchcriteria').click();
+        });
+
+        $('#searchcriteria').keyup(function(e) {
+            if (e.keyCode == 13) {
+                $(this).trigger("enterKey");
+            }
+        });
 
     </script>
     <script type="text/javascript">

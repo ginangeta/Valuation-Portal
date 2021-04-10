@@ -117,7 +117,7 @@
         //this area clones the new input fields
         $(cloneItem).clone(true, true).appendTo($('.clone-container')).addClass('gina');
         $('.gina').removeClass('d-none').removeClass('CloneMe');
-        $('.gina input').attr("name", "reasons");
+        $('.gina input').attr("name", "reasons[]");
     });
 
     $('body').on('click', '.permit-form .form-header div.clickMe', function () {
@@ -137,8 +137,8 @@
         if (theParentIndex !== numOfChildren) {
             $(this).parent().parent().parent().addClass('d-none');
             theParent.next().removeClass('d-none');
-            theNavigation.addClass('active').addClass('clickMe').siblings().removeClass('active');
-            theNavigation.prev().addClass('filled').addClass('clickMe');
+            theNavigation.next().addClass('active').addClass('clickMe').siblings().removeClass('active');
+            theNavigation.addClass('filled').addClass('clickMe');
         }
 
 

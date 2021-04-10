@@ -2963,6 +2963,7 @@ input[type="text"]:focus {
     background-repeat: no-repeat;
     padding: 70px 0 30px 0;
     background-color: #f1f1f1;
+    height: 200px;
 }
 
 .breadcrumb-menu h2 {
@@ -8239,6 +8240,23 @@ td.uncheck i {
 .similar-listing:hover .similar-prev,
 .similar-listing:hover .popular-prev {
     opacity: 1;
+}
+
+.login-nav-link{
+    width: 50%;
+    text-align: center;
+    font-size: 15px;
+}
+
+.login-nav-link .active{
+    font-weight: bold;
+    color: #0c6f17 !important;
+}
+
+.modal-close{
+    position: absolute !important;
+    right: 10px;
+
 }
 
 .floor-list {
@@ -15119,7 +15137,7 @@ button {
 
 .login-form-header {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     flex-direction: column;
     margin-bottom: 20px;
 }
@@ -15498,4 +15516,8 @@ label {
 
 .font-12{
     font-size: 12px !important;
+}
+
+.stakeholders img{
+    width: 200px !important;
 }

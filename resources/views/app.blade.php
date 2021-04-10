@@ -9,21 +9,48 @@
                 <div class="col-md-12">
                     <div class="hero-slider-item">
                         <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+                            <div class="col-xl-7 col-lg-7 col-md-12 col-12">
                                 <div class="header-text v2">
-                                    <h1>Nairobi City County </h1>
-                                    <span>NCCG Draft Valuation Roll Inspection Online</span>
+                                    <h1>Online Inspection Of The Draft Valuation Roll</h1>
 
-                                    <p>
-                                        The ratable owner is required within 28 days to raise an objection from the
-                                        date of the publication of the notice. </p>
+                                    <p class="mb-3">The Nairobi City County Government has updated its valuation roll and is
+                                        now inviting
+                                        all ratable property owners to inspect the roll. While the roll is available at City
+                                        Hall for inspection by the public, an online platform has been provided to allow
+                                        owners who cannot make it to City Hall to inspect it.</p>
+                                    <br>
+
+                                    <p class="mb-3"> As per the provisions of the Valuation for Rating Act, CAP 266 Laws of
+                                        Kenya,
+                                        ratable owners will be able to submit objections to the valuation roll, and provide
+                                        reasons for such objections. Each objection will be evaluated by the Valuations
+                                        Department of the county government on payment of KES 500 as provided in the Act.
+                                    </p>
+
+                                    <br>
+
+                                    <p class="mb-3">A notice has been issued by the Nairobi City County Government for
+                                        ratable owners to
+                                        inspect the valuation roll and submit their comments, queries or objections. Ratable
+                                        owners will be required to submit their objections within 28 days from the date of
+                                        the publication of the notice. </p>
                                     <br>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-5 offset-lg-1 col-md-12">
-                                <div class="hero-slider-info">
+                            <div class="col-xl-4 col-lg-4 offset-lg-1 col-md-12">
+                                <div class="hero-slider-info bg-white login-form">
+                                    <ul class="nav nav-tabs">
+                                        <li class="nav-item login-nav-link">
+                                            <a class="nav-link active" aria-current="page" href="#">Login</a>
+                                        </li>
+                                        <li class="nav-item login-nav-link">
+                                            <a class="nav-link" href="#" data-toggle="modal"
+                                                data-target="#user-registration-popup" tabindex="5">Register</a>
+                                        </li>
+                                    </ul>
+
                                     <form action="{{ route('authenticate') }}" method="POST"
-                                        class="login-form bg-white w-100 filter hero__form v3 listing-filter">
+                                        class="w-100 filter hero__form v3 listing-filter">
                                         @csrf
                                         @if (Session::has('success'))
                                             <p class="alert alert-success">{{ Session::get('success') }}</p>
@@ -33,10 +60,9 @@
                                         @endif
                                         <div class="login-form-header p-1">
                                             <h2 class="mb-2">Login Form</h2>
-                                            <small>Fill in the information below to get access to the</small>
-                                            <p class="mb-0 text-b font-weight-light text-capitalize font-12px">
-                                                NCCG Draft Valuation Roll Portal</p>
+                                            <small>Fill in the information below to get access</small>
                                         </div>
+
                                         <div class="form-group">
                                             <label>
                                                 <strong>Email</strong> <strong class="text-danger">*</strong>
@@ -44,8 +70,7 @@
                                             {{-- <input name="user_name" value="{{old('user_name')}}" type="email" class="form-control" placeholder="Enter your email address" required> --}}
                                             <div class="input-email-login">
                                                 <input name="email" type="email" class="form-control"
-                                                    placeholder="Enter your email address"
-                                                    required>
+                                                    placeholder="Enter your email address" required>
                                             </div>
 
                                         </div>
@@ -65,8 +90,8 @@
                                                 class="ti-arrow-right ml-2"></i></button>
 
                                         <div class="res-box col-12 text-center">
-                                            <a href="#" data-toggle="modal" data-target="#user-registration-popup" tabindex="
-                                                                                    5">Don't Have an Account?</a>
+                                            <a href="#" data-toggle="modal" data-target="#user-forgot-password"
+                                                tabindex="5">Forgot your password?</a>
                                         </div>
                                     </form>
                                 </div>
@@ -80,28 +105,26 @@
     <!--Hero section ends-->
 
     <!--stake holders-->
-    <div class="partner-section style1 pb-130 pt-90 ">
+    <div class="partner-section style1 bg-cb pb-90 pt-90 ">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title v1">
-                        <h2>Stake holders</h2>
+                        <h2>Stakeholders</h2>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <div class="swiper-container partner-wrap">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide single-partner">
-                                <img src="{{ asset('images/nairobi-county.png') }}" alt="...">
-                            </div>
-                            <div class="swiper-slide single-partner">
-                                <img src="{{ asset('images/nms.png') }}" alt="...">
-                            </div>
-                            <div class="swiper-slide single-partner">
-                                <img src="{{ asset('images/kra.png') }}" alt="...">
-                            </div>
-
+                <div class="col-12">
+                    <div class="row stakeholders">
+                        <div class="col-sm-12 col-lg-4 d-flex align-items-center justify-content-center">
+                            <img src="{{ asset('images/nms.png') }}" alt="...">
                         </div>
+                        <div class="col-sm-12 col-lg-4 d-flex align-items-center justify-content-center">
+                            <img src="{{ asset('images/nairobi-county.png') }}" alt="...">
+                        </div>
+                        <div class="col-sm-12 col-lg-4 d-flex align-items-center justify-content-center">
+                            <img src="{{ asset('images/kra.png') }}" alt="...">
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -109,40 +132,6 @@
     </div>
     <!--stake holders section-->
 
-    <!--Contact info starts -->
-    <div class="contact-info section-padding bg-cb">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="contact-info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h4>City hall</h4>
-                        <p>
-                            Nairobi City Hall, City Hall Way, Nairobi, Kenya
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="contact-info-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <h4>Phone</h4>
-                        <p> +254 725 624 489</p>
-                        <p>+254 738 041 292</p>
-
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="contact-info-item">
-                        <i class="fas fa-envelope"></i>
-                        <h4>Email</h4>
-                        <p>info@nairobi.go.ke</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Contact info ends -->
     <!--Contact section starts-->
     <div class="contact-section v1 mt-50 ">
         <div class="container col-12">
@@ -186,10 +175,6 @@
     <div class="modal fade" id="user-registration-popup">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i
-                                class="lnr lnr-cross"></i></span></button>
-                </div>
                 <div class="modal-body">
                     <!--User Login section starts-->
                     <div class="user-login-section">
@@ -198,10 +183,13 @@
                                 <div class="col-md-12">
                                     <div class="login-form-header p-1">
                                         <h2 class="mb-2">Registration Form</h2>
-                                        <small>Fill in the information below to get access to the</small>
-                                        <p class="mb-0 text-b font-weight-light text-capitalize font-12px">
-                                            NCCG Draft Valuation Roll Portal</p>
+                                        <small>Fill in the information below to create an account</small>
+                                        <button type="button" class="close modal-close" data-dismiss="modal"
+                                            aria-label="Close"><span aria-hidden="true"><i
+                                                    class="lnr lnr-cross"></i></span></button>
+                                                
                                     </div>
+
                                     <div class="login-wrapper">
                                         <div class="ui-dash tab-content">
                                             <div class="tab-pane fade show active" id="login" role="tabpanel">

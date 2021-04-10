@@ -69,7 +69,7 @@
         <div class="overlay op-5"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2 text-center">
+                <div class="col-md-8">
                     <div class="breadcrumb-menu">
                         <h2>Objection Application Form</h2>
                         <span><a href="{{ route('home') }}">Home</a></span>
@@ -119,231 +119,239 @@
                                 </div>
 
                             </div>
+                            <div>
+                                <fieldset class="animated fadeInLeft">
+                                    <div class="fieldset-content">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h5 class="mb-0"><strong>Objector Details</strong></h5>
+                                                <p class="mb-2 mt-0">Enter the form below. Fields with <strong
+                                                        class="text-danger">(*)</strong> are required.</p>
+                                                <hr class="mt-0 pt-0">
+                                            </div>
 
-                            <fieldset class="animated fadeInLeft">
-                                <div class="fieldset-content">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h5 class="mb-0"><strong>Objector Details</strong></h5>
-                                            <p class="mb-2 mt-0">Enter the form below. Fields with <strong
-                                                    class="text-danger">(*)</strong> are required.</p>
-                                            <hr class="mt-0 pt-0">
-                                        </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>
+                                                        Are you the ratable owner?
+                                                    </label>
+                                                    <div class="d-flex ">
+                                                        <div class="form-inline">
+                                                            <input id="check-yes" type="radio" checked name="ratable_owner">
+                                                            <label for="check-yes">Yes</label>
+                                                        </div>
 
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>
-                                                    Are you the ratable owner?
-                                                </label>
-                                                <div class="d-flex ">
-                                                    <div class="form-inline">
-                                                        <input id="check-yes" type="radio" checked name="ratable_owner">
-                                                        <label for="check-yes">Yes</label>
-                                                    </div>
-
-                                                    <div class="form-inline ml-3">
-                                                        <input id="check-no" type="radio" name="ratable_owner">
-                                                        <label for="check-no">No</label>
+                                                        <div class="form-inline ml-3">
+                                                            <input id="check-no" type="radio" name="ratable_owner">
+                                                            <label for="check-no">No</label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="col-lg-12 col-sm-12 ratable-owner">
-                                            <div class="form-group">
-                                                <label class="mb-0"><strong>Objector</strong><strong class="text-danger">
-                                                        *</strong></label>
-                                                <input type="text" name="fullname" class="form-control filter-input mt-0"
-                                                    placeholder="Enter your name in full" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6 col-sm-12 non-ratable-owner d-none">
-                                            <div class="form-group">
-                                                <label class="mb-0"><strong>Relation</strong><strong class="text-danger">
-                                                        *</strong></label>
-                                                <input type="text" name="relation" class="form-control filter-input mt-0"
-                                                    placeholder="Enter relation to ratable owner">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="mb-0"><strong>Address</strong><strong class="text-danger">
-                                                        *</strong></label>
-                                                <input type="text" name="address" class="form-control filter-input mt-0"
-                                                    placeholder="Address of your current address" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="mb-0"><strong>Phone number</strong><strong
-                                                        class="text-danger"> *</strong></label>
-                                                <input type="text" name="phone" class="form-control filter-input mt-0"
-                                                    placeholder="Enter your phone number" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="mb-0"><strong>Postal address</strong><strong
-                                                        class="text-danger"> *</strong></label>
-                                                <input type="text" name="postal_address"
-                                                    class="form-control filter-input mt-0"
-                                                    placeholder="Enter your postal address" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <label class="mb-0"><strong>Select town</strong><strong class="text-danger">
-                                                    *</strong></label>
-                                            <select name="town_id" id="" name="town_id"
-                                                title="Please select your postal city"
-                                                class="form-control custom-select city" placeholder="Country" required>
-                                                @foreach ($towns as $town)
-                                                    <option value="{{ $town->id }}" data-content="{{ $town->name }}">
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="fieldset-footer">
-                                    <div class="step-btns">
-                                        <span class="btn btn-primary btn-next">Next step</span>
-                                    </div>
-                                    <span>Step 1 of 3</span>
-                                </div>
-                            </fieldset>
-
-                            <fieldset class="animated fadeInLeft d-none animated ">
-                                <div class="fieldset-content">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <h5 class="mb-0"><strong>Reasons For Objecting</strong></h5>
-                                                    <p class="mb-2 mt-0">After entering a reason please select which
-                                                        properties the objections apply to.</p>
-                                                    <hr class="mt-0 pt-0">
+                                            <div class="col-lg-12 col-sm-12 ratable-owner">
+                                                <div class="form-group">
+                                                    <label class="mb-0"><strong>Objector</strong><strong
+                                                            class="text-danger">
+                                                            *</strong></label>
+                                                    <input type="text" name="fullname"
+                                                        class="form-control filter-input mt-0"
+                                                        placeholder="Enter your name in full" required>
                                                 </div>
+                                            </div>
 
-                                                <div class="col-sm-12 col-md-8">
-                                                    <div class="row">
-                                                        <div class="clone-container col-12">
-                                                            <p class="d-none">1</p>
-                                                            <div class="row Seen">
-                                                                <div class="col-12">
-                                                                    <label class="mb-0"><strong>Reason for
-                                                                            rejecting</strong><strong class="text-danger">
-                                                                            *</strong></label>
+                                            <div class="col-lg-6 col-sm-12 non-ratable-owner d-none">
+                                                <div class="form-group">
+                                                    <label class="mb-0"><strong>Relation</strong><strong
+                                                            class="text-danger">
+                                                            *</strong></label>
+                                                    <input type="text" name="relation"
+                                                        class="form-control filter-input mt-0"
+                                                        placeholder="Enter relation to ratable owner">
+                                                </div>
+                                            </div>
 
-                                                                    <ul
-                                                                        class="list-group property-list list-group-horizontal-sm-down">
-                                                                        @foreach ($objectingList as $objectingItem)
-                                                                            <li class="list-group-item">
-                                                                                <input type="checkbox"
-                                                                                    id="LR-{{ $objectingItem }}"
-                                                                                    value="{{ $objectingItem }}"
-                                                                                    name="properties[]">
-                                                                                <label
-                                                                                    for="LR-{{ $objectingItem }}">{{ $objectingItem }}</label>
-                                                                            </li>
-                                                                        @endforeach
-                                                                    </ul>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="mb-0"><strong>Address</strong><strong class="text-danger">
+                                                            *</strong></label>
+                                                    <input type="text" name="address" class="form-control filter-input mt-0"
+                                                        placeholder="Address of your current address" required>
+                                                </div>
+                                            </div>
 
-                                                                    <div class="form-group">
-                                                                        <input type="text" name="reasons[]"
-                                                                            class="form-control filter-input mb-0 mt-1"
-                                                                            placeholder="Enter your reason for rejecting the USV"
-                                                                            required>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="mb-0"><strong>Phone number</strong><strong
+                                                            class="text-danger"> *</strong></label>
+                                                    <input type="text" name="phone" class="form-control filter-input mt-0"
+                                                        placeholder="Enter your phone number" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="mb-0"><strong>Postal address</strong><strong
+                                                            class="text-danger"> *</strong></label>
+                                                    <input type="text" name="postal_address"
+                                                        class="form-control filter-input mt-0"
+                                                        placeholder="Enter your postal address" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label class="mb-0"><strong>Select town</strong><strong class="text-danger">
+                                                        *</strong></label>
+                                                <select name="town_id" id="" name="town_id"
+                                                    title="Please select your postal city"
+                                                    class="form-control custom-select city" placeholder="Country" required>
+                                                    @foreach ($towns as $town)
+                                                        <option value="{{ $town->id }}"
+                                                            data-content="{{ $town->name }}">
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fieldset-footer">
+                                        <div class="step-btns">
+                                            <span class="btn btn-primary btn-next">Next step</span>
+                                        </div>
+                                        <span>Step 1 of 3</span>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset class="animated fadeInLeft d-none animated ">
+                                    <div class="fieldset-content">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <h5 class="mb-0"><strong>Reasons For Objecting</strong></h5>
+                                                        <p class="mb-2 mt-0">After entering a reason please select which
+                                                            properties the objections apply to.</p>
+                                                        <hr class="mt-0 pt-0">
+                                                    </div>
+
+                                                    <div class="col-sm-12 col-md-8">
+                                                        <div class="row">
+                                                            <div class="clone-container col-12">
+                                                                <p class="d-none">1</p>
+                                                                <div class="row Seen">
+                                                                    <div class="col-12">
+                                                                        <label class="mb-0"><strong>Reason for
+                                                                                rejecting</strong><strong
+                                                                                class="text-danger">
+                                                                                *</strong></label>
+
+                                                                        <ul
+                                                                            class="list-group property-list list-group-horizontal-sm-down">
+                                                                            @foreach ($objectingList as $objectingItem)
+                                                                                <li class="list-group-item">
+                                                                                    <input type="checkbox"
+                                                                                        id="LR-{{ $objectingItem }}"
+                                                                                        value="{{ $objectingItem }}"
+                                                                                        name="properties[]">
+                                                                                    <label
+                                                                                        for="LR-{{ $objectingItem }}">{{ $objectingItem }}</label>
+                                                                                </li>
+                                                                            @endforeach
+                                                                        </ul>
+
+                                                                        <div class="form-group">
+                                                                            <input type="text" name="reasons[]"
+                                                                                class="form-control filter-input mb-0 mt-1"
+                                                                                placeholder="Enter your reason for rejecting the USV"
+                                                                                required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row d-none CloneMe">
+                                                                    <div class="col-12">
+                                                                        <div class="form-group">
+                                                                            <input type="text"
+                                                                                class="form-control filter-input mb-0 mt-0"
+                                                                                placeholder="Enter your reason for rejecting the USV">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
 
-                                                            <div class="row d-none CloneMe">
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <input type="text"
-                                                                            class="form-control filter-input mb-0 mt-0"
-                                                                            placeholder="Enter your reason for rejecting the USV">
-                                                                    </div>
+                                                            <div class="col-12 d-flex justify-flex-end mb-20">
+                                                                <span class="btn btn-primary btn-add-duplicate">Add
+                                                                    a reason</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="co-sm-12 col-md-4 bg-gray">
+                                                        <div class="file-uploads">
+                                                            <label class="mb-0"><strong>Supporting
+                                                                    Documents</strong></label>
+                                                            <p class="mb-2 mt-0">Can select multiple files.</p>
+                                                            <label class="input-file form-attach" for="ownership-docs">
+                                                                <div class="id-container img-container">
+                                                                    <span><img
+                                                                            src="{{ asset('images/contract.svg') }}"></span>
+                                                                    <h5>Objection Documents</h5>
+                                                                    <p><strong>.All file types</strong> are accepted</p>
+                                                                    <small class="text-danger"><strong>No file
+                                                                            selected</strong></small>
+                                                                    <!-- national id input box -->
+                                                                    <input type="file" id="ownership-docs"
+                                                                        multiple="multiple" name="files[]" class="d-none">
+                                                                    <input type="text" name="files-former" class="d-none">
+
                                                                 </div>
-                                                            </div>
+                                                            </label>
+
                                                         </div>
-
-                                                        <div class="col-12 d-flex justify-flex-end mb-20">
-                                                            <span class="btn btn-primary btn-add-duplicate">Add
-                                                                a reason</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="co-sm-12 col-md-4 bg-gray">
-                                                    <div class="file-uploads">
-                                                        <label class="mb-0"><strong>Supporting
-                                                                Documents</strong></label>
-                                                        <p class="mb-2 mt-0">Can select multiple files.</p>
-                                                        <label class="input-file form-attach" for="ownership-docs">
-                                                            <div class="id-container img-container">
-                                                                <span><img
-                                                                        src="{{ asset('images/contract.svg') }}"></span>
-                                                                <h5>Objection Documents</h5>
-                                                                <p><strong>.All file types</strong> are accepted</p>
-                                                                <small class="text-danger"><strong>No file
-                                                                        selected</strong></small>
-                                                                <!-- national id input box -->
-                                                                <input type="file" id="ownership-docs" multiple="multiple"
-                                                                    name="files[]" class="d-none">
-                                                                <input type="text" name="files-former" class="d-none">
-
-                                                            </div>
-                                                        </label>
-
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="fieldset-footer">
-                                    <div class="step-btns">
-                                        <span class="btn btn-outline-primary btn-prev">Previous step</span>
-                                        <span class="btn btn-primary btn-next btn-to-summary">Next step</span>
-                                    </div>
-                                    <span>Step 2 of 3</span>
-                                </div>
-                            </fieldset>
-
-                            <fieldset class="d-none animated summary-container fadeInLeft">
-                                <div class="fieldset-content">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h5 class="mb-0"><strong>Objection Summary</strong></h5>
-                                            <p class="mb-2 mt-0">Please fill in the inputs below with the objector's
-                                                information.</p>
-                                            <hr class="mt-0 pt-0">
+                                    <div class="fieldset-footer">
+                                        <div class="step-btns">
+                                            <span class="btn btn-outline-primary btn-prev">Previous step</span>
+                                            <span class="btn btn-primary btn-next btn-to-summary">Next step</span>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="row objection-summary">
+                                        <span>Step 2 of 3</span>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset class="d-none animated summary-container fadeInLeft">
+                                    <div class="fieldset-content">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h5 class="mb-0"><strong>Objection Summary</strong></h5>
+                                                <p class="mb-2 mt-0">Please fill in the inputs below with the objector's
+                                                    information.</p>
+                                                <hr class="mt-0 pt-0">
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row objection-summary">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 total-cost">
+                                                <h6 class="text-left"><strong>Total Objection Cost</strong></h6>
+                                                <h3 class="text-left text-success objection-cost">KES 1,000</h3>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <div class="col-12 total-cost">
-                                            <h6 class="text-left"><strong>Total Objection Cost</strong></h6>
-                                            <h3 class="text-left text-success objection-cost">KES 1,000</h3>
+                                    <div class="fieldset-footer">
+                                        <div class="step-btns">
+                                            <span class="btn  btn-outline-primary btn-prev btn-objection-prev">Previous
+                                                step</span>
+                                            <button type="submit" class="btn btn-primary btn-submit-objection">Pay</button>
                                         </div>
+                                        <span>Step 3 of 3</span>
                                     </div>
-                                </div>
-
-                                <div class="fieldset-footer">
-                                    <div class="step-btns">
-                                        <span class="btn  btn-outline-primary btn-prev">Previous step</span>
-                                        <button type="submit" class="btn btn-primary btn-submit-objection">Pay</button>
-                                    </div>
-                                    <span>Step 3 of 3</span>
-                                </div>
-                            </fieldset>
+                                </fieldset>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -363,7 +371,7 @@
             }
 
             $('.btn-to-summary').on('click', function(e) {
-                e.preventDefault();
+                // e.preventDefault();
                 var fullname = $('input[name="fullname"]').val();
                 var ratable_owner = $('input[name="ratable_owner"]').val();
                 var ratable_relation = $('input[name="relation"]').val();
@@ -407,6 +415,17 @@
         });
 
     </script>
+
+    <script>
+        $('.btn-objection-prev').on('click', function() {
+            alert('Gina');
+            $('.objection-summary').html('');
+            $('.objection-cost').text('');
+
+        });
+
+    </script>
+
 
     <script type="text/javascript">
         window.onload = function() {

@@ -18,7 +18,7 @@
     <link href="css/style.css" rel="stylesheet" />
 
     <!-- Document Title -->
-    <title>NCCG Draft Valuation</title></head>
+    <title>NCCG - Online Valuation Roll Inspection</title>
 
 <body>
     <!--Page Wrapper starts-->
@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-md-6 offset-md-3  error-text text-center">
                         <div class="error-content">
-                            <img src="images/others/404.png" alt="404 not found"/>
+                            <img src="{{asset('images/others/404.png')}}" alt="404 not found"/>
                             <h4>Ohh! Page Not Found</h4>
                             <p>Perhaps going back to <a href="/">Homepage</a> </p>
                         </div>

@@ -69,7 +69,7 @@
         <div class="overlay op-5"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2 text-center">
+                <div class="col-md-8">
                     <div class="breadcrumb-menu">
                         <h2>Objection Application Form</h2>
                         <span><a href="{{ route('home') }}">Home</a></span>
