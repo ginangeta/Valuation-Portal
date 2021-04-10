@@ -44,9 +44,11 @@ class ObjectionController extends Controller
         // $response = Http::withToken("JWT ".Session::get('token'))->post($url,$data);
         // dd("JWT ".Session::get('token'));
         
-        $created = json_decode($this->to_curl($url, $data));
-        // $response = Http::withToken(Session::get('token'))->post($url,$data);
-        // $created = json_decode($response->body());
+        // $created = json_decode($this->to_curl($url, $data));
+        $response = Http::withToken(Session::get('token'))->post($url,$data);
+        $created = json_decode($response->body());
+
+        // dd($created);
 
         // dd($created);
         $billerurl = 'https://pilot.revenuesure.co.ke/users/authenticate';
