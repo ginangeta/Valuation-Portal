@@ -45,10 +45,11 @@
                             <p class="alert alert-danger">{{ Session::get('errors') }}
                             </p>
                         @endif
-
+                        
                         <input class="d-none" type="text" name="receipt_no">
                         <input class="d-none" type="text" name="receipt_name">
                         <input class="d-none" type="text" name="receipt_amount">
+                        <input class="d-none" type="text" name="billed_amount">
                         <input class="d-none" type="text" name="receipt_amount_words">
                         <input class="d-none" type="text" name="receipt_desc">
                         <input class="d-none" type="text" name="receipt_date">
@@ -71,10 +72,11 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="breadcrumb-menu">
-                        <h2>Objection Application Form</h2>
+                        <h2>Objection Payment Form</h2>
                         <span><a href="{{ route('home') }}">Home</a></span>
                         <span><a href="{{ route('details') }}">Property details</a></span>
-                        <span>Object USV</span>
+                        <span><a href="{{ route('details') }}">Object USV</a></span>
+                        <span>Objection Payment</span>
 
                     </div>
                 </div>
@@ -89,7 +91,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-lg-12 construction-form">
-                        <h2 class="site-heading text-black mb-5">Fill the <strong>Form</strong></h2>
+                        <h2 class="site-heading text-black mb-5">Payment <strong>Form</strong></h2>
                         <form class="p-5 bg-white permit-form">
                             @csrf
                             @if (Session::has('success'))
@@ -155,8 +157,8 @@
                                                             <p>Account No: <strong
                                                                     class="OB_bill_no">{{ $ObjectionBillInfo->bill_no }}</strong>
                                                             </p>
-                                                            <p>Amount: <strong
-                                                                    class="Payment_Amount">KES {{ $ObjectionBillInfo->total }}</strong>
+                                                            <p>Amount: <strong class="Payment_Amount">KES
+                                                                    {{ $ObjectionBillInfo->total }}</strong>
                                                             </p>
                                                             <p>Enter your pin</p>
                                                             <p>OK</p>
@@ -193,7 +195,7 @@
             e.preventDefault();
             var date = moment().format('DD-MM-YYYY');
             var MpesaAmount = $('.objection-cost').text();
-            var BillTotal  =  '{{ $ObjectionBillInfo->total }}'
+            var BillTotal = '{{ $ObjectionBillInfo->total }}'
             var BillCost = BillTotal.split(".");
 
             var Sendfunction = 'CustomerPayBillOnlinePush';
@@ -219,6 +221,7 @@
             //Modal
             var receipt_no;
             var receipt_name;
+            var billed_amount;
             var receipt_amount;
             var receipt_amount_words;
             var receipt_desc;
@@ -312,52 +315,58 @@
 
             function getReceipt(bill_number) {
                 console.log(bill_number);
-                console.log('{{ $billerResponse }}')
+                console.log('{{ $ObjectionBillInfo->payer_name }}')
                 $.ajax({
-                    url: "https://pilot.revenuesure.co.ke/billing/invoice",
-                    type: "POST",
-                    contentType: "application/json",
-                    dataType: "json",
+                    url: "{{ config('global.url') }}" + 'receipts/?q=' +bill_number,
+                    type: "GET",
                     headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                        "Authorization": '{{ $billerResponse }}',
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    data: JSON.stringify({
-                        billNo: bill_number,
-                    }),
 
                     success: function(data) {
                         console.log(data);
+
                         if (data == "") {
                             swal('Error!', 'Payment not found', 'error');
                             return;
                         }
-                        if (data.status == 200) {
+                        if (data != null || data != '') {
                             confirmationModal();
 
-                            var results = data.data.header;
-                            var d = new Date("2021-04-07T16:14:09.000Z");
+                            setTimeout(getReceiptData, 6000);
 
-                            var new_date = results.dateCreated.split("T"); 
-                            var billAmount = results.billAmount.split(".");
+                            function getReceiptData() {
+                                if (data.data != null || data.data != '') {
 
-                            receipt_no = bill_number;
-                            receipt_name = results.payerName;
-                            receipt_amount = billAmount[0];
-                            receipt_desc = 'Objection Fee';
-                            receipt_date = new_date[0];
-                            receipt_amount_words = inWords(receipt_amount);
+                                    var results = data.data[0];
 
-                            console.log(receipt_amount_words);
+                                    console.log(data.data[0]);
+                                    var d = new Date("2021-04-07T16:14:09.000Z");
 
-                            $('input[name="receipt_no"]').val(receipt_no);
-                            $('input[name="receipt_name"]').val(receipt_name);
-                            $('input[name="receipt_date"]').val(receipt_date);
-                            $('input[name="receipt_amount"]').val(receipt_amount);
-                            $('input[name="receipt_amount_words"]').val(receipt_amount_words);
-                            $('input[name="receipt_desc"]').val(receipt_desc);
+                                    var new_date = results.date_recieved.split("T");
+                                    var billAmount = results.amount_paid.split(".");
 
-                        } else if (data.data > 0) {
+                                    receipt_no = results.receipt_no;
+                                    receipt_name = '{{ $ObjectionBillInfo->payer_name }}';
+                                    receipt_amount = billAmount[0];
+                                    billed_amount = Amount;
+                                    receipt_desc ='{{ $ObjectionBillInfo->bill_items[0]->feeAccountDesc }}';
+                                    receipt_date = new_date[0];
+                                    receipt_amount_words = inWords(receipt_amount);
+
+                                    console.log(receipt_amount_words);
+
+                                    $('input[name="receipt_no"]').val(receipt_no);
+                                    $('input[name="receipt_name"]').val(receipt_name);
+                                    $('input[name="receipt_date"]').val(receipt_date);
+                                    $('input[name="receipt_amount"]').val(receipt_amount);
+                                    $('input[name="billed_amount"]').val(billed_amount);
+                                    $('input[name="receipt_amount_words"]').val(receipt_amount_words);
+                                    $('input[name="receipt_desc"]').val(receipt_desc);
+                                }
+                            }
+
+                        } else if (data.data < 0) {
                             swal('Error!', 'Payment not found', 'error');
 
                             return;

@@ -430,7 +430,6 @@
     </script>
     <script type="text/javascript">
         function objectSingleUsv(SerialNo) {
-            // alert(LRNo1);
             let url =
                 "objection.singleproperty/:LRNo";
             url = url.replace(':LRNo', SerialNo + '.0');
