@@ -151,6 +151,7 @@
         var theParentIndex = theParent.index();
         var numOfChildren = $('.permit-form').children('fieldset').last().index();
         var theNavigation = $('.permit-form .form-header div').eq(theParentIndex - 2);
+        console.log(theParentIndex);
 
         if (theParentIndex !== 0) {
             $(this).parent().parent().parent().addClass('d-none');
