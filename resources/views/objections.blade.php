@@ -418,7 +418,7 @@
 
     <script>
         $('.btn-objection-prev').on('click', function() {
-            alert('Gina');
+            // alert('Gina');
             $('.objection-summary').html('');
             $('.objection-cost').text('');
 
