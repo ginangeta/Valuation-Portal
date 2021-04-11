@@ -18,7 +18,7 @@
     <!-- style CSS -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     <!-- FlatIcon -->
-    <link href="{{ asset('icons/font/flaticon.css') }}" rel="stylesheet" />
+    <link href="{{ asset('../public/icons/font/flaticon.css') }}" rel="stylesheet" />
     <!-- ZMDI -->
     <link rel="stylesheet"
         href="{{ asset('vendors/material-design-iconic-font/css/material-design-iconic-font.min.css') }}">
