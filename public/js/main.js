@@ -152,7 +152,7 @@
         var numOfChildren = $('.permit-form').children('fieldset').last().index();
         var theNavigation = $('.permit-form .form-header div').eq(theParentIndex - 2);
 
-        if (theParentIndex !== 1) {
+        if (theParentIndex !== numOfChildren) {
             $(this).parent().parent().parent().addClass('d-none');
             theParent.prev().removeClass('d-none');
             theNavigation.addClass('active').siblings().removeClass('active');
