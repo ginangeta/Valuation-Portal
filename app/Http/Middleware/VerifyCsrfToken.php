@@ -17,14 +17,11 @@ class VerifyCsrfToken extends Middleware
         //
     ];
 
-    public function handle($request, Closure $next)
+    public function __construct(Application $app, Encrypter $encrypter)
     {
-        if(!Auth::check() && $request->route()->named('logout')) {
-        
-            $this->except[] = route('logout');
-            
-        }
-        
-        return parent::handle($request, $next);
+        parent::__construct($app, $encrypter);
+        $this->except = [
+            route('logout')
+        ];
     }
 }
