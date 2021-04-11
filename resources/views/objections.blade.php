@@ -299,8 +299,7 @@
                                                                     <small class="text-danger"><strong>No file
                                                                             selected</strong></small>
                                                                     <!-- national id input box -->
-                                                                    <input type="file" id="ownership-docs"
-                                                                        multiple="multiple" name="files[]" class="d-none">
+                                                                    <input type="file" id="ownership-docs" name="files" class="d-none">
                                                                     <input type="text" name="files-former" class="d-none">
 
                                                                 </div>

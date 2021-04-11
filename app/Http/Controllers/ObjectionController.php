@@ -40,15 +40,31 @@ class ObjectionController extends Controller
         ];
 
         // dd(json_encode($data));
+        $files =  $request->files;
+        // dd($files);
+        // $response = Http::withToken(Session::get('token'));
+        // foreach($files as $k => $filebag)
+        // {
+        //     foreach($filebag as $k => $file){
+        //         //  dd($file);
+        //          $file_name = $file->getClientOriginalName();
+        //          $file_content = fopen($file, 'r');
+        //         // dd($file_content);
+        //          $response = $response->attach('files', $file_content, $file_name);
+        //     }
+        // }
 
-        // $response = Http::withToken("JWT ".Session::get('token'))->post($url,$data);
-        // dd("JWT ".Session::get('token'));
-        
-        // $created = json_decode($this->to_curl($url, $data));
+        // $file_name = $request->file('files')->getClientOriginalName();
+        // $file = fopen($request->file('files'), 'r');
+        // // dd($file);
+
+        // $response = Http::withToken(Session::get('token'))->attach('files', $file, $file_name)->post($url, $data);
+        // $response = $response->post($url, $data);
+        // dd($response);
+
+
         $response = Http::withToken(Session::get('token'))->post($url,$data);
         $created = json_decode($response->body());
-
-        // dd($created);
 
         // dd($created);
         $billerurl = 'https://pilot.revenuesure.co.ke/users/authenticate';
