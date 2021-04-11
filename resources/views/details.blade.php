@@ -409,7 +409,9 @@
             let url =
                 "usv.singleproperty/:LRNo";
             url = url.replace(':LRNo', SerialNo + '.0');
-            document.location.href = url;
+            // document.location.href = url;
+            window.open(url);
+
         }
 
     </script>
@@ -432,7 +434,8 @@
             let url =
                 "objection.singleproperty/:LRNo";
             url = url.replace(':LRNo', SerialNo + '.0');
-            document.location.href = url;
+            // document.location.href = url;
+            window.open(url);
         }
 
     </script>

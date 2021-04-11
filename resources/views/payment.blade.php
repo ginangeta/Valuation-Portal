@@ -386,7 +386,9 @@
             var BillNo = $('#OB_bill_no').text();
             let url = "objectionBill/:BillNo";
             url = url.replace(':BillNo', BillNo);
-            document.location.href = url;
+            // document.location.href = url;
+            window.open(url);
+
         }
 
     </script>
