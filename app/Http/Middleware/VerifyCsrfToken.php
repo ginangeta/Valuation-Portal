@@ -17,11 +17,11 @@ class VerifyCsrfToken extends Middleware
         //
     ];
 
-    public function __construct(Application $app, Encrypter $encrypter)
-    {
-        parent::__construct($app, $encrypter);
-        $this->except = [
-            route('logout')
-        ];
-    }
+    // public function __construct(Application $app, Encrypter $encrypter)
+    // {
+    //     parent::__construct($app, $encrypter);
+    //     $this->except = [
+    //         route('logout')
+    //     ];
+    // }
 }
