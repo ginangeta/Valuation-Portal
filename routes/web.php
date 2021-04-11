@@ -23,14 +23,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PagesController@home')->name('home');
 
-//Pages
-Route::get('home', 'PagesController@home')->name('home');
-Route::get('details', 'PagesController@details')->name('details');
-Route::get('objections', 'PagesController@objections')->name('objections');
-Route::get('receipt', 'PagesController@receipt')->name('receipt');
-Route::get('usv', 'PagesController@usv')->name('usv');
-Route::get('404', 'PagesController@error')->name('404');
-
 // Authentication
 Route::get('forgot-password', 'AuthController@forgotPassword')->name('forgot-password');
 Route::post('authenticate', 'AuthController@authenticate')->name('authenticate');
@@ -41,19 +33,31 @@ Route::post('password-reset', 'AuthController@resetPassword')->name('password.re
 
 Route::get('logout', 'AuthController@logout')->name('logout');
 
-// Property Details
-Route::get('searchProperty', 'PropertiesController@searchProperty')->name('searchProperty');
-Route::get('usv.singleproperty/{lr_no}', 'PropertiesController@singlePropertyUsv')->name('usv.singleproperty');
-Route::get('objection.singleproperty/{lr_no}', 'PropertiesController@singlePropertyObjection')->name('objection.singleproperty');
-Route::post('createObjections', 'PropertiesController@createObjections')->name('createObjections');
 
-// Objections
-Route::post('getReceipt', 'ObjectionController@getReceipt')->name('getReceipt');
-Route::post('sendObjection', 'ObjectionController@sendObjection')->name('sendObjection');
+Route::group(['middleware' => ['active']], function () {
 
-//Bill
-Route::get('objectionBill/{BillNo}', 'ObjectionController@objectionBill')->name('objectionBill');
+    //Pages
+    Route::get('home', 'PagesController@home')->name('home');
+    Route::get('details', 'PagesController@details')->name('details');
+    Route::get('objections', 'PagesController@objections')->name('objections');
+    Route::get('receipt', 'PagesController@receipt')->name('receipt');
+    Route::get('usv', 'PagesController@usv')->name('usv');
+    Route::get('404', 'PagesController@error')->name('404');
 
+    // Property Details
+    Route::get('searchProperty', 'PropertiesController@searchProperty')->name('searchProperty');
+    Route::get('usv.singleproperty/{lr_no}', 'PropertiesController@singlePropertyUsv')->name('usv.singleproperty');
+    Route::get('objection.singleproperty/{lr_no}', 'PropertiesController@singlePropertyObjection')->name('objection.singleproperty');
+    Route::post('createObjections', 'PropertiesController@createObjections')->name('createObjections');
+
+    // Objections
+    Route::post('getReceipt', 'ObjectionController@getReceipt')->name('getReceipt');
+    Route::post('sendObjection', 'ObjectionController@sendObjection')->name('sendObjection');
+
+    //Bill
+    Route::get('objectionBill/{BillNo}', 'ObjectionController@objectionBill')->name('objectionBill');
+    
+});
 
 
 
