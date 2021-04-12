@@ -212,7 +212,7 @@
                                     <div class="input-group mb-3">
                                         <input type="text" id="searchcriteria" name="searchcriteria"
                                             class="form-control filter-input mt-0"
-                                            placeholder="Search by serial number, lr no or owner name">
+                                            placeholder="Search by Land Reference Number/Property Number">
 
                                         <button type="button"
                                             class="btn btn-primary btn-payment btn-searchcriteria text-white"
