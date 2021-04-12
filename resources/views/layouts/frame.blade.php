@@ -62,7 +62,7 @@
                                                 <a href="{{ route('home') }}">Home</a>
                                             </li>
                                             <li class="">
-                                                <a href="#">Contacts</a>
+                                                <a href="#Contact">Contacts</a>
                                             </li>
                                             <li class="">
                                                 <a href="#" onclick="showFAQs()">FAQs</a>

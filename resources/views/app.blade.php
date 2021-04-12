@@ -133,7 +133,7 @@
     <!--stake holders section-->
 
     <!--Contact section starts-->
-    <div class="contact-section v1 mt-50 ">
+    <div class="contact-section v1 mt-50 " id="Contact">
         <div class="container col-12">
             <div class="contact-map v1">
                 <iframe

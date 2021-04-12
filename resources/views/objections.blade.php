@@ -260,10 +260,11 @@
                                                                         </ul>
 
                                                                         <div class="form-group">
-                                                                            <input type="text" name="reasons[]"
+                                                                            <textarea type="text" name="reasons[]"
                                                                                 class="form-control filter-input mb-0 mt-1"
+                                                                                rows="4" cols="50"
                                                                                 placeholder="Enter your reason for rejecting the USV"
-                                                                                required>
+                                                                                required> </textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -271,9 +272,9 @@
                                                                 <div class="row d-none CloneMe">
                                                                     <div class="col-12">
                                                                         <div class="form-group">
-                                                                            <input type="text"
+                                                                            <textarea type="text" rows="4" cols="50"
                                                                                 class="form-control filter-input mb-0 mt-0"
-                                                                                placeholder="Enter your reason for rejecting the USV">
+                                                                                placeholder="Enter your reason for rejecting the USV"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -299,7 +300,8 @@
                                                                     <small class="text-danger"><strong>No file
                                                                             selected</strong></small>
                                                                     <!-- national id input box -->
-                                                                    <input type="file" id="ownership-docs" multiple name="files[]" class="d-none">
+                                                                    <input type="file" id="ownership-docs" multiple
+                                                                        name="files[]" class="d-none">
                                                                     <input type="text" name="files-former" class="d-none">
 
                                                                 </div>
@@ -378,7 +380,7 @@
                 var postal_address = $('input[name="postal_address"]').val();
                 var phone = $('input[name="phone"]').val();
                 var town_id = $('select[name="town_id"]').val();
-                var reasons = $('input[name="reasons[]"]');
+                var reasons = $('textarea[name="reasons[]"]');
                 var properties = $('input[name="properties[]"]');
                 var files = $('input[name="files"]');
                 var objectioncost = 0;
