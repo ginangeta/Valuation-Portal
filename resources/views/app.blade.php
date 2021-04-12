@@ -150,14 +150,15 @@
                         <div class="form-control-wrap">
                             <div id="message" class="alert alert-danger alert-dismissible fade"></div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="fname" name="Mail_Name" placeholder="Name*" name="fname">
+                                <input type="text" class="form-control" id="fname" name="Mail_Name" placeholder="Name*"
+                                    name="fname">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" id="email_address" name="Mail_Email" placeholder="email*"
-                                    name="email">
+                                <input type="email" class="form-control" id="email_address" name="Mail_Email"
+                                    placeholder="email*" name="email">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" rows="8" name="Mail_Comment"  id="comment"
+                                <textarea class="form-control" rows="8" name="Mail_Comment" id="comment"
                                     placeholder="Your Message"></textarea>
                             </div>
                             <div class="form-group">
@@ -206,7 +207,8 @@
                                                                     {{ Session::get('success') }}</p>
                                                             @endif
                                                             @if (Session::has('errors'))
-                                                                <p class="alert alert-danger">{{ Session::get('errors') }}
+                                                                <p class="alert alert-danger">
+                                                                    {{ Session::get('errors') }}
                                                                 </p>
                                                             @endif
                                                             <div class="row">
@@ -308,6 +310,75 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--User login section ends-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--login Modal ends-->
+
+    <!--Forgot Password starts-->
+    <div class="modal fade" id="user-forgot-password">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <!--User Login section starts-->
+                    <div class="user-login-section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form action="{{ route('password.reset') }}"
+                                        enctype="application/x-www-form-urlencoded" id="reset_password" method="POST">
+                                        @csrf
+                                        @if (Session::has('success'))
+                                            <div class="alert alert-success alert-block">
+                                                <button type="button" class="close" data-dismiss="alert"></button>
+                                                <strong>{{ Session::get('success') }}</strong>
+                                            </div>
+
+                                        @endif
+
+                                        @if (Session::has('error'))
+                                            <div class="alert alert-danger alert-block">
+                                                <button type="button" class="close" data-dismiss="alert"></button>
+                                                <strong>{{ Session::get('error') }}r</strong>
+                                            </div>
+
+                                        @endif
+
+                                        <div class="login-form-header p-1">
+                                            <h2 class="mb-2">Forgot Password</h2>
+                                            <small>Fill in the information below to reset password</small>
+                                            <button type="button" class="close modal-close" data-dismiss="modal"
+                                                aria-label="Close"><span aria-hidden="true"><i
+                                                        class="lnr lnr-cross"></i></span></button>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>
+                                                <strong>Email</strong> <strong class="text-danger">*</strong>
+                                            </label>
+                                            <input name="email" type="email" class="form-control"
+                                                placeholder="Enter your email address" required>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <input type="submit"
+                                                class="btn btn-primary block center btn-block mb-3 py-2 btn-control"
+                                                value="Reset">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <a href="#" data-dismiss="modal">Go back to login page</a>
+                                        </div>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>
