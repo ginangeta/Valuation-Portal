@@ -117,7 +117,7 @@
         //this area clones the new input fields
         $(cloneItem).clone(true, true).appendTo($('.clone-container')).addClass('gina');
         $('.gina').removeClass('d-none').removeClass('CloneMe');
-        $('.gina input').attr("name", "reasons[]");
+        $('.gina textarea').attr("name", "reasons[]");
     });
 
     $('body').on('click', '.permit-form .form-header div.clickMe', function () {

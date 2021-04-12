@@ -202,8 +202,8 @@
             console.log("Push Sendfunction: " + Sendfunction);
             var PayBillNumber = '175555';
             console.log("Push PayBillNumber: " + PayBillNumber);
-            var Amount = BillCost[0];
-            // var Amount = "2";
+            // var Amount = BillCost[0];
+            var Amount = "2";
             console.log("Push Amount: " + Amount);
             var PhoneNumber = $('input[name="mpesa_number"]').val();
             console.log("Push Number: " + PhoneNumber);
