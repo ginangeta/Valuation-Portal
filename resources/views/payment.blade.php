@@ -199,7 +199,7 @@
 
             var Sendfunction = 'CustomerPayBillOnlinePush';
             console.log("Push Sendfunction: " + Sendfunction);
-            var PayBillNumber = '175555';
+            var PayBillNumber = '367776';
             console.log("Push PayBillNumber: " + PayBillNumber);
             var Amount = BillCost[0];
             // var Amount = "2";
@@ -334,7 +334,7 @@
                         if (data != null || data != '') {
                             confirmationModal();
 
-                            setTimeout(getReceiptData, 10000);
+                            setTimeout(getReceiptData, 1000);
 
                             function getReceiptData() {
 
