@@ -30,6 +30,7 @@ Route::post('registration', 'AuthController@registration')->name('registration')
 Route::post('password-request', 'AuthController@requestPassword')->name('password.request');
 Route::get('change-password', 'AuthController@changePassword')->name('password.change');
 Route::post('password-reset', 'AuthController@resetPassword')->name('password.reset');
+Route::post('sendMail', 'MailController@sendMail')->name('sendMail');
 
 Route::get('logout', 'AuthController@logout')->name('logout');
 
@@ -37,7 +38,7 @@ Route::get('logout', 'AuthController@logout')->name('logout');
 Route::group(['middleware' => ['active']], function () {
 
     //Pages
-    Route::get('home', 'PagesController@home')->name('home');
+    // Route::get('home', 'PagesController@home')->name('home');
     Route::get('details', 'PagesController@details')->name('details');
     Route::get('objections', 'PagesController@objections')->name('objections');
     Route::get('receipt', 'PagesController@receipt')->name('receipt');

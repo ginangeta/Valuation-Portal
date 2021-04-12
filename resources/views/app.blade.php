@@ -145,23 +145,26 @@
                     <div class="section-title v2">
                         <h2>Write to us</h2>
                     </div>
-                    <form action="http://demo.lion-coders.com/html/sarchholm-real-estate-template/php/send_mail.php"
-                        method="post" id="contact_form">
+                    <form action="{{ route('sendMail') }}" method="post" id="contact_form">
+                        @csrf
                         <div class="form-control-wrap">
                             <div id="message" class="alert alert-danger alert-dismissible fade"></div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="fname" placeholder="Name*" name="fname">
+                                <input type="text" class="form-control" id="fname" name="Mail_Name" placeholder="Name*" name="fname">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" id="email_address" placeholder="email*"
+                                <input type="email" class="form-control" id="email_address" name="Mail_Email" placeholder="email*"
                                     name="email">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" rows="8" name="comment" id="comment"
+                                <textarea class="form-control" rows="8" name="Mail_Comment"  id="comment"
                                     placeholder="Your Message"></textarea>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn v7">Send Message</button>
+                                <button type="submit" class="btn v7">
+                                    <span class="send_message">Send Message</span>
+                                    <span class="output_message d-none"></span>
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -187,7 +190,7 @@
                                         <button type="button" class="close modal-close" data-dismiss="modal"
                                             aria-label="Close"><span aria-hidden="true"><i
                                                     class="lnr lnr-cross"></i></span></button>
-                                                
+
                                     </div>
 
                                     <div class="login-wrapper">
@@ -315,4 +318,7 @@
         </div>
     </div>
     <!--login Modal ends-->
+@endsection
+
+@section('scripts')
 @endsection

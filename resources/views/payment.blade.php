@@ -45,7 +45,7 @@
                             <p class="alert alert-danger">{{ Session::get('errors') }}
                             </p>
                         @endif
-                        
+
                         <input class="d-none" type="text" name="receipt_no">
                         <input class="d-none" type="text" name="receipt_name">
                         <input class="d-none" type="text" name="receipt_amount">
@@ -92,7 +92,7 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 construction-form">
                         <h2 class="site-heading text-black mb-5">Payment <strong>Form</strong></h2>
-                        <form class="p-5 bg-white permit-form">
+                        <div class="p-5 bg-white permit-form">
                             @csrf
                             @if (Session::has('success'))
                                 <p class="alert alert-success">
@@ -179,7 +179,7 @@
                             </fieldset>
 
 
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -317,7 +317,7 @@
                 console.log(bill_number);
                 console.log('{{ $ObjectionBillInfo->payer_name }}')
                 $.ajax({
-                    url: "{{ config('global.url') }}" + 'receipts/?q=' +bill_number,
+                    url: "{{ config('global.url') }}" + 'receipts/?q=' + bill_number,
                     type: "GET",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -350,7 +350,8 @@
                                     receipt_name = '{{ $ObjectionBillInfo->payer_name }}';
                                     receipt_amount = billAmount[0];
                                     billed_amount = Amount;
-                                    receipt_desc ='{{ $ObjectionBillInfo->bill_items[0]->feeAccountDesc }}';
+                                    receipt_desc =
+                                        '{{ $ObjectionBillInfo->bill_items[0]->feeAccountDesc }}';
                                     receipt_date = new_date[0];
                                     receipt_amount_words = inWords(receipt_amount);
 
@@ -399,6 +400,15 @@
             window.open(url);
 
         }
+
+    </script>
+
+    <script type="text/javascript">
+        $('#phone-wallet').keypress(function(event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+            }
+        });
 
     </script>
 

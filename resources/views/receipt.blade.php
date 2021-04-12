@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 </head>
 
@@ -77,9 +78,10 @@
             style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Times;color:#000000">***</span><span
             style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Times;color:#000000"> </span><br></div>
     <div style="position:absolute;top:3.22in;left:1.89in;width:1.35in;line-height:0.14in;"><span
-            style="font-style:normal;font-weight:bold;font-size:12pt;font-family:Times;color:#000000;white-space:nowrap;text-transform: uppercase;">{{ $receipt->receipt_amount_words }} ***</span>
-            <span
-            style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Times;color:#000000"> </span><br></div>
+            style="font-style:normal;font-weight:bold;font-size:12pt;font-family:Times;color:#000000;white-space:nowrap;text-transform: uppercase;">{{ $receipt->receipt_amount_words }}
+            ***</span>
+        <span style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Times;color:#000000"> </span><br>
+    </div>
     <img style="position:absolute;top:3.35in;left:0.98in;width:5.03in;height:0.01in" src="receipt/vi_6.png">
     <!-- <img style="position:absolute;top:3.39in;left:2.34in;width:1.77in;height:1.77in" src="t0.png" /> -->
     <div style="position:absolute;top:3.62in;left:0.43in;width:0.27in;line-height:0.17in;"><span
@@ -105,7 +107,8 @@
         </span><br></div>
     <div style="position:absolute;top:4.38in;left:5.42in;width:0.45in;line-height:0.14in;"><span
             style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Times;color:#000000">{{ $receipt->receipt_amount }}
-        </span><span style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Times;color:#000000"></span><span
+        </span><span
+            style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Times;color:#000000"></span><span
             style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Times;color:#000000"> </span><br></div>
     <img style="position:absolute;top:4.55in;left:3.86in;width:2.16in;height:0.27in" src="receipt/vi_10.png">
     <div style="position:absolute;top:4.64in;left:3.91in;width:0.95in;line-height:0.14in;"><span
@@ -127,7 +130,9 @@
             by</span><span style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">
         </span><br></div>
     <div style="position:absolute;top:5.26in;left:1.07in;width:0.09in;line-height:0.13in;"><span
-            style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">NCCG Draft Valuation System</span><span style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">
+            style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">NCCG Draft
+            Valuation System</span><span
+            style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">
         </span><br></div>
     <div style="position:absolute;top:5.26in;left:1.72in;width:1.27in;line-height:0.13in;"><span
             style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">Bill No
@@ -139,11 +144,14 @@
         </div>
     </div>
     <div style="position:absolute;top:5.26in;left:4.2in;width:1.45in;line-height:0.13in;"><span
-        style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">Acc No: <strong>1-2101</strong></span><span style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">
-    </span><br></div>
+            style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">Acc No:
+            <strong>1-2101</strong></span><span
+            style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">
+        </span><br></div>
 
     <div style="position:absolute;top:5.26in;left:3.1in;width:1.45in;line-height:0.13in;"><span
-            style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">{{ $receipt->receipt_date }}</span><span style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">
+            style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">{{ $receipt->receipt_date }}</span><span
+            style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">
         </span><br></div>
     <img style="position:absolute;top: 5.25in;left:5.15in;width: 0.64in;/* height:0.34in */" src="receipt/NBk.png">
 

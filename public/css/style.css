@@ -889,7 +889,7 @@ h6 {
 -------------------------------------------------------------*/
 
 body {
-    color: #888;
+    color: black;
     font-family: "Roboto", sans-serif;
     /* font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";  */
     font-size: 14px;
@@ -14729,7 +14729,10 @@ span.infobox_rate {
 .construction-form form .form-control {
     border: 1px solid #7b7b7b;
     margin-bottom: 1rem;
+    background-color: #7b7b7b0f !important;
+    color: black;
 }
+
 .construction-form form .form-control:focus {
     border: 1.3px solid #42a045;
     color: #42a045;
