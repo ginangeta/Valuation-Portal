@@ -89,7 +89,7 @@
                                             class="btn btn-primary block center btn-block mb-3 py-2 btn-control">Proceed <i
                                                 class="ti-arrow-right ml-2"></i></button>
 
-                                        <div class="res-box col-12 text-center">
+                                        <div class="res-box col-12 text-center d-none">
                                             <a href="#" data-toggle="modal" data-target="#user-forgot-password"
                                                 tabindex="5">Forgot your password?</a>
                                         </div>
@@ -331,8 +331,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form action="{{ route('password.reset') }}"
-                                        enctype="application/x-www-form-urlencoded" id="reset_password" method="POST">
+                                    <form action="{{ route('password.reset') }}" enctype="application/x-www-form-urlencoded" id="reset_password" method="POST">
                                         @csrf
                                         @if (Session::has('success'))
                                             <div class="alert alert-success alert-block">
@@ -356,7 +355,6 @@
                                             <button type="button" class="close modal-close" data-dismiss="modal"
                                                 aria-label="Close"><span aria-hidden="true"><i
                                                         class="lnr lnr-cross"></i></span></button>
-
                                         </div>
 
                                         <div class="form-group">
