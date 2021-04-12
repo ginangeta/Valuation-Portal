@@ -71,8 +71,17 @@
                                             <li class="">
                                                 <a href="{{ route('logout') }}">Logout</a>
                                             </li>
-
-
+                                            @csrf
+                                            @if (Session::get('user') != null)
+                                            <li class="">
+                                                <div class="user__info" data-toggle="dropdown">
+                                                    <div>
+                                                        <div class="user__name">{{ Session::get('user')->name }}</div>
+                                                    </div>
+                                                    <div class="avatar-char mr-2">{{ Session::get('user')->name[0] }}</div>
+                                                </div>
+                                            </li>
+                                            @endif
                                         </ul>
                                     </div>
                                 </nav>
