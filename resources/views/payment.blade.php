@@ -34,8 +34,7 @@
                                 class="phoner"></strong>, kindly enter your mobile wallet <strong>PIN</strong>
                             to confirm transaction</p>
                     </div>
-                    <form id="objections-form" action="{{ route('getReceipt') }}" method="POST"
-                        class="p-5 bg-white d-none">
+                    <form id="getReceipt" action="{{ route('getReceipt') }}" method="POST" class="p-5 bg-white d-none">
                         @csrf
                         @if (Session::has('success'))
                             <p class="alert alert-success">
@@ -53,7 +52,7 @@
                         <input class="d-none" type="text" name="receipt_amount_words">
                         <input class="d-none" type="text" name="receipt_desc">
                         <input class="d-none" type="text" name="receipt_date">
-                        <button type="submit" class="btn btn-block btn-primary">Get Receipt</button>
+                        <button type="submit" class="btn btn-block btn-primary" id="get_receipt">Get Receipt</button>
                     </form>
                 </div>
                 <div class="modal-footer d-none">
@@ -202,8 +201,8 @@
             console.log("Push Sendfunction: " + Sendfunction);
             var PayBillNumber = '175555';
             console.log("Push PayBillNumber: " + PayBillNumber);
-            // var Amount = BillCost[0];
-            var Amount = "2";
+            var Amount = BillCost[0];
+            // var Amount = "2";
             console.log("Push Amount: " + Amount);
             var PhoneNumber = $('input[name="mpesa_number"]').val();
             console.log("Push Number: " + PhoneNumber);
@@ -305,7 +304,9 @@
                             checkpayment(reference, names);
 
                         } else if (response.data.callback_returned == "PAID") {
-                            getReceipt(reference);
+                            setTimeout(function() {
+                                getReceipt(reference);
+                            }, 5000);
 
                         }
                     }
@@ -333,9 +334,10 @@
                         if (data != null || data != '') {
                             confirmationModal();
 
-                            setTimeout(getReceiptData, 6000);
+                            setTimeout(getReceiptData, 10000);
 
                             function getReceiptData() {
+
                                 if (data.data != null || data.data != '') {
 
                                     var results = data.data[0];
@@ -383,7 +385,7 @@
                 $('.waiting-payment p').text(
                     "Transaction was successful. Click the button below to download receipt."
                 );
-                $('#mpesa-modal #objections-form').removeClass('d-none');
+                $('#mpesa-modal #getReceipt').removeClass('d-none');
             }
 
             event.preventDefault();
