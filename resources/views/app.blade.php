@@ -140,15 +140,16 @@
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8124709525237!2d36.81964295044497!3d-1.2865796359850543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d76d89ebe5%3A0xafd849404a05edf9!2sNairobi%20City%20Council!5e0!3m2!1sen!2ske!4v1616980628896!5m2!1sen!2ske"
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
+
             <div class="row">
                 <div class="col-lg-5 offset-lg-6 col-md-12">
                     <div class="section-title v2">
                         <h2>Write to us</h2>
                     </div>
-                    <form action="{{ route('sendMail') }}" method="post" id="contact_form">
+                    <form action="{{ route('sendMail') }}"  method="POST" class="bg-white w-100 filter v3 listing-filter">
                         @csrf
                         <div class="form-control-wrap">
-                            <div id="message" class="alert alert-danger alert-dismissible fade"></div>
+                            <div id="message" class="alert alert-danger alert-dismissible fade d-none"></div>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="fname" name="Mail_Name" placeholder="Name*"
                                     name="fname">
@@ -161,11 +162,9 @@
                                 <textarea class="form-control" rows="8" name="Mail_Comment" id="comment"
                                     placeholder="Your Message"></textarea>
                             </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn v7">
-                                    <span class="send_message">Send Message</span>
-                                    <span class="output_message d-none"></span>
-                                </button>
+                            <div class="text-center mt-30">
+                                <button type="submit" class="btn btn-primary">
+                                    <span class="lnr lnr-envelope mr-2"></span>Send Email</button>
                             </div>
                         </div>
                     </form>
@@ -270,28 +269,6 @@
                                                                     <input name="identification_no" type="number"
                                                                         class="form-control"
                                                                         placeholder="Enter your id number" required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>
-                                                                    <strong>Password</strong> <strong
-                                                                        class="text-danger">*</strong>
-                                                                </label>
-                                                                <div class="input-pass-login">
-                                                                    <input name="password" type="password"
-                                                                        class="form-control"
-                                                                        placeholder="Enter your password" required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>
-                                                                    <strong>Confirm Password</strong> <strong
-                                                                        class="text-danger">*</strong>
-                                                                </label>
-                                                                <div class="input-pass-login">
-                                                                    <input name="password_confirmation" type="password"
-                                                                        class="form-control"
-                                                                        placeholder="Enter your password Again" required>
                                                                 </div>
                                                             </div>
                                                             <div class="res-box text-center mt-30">

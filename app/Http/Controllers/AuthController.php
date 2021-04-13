@@ -65,19 +65,12 @@ class AuthController extends Controller
         // dd($request->all());
         $url = config('global.url').'register/client/';
 
-        
-        $validated = $request->validate([
-            'password' => 'min:6',
-            'password_confirmation' => 'min:6|required_with:password_confirmation|same:password_confirmation'
-        ]);
-        
         $data = [
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
             'phone' => $request->phone,
             'identification_no' => $request->identification_no,
-            'password' => $request->password
         ];
 
         // dd($data);
