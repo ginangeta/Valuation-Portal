@@ -204,15 +204,6 @@
                                                         <form id="register-form" action="{{ route('registration') }}"
                                                             method="POST" class="bg-white w-100 filter v3 listing-filter">
                                                             @csrf
-                                                            @if (Session::has('success'))
-                                                                <p class="alert alert-success">
-                                                                    {{ Session::get('success') }}</p>
-                                                            @endif
-                                                            @if (Session::has('errors'))
-                                                                <p class="alert alert-danger">
-                                                                    {{ Session::get('errors') }}
-                                                                </p>
-                                                            @endif
                                                             <div class="row">
                                                                 <div class="col-lg-6 col-sm-12">
                                                                     <div class="form-group">
