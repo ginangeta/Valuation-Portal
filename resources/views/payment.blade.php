@@ -366,6 +366,8 @@
                                     $('input[name="billed_amount"]').val(billed_amount);
                                     $('input[name="receipt_amount_words"]').val(receipt_amount_words);
                                     $('input[name="receipt_desc"]').val(receipt_desc);
+                                } else if (data.data == null || data.data == '') {
+                                    getReceipt(bill_number);
                                 }
                             }
 

@@ -89,7 +89,7 @@
                                             class="btn btn-primary block center btn-block mb-3 py-2 btn-control">Proceed <i
                                                 class="ti-arrow-right ml-2"></i></button>
 
-                                        <div class="res-box col-12 text-center d-none">
+                                        <div class="res-box col-12 text-center">
                                             <a href="#" data-toggle="modal" data-target="#user-forgot-password"
                                                 tabindex="5">Forgot your password?</a>
                                         </div>
@@ -151,12 +151,15 @@
                         <div class="form-control-wrap">
                             <div id="message" class="alert alert-danger alert-dismissible fade d-none"></div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="fname" name="Mail_Name" placeholder="Name*"
-                                    name="fname">
+                                <input type="text" class="form-control" id="fname" name="Mail_Name" placeholder="Name*">
                             </div>
                             <div class="form-group">
                                 <input type="email" class="form-control" id="email_address" name="Mail_Email"
-                                    placeholder="email*" name="email">
+                                    placeholder="Email*">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="Mail_Subject" name="Mail_Subject"
+                                    placeholder="Subject*">
                             </div>
                             <div class="form-group">
                                 <textarea class="form-control" rows="8" name="Mail_Comment" id="comment"
@@ -310,22 +313,6 @@
                                 <div class="col-md-12">
                                     <form action="{{ route('password.reset') }}" enctype="application/x-www-form-urlencoded" id="reset_password" method="POST">
                                         @csrf
-                                        @if (Session::has('success'))
-                                            <div class="alert alert-success alert-block">
-                                                <button type="button" class="close" data-dismiss="alert"></button>
-                                                <strong>{{ Session::get('success') }}</strong>
-                                            </div>
-
-                                        @endif
-
-                                        @if (Session::has('error'))
-                                            <div class="alert alert-danger alert-block">
-                                                <button type="button" class="close" data-dismiss="alert"></button>
-                                                <strong>{{ Session::get('error') }}r</strong>
-                                            </div>
-
-                                        @endif
-
                                         <div class="login-form-header p-1">
                                             <h2 class="mb-2">Forgot Password</h2>
                                             <small>Fill in the information below to reset password</small>
@@ -338,7 +325,7 @@
                                             <label>
                                                 <strong>Email</strong> <strong class="text-danger">*</strong>
                                             </label>
-                                            <input name="email" type="email" class="form-control"
+                                            <input name="Forgot_email" type="email" class="form-control"
                                                 placeholder="Enter your email address" required>
                                         </div>
 
