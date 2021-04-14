@@ -147,7 +147,7 @@ class AuthController extends Controller
         $data = [
             'email' => $request->Reset_email,
             'password' => $request->Sent_password,
-            'new_password' => $request->Forgot_email
+            'new_password' => $request->Reset_password
         ];
 
         // dd($data);
