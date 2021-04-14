@@ -27,56 +27,7 @@ class ObjectionController extends Controller
 
         $files =  $request->files;
         $uploadFiles = [];
-        dd($files);
-
-        $data = [
-            'token' => Session::get('token'),
-            'fullname' => $request->fullname,
-            'ratable_owner' => filter_var($request->ratable_owner, FILTER_VALIDATE_BOOLEAN),
-            'ratable_relation' => $request->ratable_relation,
-            'address' => $request->address,
-            'postal_address' => $request->postal_address,
-            'phone' => $request->phone,
-            'town_id' => $request->town_id,
-            'reasons' => $request->reasons,
-            'properties' => $request->properties,
-        ];
-
-        // dd(json_encode($data));
-        $response = Http::withToken(Session::get('token'));
-        foreach($files as $k => $filebag)
-        {
-            foreach($filebag as $k => $file){
-                 dd($file);
-                 $file_name = $file->getClientOriginalName();
-                 $file_content = fopen($file, 'r');
-                // dd($file_content);
-                 $response = $response->attach('files', $file_content, $file_name);
-            }
-        }
-
-        $response = $response->post($url, $data);
-        $created = json_decode($response->body());
-        dd($created);
-
-        // $file_name = $request->file('files')->getClientOriginalName();
-        // $file = fopen($request->file('files'), 'r');
-        // dd($file);
-
-        // $response = Http::withToken(Session::get('token'))->attach('files', $file, $file_name)->post($url, $data);
-
-        // foreach($files as $k => $filebag)
-        // {
-        //     foreach($filebag as $k => $file){
-        //          $file_name = $file->getClientOriginalName();
-        //          $file_content = fopen($file, 'r');
-        //          $data = file_get_contents($file);
-        //          $type = pathinfo($file_name, PATHINFO_EXTENSION);
-        //          $base64 = 'data:' . $type . ';base64,' . base64_encode($data);
-        //         //  $uploadFiles = $base64;
-        //          array_push($uploadFiles, $base64);
-        //     }
-        // }
+        // // dd($files);
 
         // $data = [
         //     'token' => Session::get('token'),
@@ -89,14 +40,63 @@ class ObjectionController extends Controller
         //     'town_id' => $request->town_id,
         //     'reasons' => $request->reasons,
         //     'properties' => $request->properties,
-        //     'files' => $uploadFiles,
         // ];
 
-        // // dd($data);
+        // // dd(json_encode($data));
+        // $response = Http::withToken(Session::get('token'));
+        // foreach($files as $k => $filebag)
+        // {
+        //     foreach($filebag as $k => $file){
+        //         //  dd($file);
+        //          $file_name = $file->getClientOriginalName();
+        //          $file_content = fopen($file, 'r');
+        //          $response = $response->attach('files', $file_content, $file_name);
+        //          dd($response);
 
-        // $response = Http::withToken(Session::get('token'))->post($url,$data);
+        //     }
+        // }
+        // $response = $response->post($url, $data);
         // $created = json_decode($response->body());
-        // dd($created);
+        // // dd($created);
+
+        // $file_name = $request->file('files')->getClientOriginalName();
+        // $file = fopen($request->file('files'), 'r');
+        // // dd($file);
+
+        // $response = Http::withToken(Session::get('token'))->attach('files', $file, $file_name)->post($url, $data);
+
+        foreach($files as $k => $filebag)
+        {
+            foreach($filebag as $k => $file){
+                 $file_name = $file->getClientOriginalName();
+                 $file_content = fopen($file, 'r');
+                 $data = file_get_contents($file);
+                 $type = pathinfo($file_name, PATHINFO_EXTENSION);
+                 $base64 = 'data:' . $type . ';base64,' . base64_encode($data);
+                //  $uploadFiles = $base64;
+                 array_push($uploadFiles, $base64);
+            }
+        }
+
+        $data = [
+            'token' => Session::get('token'),
+            'fullname' => $request->fullname,
+            'ratable_owner' => filter_var($request->ratable_owner, FILTER_VALIDATE_BOOLEAN),
+            'ratable_relation' => $request->ratable_relation,
+            'address' => $request->address,
+            'postal_address' => $request->postal_address,
+            'phone' => $request->phone,
+            'town_id' => $request->town_id,
+            'reasons' => $request->reasons,
+            'properties' => $request->properties,
+            'files' => $uploadFiles,
+        ];
+
+        dd($data);
+
+        $response = Http::withToken(Session::get('token'))->post($url,$data);
+        $created = json_decode($response->body());
+        dd($created);
 
         // dd($created);
         $billerurl = 'https://pilot.revenuesure.co.ke/users/authenticate';
@@ -230,13 +230,15 @@ class ObjectionController extends Controller
     //         'town_id' => $request->town_id,
     //         'reasons' => $request->reasons,
     //         'properties' => $request->properties,
-    //         'files' => ""
     //     ];
 
+    //     // dd($data);
+
         
-    //     $imgs = $_FILES['files'];
+    //     $img = $_FILES['files'];
     //     $file_name = [];
     //     $file_content = [];
+    //     // dd($data);
     //     // dd($img);
 
     //     function reArrayFiles($file)
@@ -260,6 +262,7 @@ class ObjectionController extends Controller
     //     if(!empty($img))
     //     {
     //         $img_desc = reArrayFiles($img);
+    //         // print_r((object)$img_desc);
     //         // dd($img_desc);
 
     //         $file_count = count($img_desc);
@@ -275,11 +278,11 @@ class ObjectionController extends Controller
     //             array_push($file_content, $content);
     //         }
 
-    //         // dd($file_content);
+    //         dd($file_content);
         
     //     }
 
-    //     $files = $request->files;
+    //     // $files = $request->files;
 
     //     // $response = Http::withToken(Session::get('token'));
     //     //     foreach($files as $k => $file)
@@ -287,10 +290,11 @@ class ObjectionController extends Controller
     //     //              $response = $response->attach('file['.$k.']', $file);
     //     //     }
     //     //     $response = $response->post($url, $data);
+    //     dd(Http::withToken(Session::get('token'))->attach('files', $file_name, $file_content));
             
-    //     // $response = Http::withToken(Session::get('token'))->attach('files', $file_name, $file_content)->post($url, $data);
+    //     $response = Http::withToken(Session::get('token'))->attach('files', $file_name, $file_content)->post($url, $data);
 
-    //     $response = Http::withToken(Session::get('token'))->post($url, $data);
+    //     // $response = Http::withToken(Session::get('token'))->post($url, $data);
     //     $created = json_decode($response->body());
 
     //     // dd($created);
