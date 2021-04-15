@@ -27,43 +27,6 @@ class ObjectionController extends Controller
 
         $files =  $request->files;
         $uploadFiles = [];
-        // // dd($files);
-
-        // $data = [
-        //     'token' => Session::get('token'),
-        //     'fullname' => $request->fullname,
-        //     'ratable_owner' => filter_var($request->ratable_owner, FILTER_VALIDATE_BOOLEAN),
-        //     'ratable_relation' => $request->ratable_relation,
-        //     'address' => $request->address,
-        //     'postal_address' => $request->postal_address,
-        //     'phone' => $request->phone,
-        //     'town_id' => $request->town_id,
-        //     'reasons' => $request->reasons,
-        //     'properties' => $request->properties,
-        // ];
-
-        // // dd(json_encode($data));
-        // $response = Http::withToken(Session::get('token'));
-        // foreach($files as $k => $filebag)
-        // {
-        //     foreach($filebag as $k => $file){
-        //         //  dd($file);
-        //          $file_name = $file->getClientOriginalName();
-        //          $file_content = fopen($file, 'r');
-        //          $response = $response->attach('files', $file_content, $file_name);
-        //          dd($response);
-
-        //     }
-        // }
-        // $response = $response->post($url, $data);
-        // $created = json_decode($response->body());
-        // // dd($created);
-
-        // $file_name = $request->file('files')->getClientOriginalName();
-        // $file = fopen($request->file('files'), 'r');
-        // // dd($file);
-
-        // $response = Http::withToken(Session::get('token'))->attach('files', $file, $file_name)->post($url, $data);
 
         foreach($files as $k => $filebag)
         {
@@ -92,7 +55,7 @@ class ObjectionController extends Controller
             'files' => $uploadFiles,
         ];
 
-        dd($data);
+        // dd($data);
 
         $response = Http::withToken(Session::get('token'))->post($url,$data);
         $created = json_decode($response->body());
