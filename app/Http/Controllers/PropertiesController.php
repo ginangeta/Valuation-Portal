@@ -11,7 +11,7 @@ class PropertiesController extends Controller
     public function singlePropertyUsv($lr_no){
         $url = config('global.url').'properties/?q='.$lr_no;
 
-        $response = Http::withToken(Session::get('token'))->get($url);
+        $response = Http::withToken(Session::get('Usertoken'))->get($url);
 
         $created  = json_decode($response->body());
 
@@ -35,7 +35,7 @@ class PropertiesController extends Controller
     public function singlePropertyObjection($lr_no){
         $url = config('global.url').'properties/?q='.$lr_no;
 
-        $response = Http::withToken(Session::get('token'))->get($url);
+        $response = Http::withToken(Session::get('Usertoken'))->get($url);
 
         $created  = json_decode($response->body());
 
@@ -45,11 +45,11 @@ class PropertiesController extends Controller
 
         $Townurl = config('global.url').'towns';
 
-        $Townresponse = Http::withToken(Session::get('token'))->get($Townurl);
+        $Townresponse = Http::withToken(Session::get('Usertoken'))->get($Townurl);
 
         $towns  = json_decode($Townresponse->body());
 
-        $session = Session::get('token');
+        $session = Session::get('Usertoken');
 
 
         if(is_null($created))
@@ -75,11 +75,11 @@ class PropertiesController extends Controller
 
         $url = config('global.url').'towns';
 
-        $response = Http::withToken(Session::get('token'))->get($url);
+        $response = Http::withToken(Session::get('Usertoken'))->get($url);
 
         $towns  = json_decode($response->body());
 
-        $session = Session::get('token');
+        $session = Session::get('Usertoken');
 
         return view('objections', [
             'objectingList' => $objectingArray, 

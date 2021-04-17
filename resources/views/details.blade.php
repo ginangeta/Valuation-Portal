@@ -317,7 +317,8 @@
                     url: "{{ config('global.url') }}" + 'properties/?q=' + searchcriteria,
                     type: "GET",
                     headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        'Authorization' : 'Bearer '+ '{{Session::get('Usertoken')}}',
                     },
                     success: function(data) {
 

@@ -53,11 +53,15 @@ class AuthController extends Controller
 
         Session::put('user', $created->data);
 
-        Session::put('token', $created->data->token);
+        Session::put('Usertoken', $created->data->token);
 
         // dd(Session::all());
 
-        return redirect()->route('details');
+        $Session = Session::get('Usertoken');
+
+        return redirect()->route('details', [
+            'UserSession' => $Session
+        ]);
 
     }
 
@@ -117,7 +121,7 @@ class AuthController extends Controller
 
         // dd($data);
 
-        $response = Http::withToken(Session::get('token'))->post($url,$data);
+        $response = Http::withToken(Session::get('Usertoken'))->post($url,$data);
 
         $created = json_decode($response->body());
 

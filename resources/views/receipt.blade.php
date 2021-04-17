@@ -51,7 +51,7 @@
             style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Times;color:#000000">Date</span><span
             style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Times;color:#000000"> </span><br></div>
     <div style="position:absolute;top:2.4in;left:4.72in;width:1.07in;line-height:0.14in;"><span
-            style="font-style:normal;font-weight:bold;font-size:12pt;font-family:Times;color:#000000">{{ $receipt->receipt_date }}</span><span
+            style="font-style:normal;font-weight:bold;font-size:12pt;font-family:Times;color:#000000">{{ date('d-m-Y', strtotime($receipt->receipt_date)) }}</span><span
             style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Times;color:#000000"> </span><br></div>
     <img style="position:absolute;top:2.57in;left:4.72in;width:1.30in;height:0.01in" src="receipt/vi_3.png">
     <div style="position:absolute;top:2.85in;left:0.43in;width:1.54in;line-height:0.17in;"><span
@@ -106,7 +106,7 @@
             Amount</span><span style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Times;color:#000000">
         </span><br></div>
     <div style="position:absolute;top:4.38in;left:5.42in;width:0.45in;line-height:0.14in;"><span
-            style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Times;color:#000000">{{ $receipt->receipt_amount }}
+            style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Times;color:#000000">{{ $receipt->billed_amount }}
         </span><span
             style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Times;color:#000000"></span><span
             style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Times;color:#000000"> </span><br></div>
@@ -123,7 +123,7 @@
             style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Times;color:#000000">Balance</span><span
             style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Times;color:#000000"> </span><br></div>
     <div style="position:absolute;top:4.90in;left:5.63in;width:0.24in;line-height:0.14in;"><span
-            style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Times;color:#000000">0</span><span
+            style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Times;color:#000000">{{ $receipt->bill_balance }}</span><span
             style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Times;color:#000000"> </span><br></div>
     <div style="position:absolute;top:5.26in;left:0.43in;width:0.50in;line-height:0.13in;"><span
             style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">Served
@@ -150,7 +150,7 @@
         </span><br></div>
 
     <div style="position:absolute;top:5.26in;left:3.1in;width:1.45in;line-height:0.13in;"><span
-            style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">{{ $receipt->receipt_date }}</span><span
+            style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">{{ date('d-m-Y', strtotime($receipt->receipt_date)) }}</span><span
             style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">
         </span><br></div>
     <img style="position:absolute;top: 5.25in;left:5.15in;width: 0.64in;/* height:0.34in */" src="receipt/NBk.png">

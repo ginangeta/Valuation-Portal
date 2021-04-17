@@ -49,6 +49,7 @@
                         <input class="d-none" type="text" name="receipt_name">
                         <input class="d-none" type="text" name="receipt_amount">
                         <input class="d-none" type="text" name="billed_amount">
+                        <input class="d-none" type="text" name="bill_balance">
                         <input class="d-none" type="text" name="receipt_amount_words">
                         <input class="d-none" type="text" name="receipt_desc">
                         <input class="d-none" type="text" name="receipt_date">
@@ -285,7 +286,6 @@
                     success: function(data) {
                         var response = JSON.parse(data);
                         console.log('CheckPayment: ' + data);
-
                         if (response == "") {
                             console.log("Recalled");
                             swal('Error!', 'Push not Sent', 'error');
@@ -307,8 +307,8 @@
                             setTimeout(function() {
                                 getReceipt(reference);
                             }, 5000);
-
                         }
+
                     }
                 });
 
@@ -337,26 +337,32 @@
                             setTimeout(getReceiptData, 1000);
 
                             function getReceiptData() {
-
-                                if (data.data != null || data.data != '') {
+                                if (data.data == null || data.data == '' || data.data.length == 0) {
+                                    getReceipt(bill_number);
+                                } else if (data.data != null || data.data != '') {
 
                                     var results = data.data[0];
 
                                     console.log(data.data[0]);
                                     var d = new Date("2021-04-07T16:14:09.000Z");
 
-                                    var new_date = results.date_recieved.split("T");
-                                    var billAmount = results.amount_paid.split(".");
+                                    var new_date = results.date_recieved.split('T');
+                                    var billAmount = results.bill_total.split('.');
+                                    var paidAmount = results.amount_paid.split('.');
+                                    var billBalance = results.balance.split('.');
 
                                     receipt_no = results.receipt_no;
-                                    receipt_name = '{{ $ObjectionBillInfo->payer_name }}';
-                                    receipt_amount = billAmount[0];
-                                    billed_amount = Amount;
-                                    receipt_desc =
-                                        '{{ $ObjectionBillInfo->bill_items[0]->feeAccountDesc }}';
-                                    receipt_date = new_date[0];
+                                    receipt_name = results.billed_user;
+                                    receipt_amount = paidAmount[0];
+                                    billed_amount = billAmount[0];
+                                    bill_balance = billBalance[0];
+                                    receipt_desc = results.description;
+                                    receipt_date = new_date;
                                     receipt_amount_words = inWords(receipt_amount);
 
+                                    console.log(receipt_amount);
+                                    console.log(billed_amount);
+                                    console.log(bill_balance);
                                     console.log(receipt_amount_words);
 
                                     $('input[name="receipt_no"]').val(receipt_no);
@@ -364,10 +370,9 @@
                                     $('input[name="receipt_date"]').val(receipt_date);
                                     $('input[name="receipt_amount"]').val(receipt_amount);
                                     $('input[name="billed_amount"]').val(billed_amount);
+                                    $('input[name="bill_balance"]').val(bill_balance);
                                     $('input[name="receipt_amount_words"]').val(receipt_amount_words);
                                     $('input[name="receipt_desc"]').val(receipt_desc);
-                                } else if (data.data == null || data.data == '') {
-                                    getReceipt(bill_number);
                                 }
                             }
 

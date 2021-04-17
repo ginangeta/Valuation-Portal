@@ -14,7 +14,7 @@ class UserSession
      */
     public function handle($request, Closure $next)
     {
-        if (Session('token')) {
+        if (Session('Usertoken')) {
             return $next($request);
         }
         return redirect()->route('home');

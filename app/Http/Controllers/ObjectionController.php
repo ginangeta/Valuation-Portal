@@ -13,7 +13,7 @@ class ObjectionController extends Controller
         // dd($request->all());
         // $objectingArray = array_combine($request->LRId, $request->LRNo);
 
-        $session = Session::get('token');
+        $session = Session::get('Usertoken');
 
         return view('receipt', [
             'receipt' => $request, 
@@ -24,25 +24,37 @@ class ObjectionController extends Controller
     public function sendObjection(Request $request){
         // dd($request->all());
         $url = config('global.url').'property/objection/';
+        $Asseturl = config('global.url').'attach/objection/files/';
 
         $files =  $request->files;
+        $fileIdsArray = [];
         $uploadFiles = [];
+        $uploadFileNames = [];
 
+        $Assetresponse = Http::withToken(Session::get('Usertoken'));
         foreach($files as $k => $filebag)
         {
             foreach($filebag as $k => $file){
                  $file_name = $file->getClientOriginalName();
                  $file_content = fopen($file, 'r');
                  $data = file_get_contents($file);
-                 $type = pathinfo($file_name, PATHINFO_EXTENSION);
-                 $base64 = 'data:' . $type . ';base64,' . base64_encode($data);
-                //  $uploadFiles = $base64;
-                 array_push($uploadFiles, $base64);
+                 $Assetresponse = $Assetresponse->attach('files', $file_content, $file_name);
+
+                //  dd($Assetresponse);
+                 array_push($uploadFiles, $data);
+                 array_push($uploadFileNames, $file_name);
             }
         }
 
+        // dd($Assetresponse);
+
+        $Assetresponse = $Assetresponse->post($Asseturl);
+        $Assetcreated = json_decode($Assetresponse->body());
+        $DocumentIds = $Assetcreated->data->document_ids;
+
+        // dd($DocumentIds);
+
         $data = [
-            'token' => Session::get('token'),
             'fullname' => $request->fullname,
             'ratable_owner' => filter_var($request->ratable_owner, FILTER_VALIDATE_BOOLEAN),
             'ratable_relation' => $request->ratable_relation,
@@ -52,14 +64,13 @@ class ObjectionController extends Controller
             'town_id' => $request->town_id,
             'reasons' => $request->reasons,
             'properties' => $request->properties,
-            'files' => $uploadFiles,
+            'documents' => $DocumentIds,
         ];
 
         // dd($data);
 
-        $response = Http::withToken(Session::get('token'))->post($url,$data);
+        $response = Http::withToken(Session::get('Usertoken'))->post($url,$data);
         $created = json_decode($response->body());
-        dd($created);
 
         // dd($created);
         $billerurl = 'https://pilot.revenuesure.co.ke/users/authenticate';
@@ -70,7 +81,7 @@ class ObjectionController extends Controller
         ];
 
 
-        $BillerResponse = Http::withToken(Session::get('token'))->post($billerurl,$billerdata);
+        $BillerResponse = Http::withToken(Session::get('Usertoken'))->post($billerurl,$billerdata);
         $BillerResponseData = json_decode($BillerResponse->body());
         // dd($BillerResponseData);
 
@@ -103,7 +114,7 @@ class ObjectionController extends Controller
     public function objectionBill($BillNo){
         // $url = config('global.url').'bills/?q='.$BillNo;
 
-        // $response = Http::withToken(Session::get('token'))->get($url);
+        // $response = Http::withToken(Session::get('Usertoken'))->get($url);
 
         // $created  = json_decode($response->body());
 
@@ -117,7 +128,7 @@ class ObjectionController extends Controller
         ];
 
 
-        $BillerResponse = Http::withToken(Session::get('token'))->post($billerurl,$billerdata);
+        $BillerResponse = Http::withToken(Session::get('Usertoken'))->post($billerurl,$billerdata);
         $BillerResponseData = json_decode($BillerResponse->body());
         $BillerToken = $BillerResponseData->data->auth_token;
         // dd($BillerToken);
@@ -183,7 +194,7 @@ class ObjectionController extends Controller
     //     $url = config('global.url').'property/objection/';
 
     //     $data = [
-    //         'token' => Session::get('token'),
+    //         'token' => Session::get('Usertoken'),
     //         'fullname' => $request->fullname,
     //         'ratable_owner' => filter_var($request->ratable_owner, FILTER_VALIDATE_BOOLEAN),
     //         'ratable_relation' => $request->ratable_relation,
@@ -247,17 +258,17 @@ class ObjectionController extends Controller
 
     //     // $files = $request->files;
 
-    //     // $response = Http::withToken(Session::get('token'));
+    //     // $response = Http::withToken(Session::get('Usertoken'));
     //     //     foreach($files as $k => $file)
     //     //     {
     //     //              $response = $response->attach('file['.$k.']', $file);
     //     //     }
     //     //     $response = $response->post($url, $data);
-    //     dd(Http::withToken(Session::get('token'))->attach('files', $file_name, $file_content));
+    //     dd(Http::withToken(Session::get('Usertoken'))->attach('files', $file_name, $file_content));
             
-    //     $response = Http::withToken(Session::get('token'))->attach('files', $file_name, $file_content)->post($url, $data);
+    //     $response = Http::withToken(Session::get('Usertoken'))->attach('files', $file_name, $file_content)->post($url, $data);
 
-    //     // $response = Http::withToken(Session::get('token'))->post($url, $data);
+    //     // $response = Http::withToken(Session::get('Usertoken'))->post($url, $data);
     //     $created = json_decode($response->body());
 
     //     // dd($created);
@@ -269,7 +280,7 @@ class ObjectionController extends Controller
     //     ];
 
 
-    //     $BillerResponse = Http::withToken(Session::get('token'))->post($billerurl,$billerdata);
+    //     $BillerResponse = Http::withToken(Session::get('Usertoken'))->post($billerurl,$billerdata);
     //     $BillerResponseData = json_decode($BillerResponse->body());
     //     // dd($BillerResponseData);
 
