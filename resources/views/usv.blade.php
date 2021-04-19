@@ -4,9 +4,9 @@
 <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{asset('vendors/daterangepicker/daterangepicker.css')}}">
-    <link rel="stylesheet" href="{{asset('vendors/flatpickr/flatpickr.min.css')}}">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<link rel="stylesheet" href="{{ asset('vendors/daterangepicker/daterangepicker.css') }}">
+<link rel="stylesheet" href="{{ asset('vendors/flatpickr/flatpickr.min.css') }}">
 
 <style>
     * {
@@ -69,6 +69,14 @@
         .print-btn {
             display: none !important;
         }
+
+        * {
+            -webkit-print-color-adjust: exact !important;
+            /* Chrome, Safari */
+            /*Firefox*/
+            color-adjust: exact !important;
+        }
+
     }
 
 </style>
@@ -93,7 +101,7 @@
                 <p
                     style="width: 100%; text-align: center; font-size: 12px; color: black;font-weight: bold; margin-top: 10px;">
                     DRAFT VALUATION ROLL</p>
-                <img src="{{asset('demo/images/nairobi-county2.png')}}" style="height: 100px;">
+                <img src="{{ asset('demo/images/nairobi-county2.png') }}" style="height: 100px;">
             </div>
         </div>
 
@@ -105,106 +113,107 @@
         <div class="" style="width: 100%; height: 10.7in">
             @foreach ($UsvDetails as $UsvDetail)
 
-            <!-- ratable owner info -->
-            <p
-                style="width: 100%; text-align: center; border:0.001in solid black; font-size: 12px; color:black; font-weight: bold; margin: 0">
-                RATABLE OWNER NAME AND ADDRESS
-            </p>
+                <!-- ratable owner info -->
+                <p
+                    style="width: 100%; text-align: center; border:0.001in solid black; font-size: 12px; color:black; font-weight: bold; margin: 0">
+                    RATABLE OWNER NAME AND ADDRESS
+                </p>
 
-            <div class="round-border" style="display: flex; width: 100%;">
-                <div class="" style="padding: 0.2in; margin-bottom: 0.05in; width: 7.9in; height: auto;">
-                    <h5
-                        style="font-size: 15px; color:#215939; text-transform: capitalize; font-weight: bold; margin: 0px;">
-                        {{$UsvDetail->owner}}</h5>
-                    <div style="display:flex; font-size: 11px;">
-                        <div style="display: flex; flex-flow: column;">
-                            <span style="font-size: 13px;">P.O.BOX {{$UsvDetail->po_box}} - {{$UsvDetail->postal_code}} </span>
-                            <span style="font-size: 13px;">{{$UsvDetail->address}}</span>
+                <div class="round-border" style="display: flex; width: 100%;">
+                    <div class="" style="padding: 0.2in; margin-bottom: 0.05in; width: 7.9in; height: auto;">
+                        <h5
+                            style="font-size: 15px; color:#215939; text-transform: capitalize; font-weight: bold; margin: 0px;">
+                            {{ $UsvDetail->owner }}</h5>
+                        <div style="display:flex; font-size: 11px;">
+                            <div style="display: flex; flex-flow: column;">
+                                <span style="font-size: 13px;">P.O.BOX {{ $UsvDetail->po_box }} -
+                                    {{ $UsvDetail->postal_code }} </span>
+                                <span style="font-size: 13px;">{{ $UsvDetail->address }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- ratable owner info -->
-            <!-- LAND REFERENCE NUMBER-->
-            <p class="round-border"
-                style="width: 100%; text-align: center; font-size: 12px; color:black; font-weight: bold; margin: 0">
-                LAND REFERENCE NUMBER
-            </p>
+                <!-- ratable owner info -->
+                <!-- LAND REFERENCE NUMBER-->
+                <p class="round-border"
+                    style="width: 100%; text-align: center; font-size: 12px; color:black; font-weight: bold; margin: 0">
+                    LAND REFERENCE NUMBER
+                </p>
 
-            <div class="round-border" style="display: flex; width: 100%;">
-                <div class="" style="padding: 0.2in; margin-bottom: 0.05in; width: 7.9in; height: auto;">
-                    <p
-                        style="font-size: 15px; text-align: center; color:black; text-transform: capitalize; font-weight: bold; margin: 0px;">
-                        {{$UsvDetail->lr_no}}
-                    </p>
+                <div class="round-border" style="display: flex; width: 100%;">
+                    <div class="" style="padding: 0.2in; margin-bottom: 0.05in; width: 7.9in; height: auto;">
+                        <p
+                            style="font-size: 15px; text-align: center; color:black; text-transform: capitalize; font-weight: bold; margin: 0px;">
+                            {{ $UsvDetail->lr_no }}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <!-- LAND REFERENCE NUMBER -->
-            <!-- PROPERTY DESCRIPTION -->
-            <p class="round-border"
-                style="width: 100%; text-align: center; font-size: 12px; color:black; font-weight: bold; margin: 0">
-                PROPERTY DESCRIPTION
-            </p>
-            <div class="round-border" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%;">
-                <!-- Location -->
-                <div style=" font-size: 16px; text-align: left; 
+                <!-- LAND REFERENCE NUMBER -->
+                <!-- PROPERTY DESCRIPTION -->
+                <p class="round-border"
+                    style="width: 100%; text-align: center; font-size: 12px; color:black; font-weight: bold; margin: 0">
+                    PROPERTY DESCRIPTION
+                </p>
+                <div class="round-border" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%;">
+                    <!-- Location -->
+                    <div style=" font-size: 16px; text-align: left; 
                         display: flex; flex-direction: column; flex-basis: 100%; flex: 2;">
-                    <p
-                        style="width: 100%; border-bottom: 0.001in solid black; text-align: left; font-size: 12px; color:black; padding-left: 0.2in; padding-bottom: 0.05in; font-weight: bold; margin: 0">
-                        LOCATION
-                    </p>
-                    <p
-                        style="font-size: 15px; padding: 0.2in;  text-align: left; color:black; text-transform: capitalize; font-weight: bold; margin: 0px;">
-                        {{$UsvDetail->situation}}
-                    </p>
-                </div>
-                <!-- Location -->
-                <div style=" font-size: 16px; text-align: left; 
+                        <p
+                            style="width: 100%; border-bottom: 0.001in solid black; text-align: left; font-size: 12px; color:black; padding-left: 0.2in; padding-bottom: 0.05in; font-weight: bold; margin: 0">
+                            LOCATION
+                        </p>
+                        <p
+                            style="font-size: 15px; padding: 0.2in;  text-align: left; color:black; text-transform: capitalize; font-weight: bold; margin: 0px;">
+                            {{ $UsvDetail->situation }}
+                        </p>
+                    </div>
+                    <!-- Location -->
+                    <div style=" font-size: 16px; text-align: left; 
                         display: flex; flex-direction: column; flex-basis: 100%; flex: 1;">
-                    <p
-                        style="width: 100%; border-left: 0.001in solid black; text-align: left; font-size: 12px; color:black; padding-left: 0.2in; padding-bottom: 0.05in; font-weight: bold; margin: 0">
-                        APPROX. AREA(Ha)
-                    </p>
-                    <p
-                        style="font-size: 15px; padding: 0.2in; border-top: 0.001in solid black; border-left: 0.001in solid black; text-align: left; color:black; text-transform: capitalize; font-weight: bold; margin: 0px;">
-                        {{$UsvDetail->approx_area}}
-                    </p>
+                        <p
+                            style="width: 100%; border-left: 0.001in solid black; text-align: left; font-size: 12px; color:black; padding-left: 0.2in; padding-bottom: 0.05in; font-weight: bold; margin: 0">
+                            APPROX. AREA(Ha)
+                        </p>
+                        <p
+                            style="font-size: 15px; padding: 0.2in; border-top: 0.001in solid black; border-left: 0.001in solid black; text-align: left; color:black; text-transform: capitalize; font-weight: bold; margin: 0px;">
+                            {{ $UsvDetail->approx_area }}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <!-- PROPERTY DESCRIPTION -->
-            <!-- USV-->
-            <p class="round-border"
-                style="width: 100%; text-align: center; font-size: 12px; color:black; font-weight: bold; margin: 0">
-                UNIMPROVED SITE VALUE (KES)
-            </p>
+                <!-- PROPERTY DESCRIPTION -->
+                <!-- USV-->
+                <p class="round-border"
+                    style="width: 100%; text-align: center; font-size: 12px; color:black; font-weight: bold; margin: 0">
+                    UNIMPROVED SITE VALUE (KES)
+                </p>
 
-            <div class="round-border" style="display: flex; width: 100%;">
-                <div class="" style="padding: 0.2in; margin-bottom: 0.05in; width: 7.9in; height: auto;">
-                    <p
-                        style="font-size: 18px; text-align: center; color:black; text-transform: capitalize; font-weight: bold; margin: 0px;">
-                        {{number_format($UsvDetail->usv)}}
-                    </p>
+                <div class="round-border" style="display: flex; width: 100%;">
+                    <div class="" style="padding: 0.2in; margin-bottom: 0.05in; width: 7.9in; height: auto;">
+                        <p
+                            style="font-size: 18px; text-align: center; color:black; text-transform: capitalize; font-weight: bold; margin: 0px;">
+                            {{ number_format($UsvDetail->usv) }}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <!-- USV -->
-            <!-- USV -->
-            <div class="round-border" style="display: flex; width: 100%;">
-                <div class=""
-                    style="padding: 0.2in; margin-bottom: 0.05in; padding-bottom:1.5in; width: 7.9in; height: auto;">
-                    <p
-                        style="font-size: 15px; text-align: left; color:black; text-transform: capitalize; font-weight: 500;">
-                        The ratable owner is required within 28 days to raise an objection
-                        from the date of the publication of the notice.
-                    </p>
-                    <p
-                        style="font-size: 15px; text-align: left; color:black; text-transform: capitalize; font-weight: 500;">
-                        An objection can be lodged online through the Draft Valuation
-                        Inspection Portal (valuation.nairobi.go.ke) OR at the Valuation
-                        Department Office, 4th Floor, City Hall.
-                    </p>
+                <!-- USV -->
+                <!-- USV -->
+                <div class="round-border" style="display: flex; width: 100%;">
+                    <div class=""
+                        style="padding: 0.2in; margin-bottom: 0.05in; padding-bottom:1.5in; width: 7.9in; height: auto;">
+                        <p
+                            style="font-size: 15px; text-align: left; color:black; text-transform: capitalize; font-weight: 500;">
+                            The ratable owner is required within 28 days to raise an objection
+                            from the date of the publication of the notice.
+                        </p>
+                        <p
+                            style="font-size: 15px; text-align: left; color:black; text-transform: capitalize; font-weight: 500;">
+                            An objection can be lodged online through the Draft Valuation
+                            Inspection Portal (valuation.nairobi.go.ke) OR at the Valuation
+                            Department Office, 4th Floor, City Hall.
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <!-- USV -->
+                <!-- USV -->
             @endforeach
         </div>
 
@@ -214,12 +223,14 @@
 
         </div>
 
-        <button class="print-btn" onclick="window.print()"><img src="{{asset('images/printer.svg')}}" alt="Printer Icon"></button>
+        <button class="print-btn" onclick="window.print()"><img src="{{ asset('images/printer.svg') }}"
+                alt="Printer Icon"></button>
 
-        <script src="{{asset('js/plugin.js')}}"></script>
-        <script src="{{asset('vendors/moment/moment.min.js')}}"></script>
+        <script src="{{ asset('js/plugin.js') }}"></script>
+        <script src="{{ asset('vendors/moment/moment.min.js') }}"></script>
         <script>
-                $('#today').html("DATE: "+(moment().format('DD/MM/YYYY')));
+            $('#today').html("DATE: " + (moment().format('DD/MM/YYYY')));
+
         </script>
 
 </body>
