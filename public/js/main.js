@@ -66,8 +66,14 @@
 
         } else {
             $(this).parent().addClass("activated");
-            $(this).parent().children("small").text("File Selected");
             $(this).parent().children("small").addClass("text-success").removeClass("text-danger");
+
+            var files = $(this)[0].files;
+            if(files.length > 10){
+                alert("you can select max 10 files.");
+            }else{
+                $(this).parent().children("small").text(files.length +" Files Selected");
+            }
         }
         //id-container
     });

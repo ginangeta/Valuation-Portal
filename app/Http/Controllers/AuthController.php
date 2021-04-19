@@ -59,9 +59,7 @@ class AuthController extends Controller
 
         $Session = Session::get('Usertoken');
 
-        return redirect()->route('details', [
-            'UserSession' => $Session
-        ]);
+        return redirect()->route('details');
 
     }
 

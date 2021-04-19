@@ -46,8 +46,8 @@
                         <div class="row align-items-center">
                             <div
                                 class="col-lg-5 col-md-6 col-9 order-2 order-xl-4 order-lg-1 order-md-1 d-flex align-items-center h-100">
-                                <a class="navbar-brand mr-3 mb-0" href="{{route('home')}}"><img src="images/logo-white.png"
-                                        alt="logo" class="img-fluid"></a>
+                                <a class="navbar-brand mr-3 mb-0" href="{{ route('home') }}"><img
+                                        src="images/logo-white.png" alt="logo" class="img-fluid"></a>
                                 <div class="logo-text">
                                     <h4 class="text-white m-0 p-0 text-nowrap">NCCG - Online Valuation Roll Inspection
                                     </h4>
@@ -73,14 +73,45 @@
                                             </li>
                                             @csrf
                                             @if (Session::get('user') != null)
-                                            <li class="">
-                                                <div class="user__info" data-toggle="dropdown">
-                                                    <div>
-                                                        <div class="user__name">{{ Session::get('user')->name }}</div>
+                                                <li class="dropdown">
+                                                    <a href="#" data-toggle="dropdown" class="rad-50">
+                                                        <div class="avatar-char mr-2">
+                                                            {{ Session::get('user')->name[0] }}</div>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu--block">
+                                                        <div class="listview listview--hover acc-options">
+
+                                                            <a href="#" class="listview__item" style="padding-left: 1rem;">
+                                                                <div class="avatar-char mr-2">
+                                                                    {{ Session::get('user')->name[0] }}</div>
+
+                                                                <div class="listview__content">
+                                                                    <div class="listview__heading">{{ Session::get('user')->name }}</div>
+                                                                    <p class="mt-0 pr-0">{{ Session::get('user')->username }}</p>
+                                                                </div>
+                                                            </a>
+                                                            <hr>
+                                                            <div class="listview__item d-none">
+                                                                <div class="listview__content">
+                                                                    <div class="listview__heading">
+                                                                        <a><i class="ti-unlock"></i><span>Client
+                                                                                Objections</span></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="listview__item d-none">
+                                                                <div class="listview__content">
+                                                                    <div class="listview__heading">
+                                                                        <a href="{{ route('logout') }}"><i
+                                                                                class="ti-power-off"></i><span>Logout</span></a>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
                                                     </div>
-                                                    <div class="avatar-char mr-2">{{ Session::get('user')->name[0] }}</div>
-                                                </div>
-                                            </li>
+                                                </li>
                                             @endif
                                         </ul>
                                     </div>
@@ -230,8 +261,8 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="footer-logo">
                             <div class="d-flex">
-                                <a class="navbar-brand mr-3 mb-0" href="{{route('home')}}"><img src="images/logo-white.png"
-                                        alt="logo" class="img-fluid"></a>
+                                <a class="navbar-brand mr-3 mb-0" href="{{ route('home') }}"><img
+                                        src="images/logo-white.png" alt="logo" class="img-fluid"></a>
                                 <div class="logo-text mt-2">
                                     <h4 class="text-black m-0 p-0 text-nowrap">NCCG Draft Valuation Roll</h4>
                                     <p class="text-black text-nowrap">Nairobi City County Government</p>
