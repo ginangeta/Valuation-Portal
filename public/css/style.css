@@ -6663,6 +6663,15 @@ ul.icon li::before {
     letter-spacing: 0.01rem;
 }
 
+.contact-section .col-lg-5{
+    padding-top: 150px;
+}
+
+.contact-section iframe{
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
 .dropdown-filter {
     cursor: pointer;
 }
@@ -12539,7 +12548,7 @@ span.infobox_rate {
     }
 
     .hero__form.v3 {
-        background: rgba(0, 0, 0, 0.34);
+        background: white;
         padding: 15px;
     }
 
@@ -12567,6 +12576,10 @@ span.infobox_rate {
 
     .call-to-action.consult-form.v1 .form-group .filter-input {
         margin-top: 0;
+    }
+
+    .partner-section{
+        padding-top: 450px !important
     }
 
     .hero-client-section.v2 .testimonial-btn.v2 {
