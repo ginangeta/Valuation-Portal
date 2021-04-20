@@ -134,15 +134,17 @@
 
     <!--Contact section starts-->
     <div class="contact-section v1 mt-50 " id="Contact">
-        <div class="container col-12">
-            <div class="contact-map v1">
+        <div class="row w-100">
+            <div class="contact-map v1 col-sm-12 col-lg-7">
+                <div class="section-title v2">
+                    <h2>Our Location</h2>
+                </div>
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8124709525237!2d36.81964295044497!3d-1.2865796359850543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d76d89ebe5%3A0xafd849404a05edf9!2sNairobi%20City%20Council!5e0!3m2!1sen!2ske!4v1616980628896!5m2!1sen!2ske"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
 
-            <div class="row">
-                <div class="col-lg-5 offset-lg-6 col-md-12">
+                <div class="col-sm-12 col-lg-5">
                     <div class="section-title v2">
                         <h2>Write to us</h2>
                     </div>
@@ -172,7 +174,6 @@
                         </div>
                     </form>
                 </div>
-            </div>
         </div>
     </div>
     <!--Contact section ends-->

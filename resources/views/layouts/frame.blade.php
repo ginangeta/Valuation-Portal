@@ -45,7 +45,7 @@
                     <div class="site-navbar">
                         <div class="row align-items-center">
                             <div
-                                class="col-lg-5 col-md-6 col-9 order-2 order-xl-4 order-lg-1 order-md-1 d-flex align-items-center h-100">
+                                class="col-lg-5 col-md-11 col-9 order-2 order-xl-4 order-lg-1 order-md-1 d-flex align-items-center h-100">
                                 <a class="navbar-brand mr-3 mb-0" href="{{ route('home') }}"><img
                                         src="images/logo-white.png" alt="logo" class="img-fluid"></a>
                                 <div class="logo-text">
