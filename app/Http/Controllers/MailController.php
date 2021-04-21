@@ -22,8 +22,8 @@ class MailController extends Controller
 
     $data = [
         'name' => $request->Mail_Name,
-        'subject' => $request->Mail_Email,
-        'email' => $request->Mail_Subject,
+        'subject' => $request->Mail_Subject,
+        'email' => $request->Mail_Email,
         'body' => $request->Mail_Comment
     ];
 
@@ -38,17 +38,17 @@ class MailController extends Controller
 
     if(is_null($created))
     {
-        return redirect()->route('home')->with('errors', 'An error occured. Email not sent.');
+        return redirect()->route('home')->with('Email_errors', 'An error occured. Email not sent.');
     }
 
     if(!$created->success)
     {
-        return redirect()->route('home')->with('errors', $created->msg);
+        return redirect()->route('home')->with('Email_errors', $created->msg);
     }
 
     // dd($created);
 
-    return redirect()->route('home')->with('success', 'The password has been reset successfully.');
+    return redirect()->route('home')->with('Email_success', 'Email was sent successfully.');
    }
 
 }

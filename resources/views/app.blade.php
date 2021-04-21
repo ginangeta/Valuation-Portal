@@ -144,13 +144,18 @@
                     width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
 
-                <div class="col-sm-12 col-lg-5">
-                    <div class="section-title v2">
-                        <h2>Write to us</h2>
-                    </div>
-                    <form action="{{ route('sendMail') }}"  method="POST" class="bg-white w-100 filter v3 listing-filter">
-                        @csrf
-                        <div class="form-control-wrap">
+            <div class="col-sm-12 col-lg-5">
+                <div class="section-title v2">
+                    <h2>Write to us</h2>
+                </div>
+                <form action="{{ route('sendMail') }}" method="POST" class="bg-white w-100 filter v3 listing-filter">
+                    @csrf
+                    @if (Session::has('Email_errors'))
+                        <p class="alert alert-danger">{{ Session::get('Email_errors') }}</p>
+                    @endif
+                    @if (Session::has('Email_success'))
+                        <p class="alert alert-success">{{ Session::get('Email_success') }}</p>
+                        @endif <div class="form-control-wrap">
                             <div id="message" class="alert alert-danger alert-dismissible fade d-none"></div>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="fname" name="Mail_Name" placeholder="Name*">
@@ -172,8 +177,8 @@
                                     <span class="lnr lnr-envelope mr-2"></span>Send Email</button>
                             </div>
                         </div>
-                    </form>
-                </div>
+                </form>
+            </div>
         </div>
     </div>
     <!--Contact section ends-->
@@ -303,7 +308,8 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form action="{{ route('password.reset') }}" enctype="application/x-www-form-urlencoded" id="reset_password" method="POST">
+                                    <form action="{{ route('password.reset') }}"
+                                        enctype="application/x-www-form-urlencoded" id="reset_password" method="POST">
                                         @csrf
                                         <div class="login-form-header p-1">
                                             <h2 class="mb-2">Forgot Password</h2>
