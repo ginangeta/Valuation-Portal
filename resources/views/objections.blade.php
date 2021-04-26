@@ -125,8 +125,8 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <h5 class="mb-0"><strong>Objector Details</strong></h5>
-                                                <p class="mb-2 mt-0">Enter the form below. Fields with <strong
-                                                        class="text-danger">(*)</strong> are required.</p>
+                                                <p class="mb-2 mt-0">Fill in the fields below with the appropriate
+                                                    information</p>
                                                 <hr class="mt-0 pt-0">
                                             </div>
 
@@ -151,9 +151,7 @@
 
                                             <div class="col-lg-12 col-sm-12 ratable-owner">
                                                 <div class="form-group">
-                                                    <label class="mb-0"><strong>Objector</strong><strong
-                                                            class="text-danger">
-                                                            *</strong></label>
+                                                    <label class="mb-0"><strong>Objector</strong></label>
                                                     <input type="text" name="fullname"
                                                         class="form-control filter-input mt-0"
                                                         placeholder="Enter your name in full" required>
@@ -162,9 +160,7 @@
 
                                             <div class="col-lg-6 col-sm-12 non-ratable-owner d-none">
                                                 <div class="form-group">
-                                                    <label class="mb-0"><strong>Relation</strong><strong
-                                                            class="text-danger">
-                                                            *</strong></label>
+                                                    <label class="mb-0"><strong>Relation</strong></label>
                                                     <input type="text" name="relation"
                                                         class="form-control filter-input mt-0"
                                                         placeholder="Enter relation to ratable owner">
@@ -173,8 +169,7 @@
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="mb-0"><strong>Address</strong><strong class="text-danger">
-                                                            *</strong></label>
+                                                    <label class="mb-0"><strong>Address</strong></label>
                                                     <input type="text" name="address" class="form-control filter-input mt-0"
                                                         placeholder="Address of your current address" required>
                                                 </div>
@@ -182,8 +177,7 @@
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="mb-0"><strong>Phone number</strong><strong
-                                                            class="text-danger"> *</strong></label>
+                                                    <label class="mb-0"><strong>Phone number</strong></label>
                                                     <input type="text" name="phone" class="form-control filter-input mt-0"
                                                         placeholder="Enter your phone number" required>
                                                 </div>
@@ -191,8 +185,7 @@
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="mb-0"><strong>Postal address</strong><strong
-                                                            class="text-danger"> *</strong></label>
+                                                    <label class="mb-0"><strong>Postal address</strong></label>
                                                     <input type="text" name="postal_address"
                                                         class="form-control filter-input mt-0"
                                                         placeholder="Enter your postal address" required>
@@ -200,8 +193,7 @@
                                             </div>
 
                                             <div class="col-md-6">
-                                                <label class="mb-0"><strong>Select town</strong><strong class="text-danger">
-                                                        *</strong></label>
+                                                <label class="mb-0"><strong>Select town</strong></label>
                                                 <select name="town_id" id="" name="town_id"
                                                     title="Please select your postal city"
                                                     class="form-control custom-select city" placeholder="Country" required>
@@ -229,8 +221,6 @@
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <h5 class="mb-0"><strong>Reasons For Objecting</strong></h5>
-                                                        <p class="mb-2 mt-0">After entering a reason please select which
-                                                            properties the objections apply to.</p>
                                                         <hr class="mt-0 pt-0">
                                                     </div>
 
@@ -241,10 +231,7 @@
                                                                 <div class="row Seen">
                                                                     <div class="col-12">
                                                                         <label class="mb-0"><strong>Reason for
-                                                                                rejecting</strong><strong
-                                                                                class="text-danger">
-                                                                                *</strong></label>
-
+                                                                                objecting</strong></label>
                                                                         <ul
                                                                             class="list-group property-list list-group-horizontal-sm-down">
                                                                             @foreach ($objectingList as $objectingItem)
@@ -252,7 +239,7 @@
                                                                                     <input type="checkbox"
                                                                                         id="LR-{{ $objectingItem }}"
                                                                                         value="{{ $objectingItem }}"
-                                                                                        name="properties[]">
+                                                                                        name="properties[]" checked>
                                                                                     <label
                                                                                         for="LR-{{ $objectingItem }}">{{ $objectingItem }}</label>
                                                                                 </li>
@@ -263,7 +250,7 @@
                                                                             <textarea type="text" name="reasons[]"
                                                                                 class="form-control filter-input mb-0 mt-1"
                                                                                 rows="4" cols="50"
-                                                                                placeholder="Enter your reason for rejecting the USV"
+                                                                                placeholder="Enter your reason for objecting the USV"
                                                                                 required> </textarea>
                                                                         </div>
                                                                     </div>
@@ -274,7 +261,7 @@
                                                                         <div class="form-group">
                                                                             <textarea type="text" rows="4" cols="50"
                                                                                 class="form-control filter-input mb-0 mt-0"
-                                                                                placeholder="Enter your reason for rejecting the USV"></textarea>
+                                                                                placeholder="Enter your reason for objecting the USV"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -327,18 +314,39 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <h5 class="mb-0"><strong>Objection Summary</strong></h5>
-                                                <p class="mb-2 mt-0">Please fill in the inputs below with the objector's
-                                                    information.</p>
+                                                <p class="mb-2 mt-0">Please ensure that the below information is correct
+                                                    before submission.</p>
                                                 <hr class="mt-0 pt-0">
                                             </div>
                                             <div class="col-12">
+                                                <div class="other-information row">
+                                                    <div class="col-sm-12 col-lg-4">
+                                                        <h6><strong>Objector's Name</strong></h6>
+                                                        <p class="objector-name"></p>
+                                                        <h6><strong>Objector's Number</strong></h6>
+                                                        <p class="objector-number"></p>
+                                                    </div>
+
+                                                    <div class="col-sm-12 col-lg-4">
+                                                        <h6><strong>Objector's Physical Address</strong></h6>
+                                                        <p class="objector-address"></p>
+
+                                                        <h6><strong>Objector's Postal Address</strong></h6>
+                                                        <p class="objector-postal-address"></p>
+                                                    </div>
+
+                                                    <div class="col-sm-12 col-lg-4">
+                                                        <h6><strong>Supporting Documents</strong></h6>
+                                                        <ul class="supporting-documents"></ul>
+                                                    </div>
+                                                </div>
                                                 <div class="row objection-summary">
                                                 </div>
                                             </div>
 
                                             <div class="col-12 total-cost">
                                                 <h6 class="text-left"><strong>Total Objection Cost</strong></h6>
-                                                <h3 class="text-left text-success objection-cost">KES 1,000</h3>
+                                                <h3 class="text-left text-success objection-cost"></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -380,17 +388,45 @@
                 var postal_address = $('input[name="postal_address"]').val();
                 var phone = $('input[name="phone"]').val();
                 var town_id = $('select[name="town_id"]').val();
+                var town_name = $('.filter-option-inner-inner').text();
                 var reasons = $('textarea[name="reasons[]"]');
                 var properties = $('input[name="properties[]"]');
                 var files = $('input[name="files"]');
                 var objectioncost = 0;
                 var objectionnumber = 0;
 
+                $('.objector-name').text(fullname);
+                $('.objector-number').text(phone);
+                $('.objector-address').text(address);
+                $('.objector-postal-address').text(postal_address + '-' + town_name);
+                
+                if (files !== null) {
+                    console.log(files);
+                    
+                    $(files).each(function(index, value) {
+                        alert('Here');
+
+                        var list = $('.supporting-documents');
+                        var file = $(this).val();
+                        var fullPath = $(this).val();
+                        
+                        var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') :
+                            fullPath.lastIndexOf('/'));
+                        var filename = fullPath.substring(startIndex);
+                        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                            filename = filename.substring(1);
+                        }
+
+                        list.append('<li class="mb-0">' + filename + '</li>');
+
+                    });
+                }
+
                 $(properties).each(function(index, value) {
                     if ($(this).is(':checked')) {
                         var property_no = $(this).siblings('label').text()
                         var row = $('<div class="col-sm-12 col-lg-6"></div>');
-                        row.append('<h6><strong>L.R.No</strong></h6>');
+                        row.append('<h6><strong>Land Reference No.</strong></h6>');
                         row.append('<p class="mb-0">' + property_no + '</p>');
                         row.append('<h6><strong>Objection Reasons</strong></h6>');
                         row.append('<ul>');

@@ -124,7 +124,7 @@ h4,
 h5,
 h6 {
     color: #222222;
-    font-family: "Poppins", sans-serif;
+    font-family: inherit;
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 15px;
@@ -979,6 +979,7 @@ ul.list-inline li {
 
 .section-title.v2 {
     text-align: left;
+    margin-bottom: 80px;
 }
 
 .section-title.v3 p,
@@ -5118,7 +5119,11 @@ input[type="text"]:focus {
 
 .footer-wrapper {
     position: relative;
-    padding-top: 50px;
+    padding-top: 20px;
+}
+
+.font-16 {
+    font-size: 16px !important;
 }
 
 .footer-wrapper.v1 {
@@ -5184,7 +5189,7 @@ input[type="text"]:focus {
 }
 
 .footer-bottom-area {
-    padding:  0;
+    padding: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     background-color: #e1e2e3;
 }
@@ -12151,7 +12156,7 @@ span.infobox_rate {
     background-color: #5997ff !important ;
 }
 .navbar-brand img {
-    height: 60px;
+    height: 55px;
 }
 .usv-btns {
     display: flex;
@@ -12314,7 +12319,7 @@ span.infobox_rate {
     border-top: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb;
     padding: 12px 20px;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
 .form-header div {
     display: flex;

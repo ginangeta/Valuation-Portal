@@ -261,7 +261,7 @@
         <div class="footer-top-area">
             <div class="container">
                 <div class="row nav-folderized">
-                    <div class="col-lg-4 col-md-12">
+                    <div class="col-lg-4 col-md-12 text-center">
                         <div class="footer-content nav">
                             <h2 class="title">Contact Information</h2>
                             <ul class="list footer-list">
@@ -270,15 +270,9 @@
                                         <div class="icon">
                                             <i class="fas fa-envelope"></i>
                                         </div>
-                                        <div class="text"><a href="#">info@nairobi.go.ke</a></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="contact-info mb-0">
-                                        <div class="icon">
-                                            <i class="fas fa-phone-alt"></i>
+                                        <div class="text"><a
+                                                href="mailto:valuation@nairobi.go.ke">valuation@nairobi.go.ke.</a>
                                         </div>
-                                        <div class="text">+254 725 624 489 /+254 738 041 292</div>
                                     </div>
                                 </li>
                                 <li>
@@ -289,29 +283,37 @@
                                         <div class="text"> Nairobi City Hall, Nairobi, Kenya</div>
                                     </div>
                                 </li>
+                                <li>
+                                    <div class="contact-info mb-0">
+                                        <div class="icon">
+                                            <i class="fas fa-phone-alt"></i>
+                                        </div>
+                                        <div class="text">+254 725 624 489 /+254 738 041 292</div>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12 text-center sm-left">
+                    <div class="col-lg-4 col-md-12 sm-left text-center">
                         <div class="footer-content nav">
                             <h2 class="title">Popular Searches</h2>
                             <ul class="list res-list">
                                 <li><a class="link-hov style2" href="https://epayments.nairobi.go.ke/" target="new">
                                         NCCG ePayments Portal</a></li>
-                                <li><a class="link-hov style2" href="https://nairobi.go.ke/" target="new">Nairobi City
-                                        County Official Website</a></li>
                                 <li><a class="link-hov style2 text-capitalize"
                                         href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj_-qqbpfTvAhXbSBUIHaHqCGcQFjAAegQIBBAD&url=http%3A%2F%2Fkenyalaw.org%2Fkl%2Ffileadmin%2Fpdfdownloads%2FActs%2FValuationforRatingAct_Cap266.pdf&usg=AOvVaw0VSBWjYlBczUS1KsESZEoa"
                                         target="new">The Land Valuation For Rating Act</a></li>
+                                <li><a class="link-hov style2" href="https://nairobi.go.ke/" target="new">Nairobi City
+                                        County Official Website</a></li>
 
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="footer-content">
-                            <div class="footer-social-wrap mt-20 d-flex align-content-center flex-column">
-                                <h2 class="title text-center">Follow us on</h2>
-                                <ul class="social-buttons style2 text-center">
+                    <div class="col-lg-4 col-md-12 text-center">
+                        <div class="footer-content nav">
+                            <div class="footer-social-wrap">
+                                <h2 class="title">Follow us on</h2>
+                                <ul class="social-buttons style2">
                                     <li><a href="https://www.facebook.com/NRBCounty047" target="new"><i
                                                 class="fab fa-facebook-f"></i></a></li>
                                     <li><a href="https://twitter.com/nairobicitygov?lang=en" target="new"><i
@@ -322,10 +324,7 @@
                             </div>
                         </div>
                     </div>
-                   
 
-                    <div class="col-12">
-                    </div>
                 </div>
             </div>
         </div>
@@ -335,10 +334,12 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="footer-logo">
                             <div class="footer-content">
-                                <a class="navbar-brand mb-0"
-                                    href="{{ route('home') }}"><img src="images/logo-white.png" alt="logo"
-                                        class="img-fluid"></a>
-                                <h5 class="text-black text-nowrap mb-0">Nairobi City County Government</h5>
+                                <a class="navbar-brand mb-0" href="{{ route('home') }}"><img
+                                        src="images/logo-white.png" alt="logo" class="img-fluid"></a>
+                                <div class="">
+                                    <h5 class="text-black text-nowrap mb-0 font-16">Nairobi City County Government</h5>
+                                    <small>&copy; Copyright 2021</small>
+                                </div>
 
                             </div>
                         </div>

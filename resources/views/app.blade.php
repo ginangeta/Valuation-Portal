@@ -105,7 +105,7 @@
     <!--Hero section ends-->
 
     <!--stake holders-->
-    <div class="partner-section style1 bg-cb pb-90 pt-90 ">
+    <div class="partner-section style1 bg-cb pb-50 pt-50 ">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
