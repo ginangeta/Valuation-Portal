@@ -81,13 +81,16 @@
                                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu--block">
                                                         <div class="listview listview--hover acc-options">
 
-                                                            <a href="#" class="listview__item" style="padding-left: 1rem;">
+                                                            <a href="#" class="listview__item"
+                                                                style="padding-left: 1rem;">
                                                                 <div class="avatar-char mr-2">
                                                                     {{ Session::get('user')->name[0] }}</div>
 
                                                                 <div class="listview__content">
-                                                                    <div class="listview__heading">{{ Session::get('user')->name }}</div>
-                                                                    <p class="mt-0 pr-0">{{ Session::get('user')->username }}</p>
+                                                                    <div class="listview__heading">
+                                                                        {{ Session::get('user')->name }}</div>
+                                                                    <p class="mt-0 pr-0">
+                                                                        {{ Session::get('user')->username }}</p>
                                                                 </div>
                                                             </a>
                                                             <hr>
@@ -259,25 +262,9 @@
             <div class="container">
                 <div class="row nav-folderized">
                     <div class="col-lg-4 col-md-12">
-                        <div class="footer-logo">
-                            <div class="d-flex">
-                                <a class="navbar-brand mr-3 mb-0" href="{{ route('home') }}"><img
-                                        src="images/logo-white.png" alt="logo" class="img-fluid"></a>
-                                <div class="logo-text mt-2">
-                                    <h4 class="text-black m-0 p-0 text-nowrap">NCCG Draft Valuation Roll</h4>
-                                    <p class="text-black text-nowrap">Nairobi City County Government</p>
-                                </div>
-                            </div>
-
+                        <div class="footer-content nav">
+                            <h2 class="title">Contact Information</h2>
                             <ul class="list footer-list">
-                                <li>
-                                    <div class="contact-info mb-0">
-                                        <div class="icon">
-                                            <i class="fa fa-map-marker-alt"></i>
-                                        </div>
-                                        <div class="text"> Nairobi City Hall, City Hall Way, Nairobi, Kenya</div>
-                                    </div>
-                                </li>
                                 <li>
                                     <div class="contact-info mb-0">
                                         <div class="icon">
@@ -294,6 +281,14 @@
                                         <div class="text">+254 725 624 489 /+254 738 041 292</div>
                                     </div>
                                 </li>
+                                <li>
+                                    <div class="contact-info mb-0">
+                                        <div class="icon">
+                                            <i class="fa fa-map-marker-alt"></i>
+                                        </div>
+                                        <div class="text"> Nairobi City Hall, Nairobi, Kenya</div>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -301,22 +296,22 @@
                         <div class="footer-content nav">
                             <h2 class="title">Popular Searches</h2>
                             <ul class="list res-list">
-                                <li><a class="link-hov style2" href="https://nairobi.go.ke/" target="new">Nairobi county
-                                        website</a></li>
                                 <li><a class="link-hov style2" href="https://epayments.nairobi.go.ke/" target="new">
                                         NCCG ePayments Portal</a></li>
-                                <li><a class="link-hov style2"
+                                <li><a class="link-hov style2" href="https://nairobi.go.ke/" target="new">Nairobi City
+                                        County Official Website</a></li>
+                                <li><a class="link-hov style2 text-capitalize"
                                         href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj_-qqbpfTvAhXbSBUIHaHqCGcQFjAAegQIBBAD&url=http%3A%2F%2Fkenyalaw.org%2Fkl%2Ffileadmin%2Fpdfdownloads%2FActs%2FValuationforRatingAct_Cap266.pdf&usg=AOvVaw0VSBWjYlBczUS1KsESZEoa"
-                                        target="new">The Land Valuation Act</a></li>
+                                        target="new">The Land Valuation For Rating Act</a></li>
 
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="footer-content">
-                            <div class="footer-social-wrap mt-20 d-flex justify-content-center flex-column">
-                                <h2 class="title">Follow us on</h2>
-                                <ul class="social-buttons style2">
+                            <div class="footer-social-wrap mt-20 d-flex align-content-center flex-column">
+                                <h2 class="title text-center">Follow us on</h2>
+                                <ul class="social-buttons style2 text-center">
                                     <li><a href="https://www.facebook.com/NRBCounty047" target="new"><i
                                                 class="fab fa-facebook-f"></i></a></li>
                                     <li><a href="https://twitter.com/nairobicitygov?lang=en" target="new"><i
@@ -327,6 +322,7 @@
                             </div>
                         </div>
                     </div>
+                   
 
                     <div class="col-12">
                     </div>
@@ -336,8 +332,16 @@
         <div class="footer-bottom-area">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-8 offset-md-2">
-                        <p>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="footer-logo">
+                            <div class="footer-content">
+                                <a class="navbar-brand mb-0"
+                                    href="{{ route('home') }}"><img src="images/logo-white.png" alt="logo"
+                                        class="img-fluid"></a>
+                                <h5 class="text-black text-nowrap mb-0">Nairobi City County Government</h5>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

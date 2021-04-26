@@ -206,9 +206,9 @@
                             <div class="">
                                 <div class="form-group">
                                     <h3 class="site-heading text-black mb-0">Search For Property</h3>
-                                    <p class="mb-2 mt-0">Fill in the input below to search for a particular
-                                        property. Once obtained, one can search for yet another property which will allow
-                                        multiple property objection.</p>
+                                    <p class="mb-0 mt-0">Enter property details as provided below</p>
+                                        <small class="multiple-suggestion d-none mb-2">Once obtained, one can search for yet another property which will allow
+                                        multiple property objection</small>
                                     <div class="input-group mb-3">
                                         <input type="text" id="searchcriteria" name="searchcriteria"
                                             class="form-control filter-input mt-0"
@@ -232,12 +232,12 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-lg-5">
-                                            <div class="row d-flex justify-content-end">
-                                                <span class="zmdi zmdi-print text-success"> To print property
-                                                    USV</span> &nbsp; &nbsp;
-                                                <span class="zmdi zmdi-alert-triangle text-warning"> For single
+                                            <div class="row d-flex flex-column align-content-end">
+                                                <span class="zmdi zmdi-print text-success mb-1"> To print property
+                                                    USV</span>
+                                                <span class="zmdi zmdi-alert-triangle text-warning mb-1"> For single
                                                     property
-                                                    objection</span> &nbsp; &nbsp;
+                                                    objection</span> 
                                                 <span class="zmdi zmdi-delete text-danger"> To delete item from the
                                                     objection table</span>
                                             </div>
@@ -353,7 +353,8 @@
                                 var secondTd = firstTd.next();
 
                                 if (firstTd.text() == term) {
-                                    alert("Error: You're trying to add the same entry");
+                                    swal('Error!', "You're trying to add an entry that already exists in the table", 'error');
+
                                 } else {
                                     //first approach to add data (not flexible)
                                     // rn.append('<td>' + item_num + '</td>');
@@ -386,6 +387,7 @@
                                     $('#data-table tbody').append(rn);
                                     $('.property-heading').removeClass('d-none');
                                     $('.alert').addClass('d-none');
+                                    $('.multiple-suggestion').removeClass('d-none');
                                 }
 
                                 $('.btn-remove-property').on('click', function(e) {

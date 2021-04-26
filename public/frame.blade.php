@@ -45,8 +45,8 @@
                         <div class="row align-items-center">
                             <div
                                 class="col-lg-5 col-md-6 col-9 order-2 order-xl-4 order-lg-1 order-md-1 d-flex align-items-center h-100">
-                                <a class="navbar-brand mr-3 mb-0" href="{{route('home')}}"><img src="images/logo-white.png"
-                                        alt="logo" class="img-fluid"></a>
+                                <a class="navbar-brand mr-3 mb-0" href="{{ route('home') }}"><img
+                                        src="images/logo-white.png" alt="logo" class="img-fluid"></a>
                                 <div class="logo-text">
                                     <h4 class="text-white m-0 p-0 text-nowrap">NCCG - Online Valuation Roll Inspection
                                     </h4>
@@ -220,8 +220,8 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="footer-logo">
                             <div class="d-flex">
-                                <a class="navbar-brand mr-3 mb-0" href="{{route('home')}}"><img src="images/logo-white.png"
-                                        alt="logo" class="img-fluid"></a>
+                                <a class="navbar-brand mr-3 mb-0" href="{{ route('home') }}"><img
+                                        src="images/logo-white.png" alt="logo" class="img-fluid"></a>
                                 <div class="logo-text mt-2">
                                     <h4 class="text-black m-0 p-0 text-nowrap">NCCG Draft Valuation Roll</h4>
                                     <p class="text-black text-nowrap">Nairobi City County Government</p>
@@ -242,7 +242,9 @@
                                         <div class="icon">
                                             <i class="fas fa-envelope"></i>
                                         </div>
-                                        <div class="text"><a href="#">info@nairobi.go.ke</a></div>
+                                        <div class="text"><a
+                                                href="mailto:valuation@nairobi.go.ke">valuation@nairobi.go.ke.</a>
+                                        </div>
                                     </div>
                                 </li>
                                 <li>
@@ -260,13 +262,12 @@
                         <div class="footer-content nav">
                             <h2 class="title">Popular Searches</h2>
                             <ul class="list res-list">
-                                <li><a class="link-hov style2" href="https://nairobi.go.ke/" target="new">Nairobi county
-                                        website</a></li>
+                                <li><a class="link-hov style2" href="https://nairobi.go.ke/" target="new">Nairobi City Council Official Website</a></li>
                                 <li><a class="link-hov style2" href="https://epayments.nairobi.go.ke/" target="new">
                                         NCCG ePayments Portal</a></li>
-                                <li><a class="link-hov style2"
+                                <li><a class="link-hov style2 text-capitalize"
                                         href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj_-qqbpfTvAhXbSBUIHaHqCGcQFjAAegQIBBAD&url=http%3A%2F%2Fkenyalaw.org%2Fkl%2Ffileadmin%2Fpdfdownloads%2FActs%2FValuationforRatingAct_Cap266.pdf&usg=AOvVaw0VSBWjYlBczUS1KsESZEoa"
-                                        target="new">The Land Valuation Act</a></li>
+                                        target="new">The Land VALUATION FOR RATING ACT</a></li>
 
                             </ul>
                         </div>
