@@ -163,12 +163,12 @@ class AuthController extends Controller
 
         if(is_null($created))
         {
-            return redirect()->view('change-password')->with('errors', 'An error occured.');
+            return redirect()->route('changePasswordPage')->with('errors', 'An error occured.');
         }
 
         if(!$created->success)
         {
-            return redirect()->route('home')->with('errors', $created->msg);
+            return redirect()->route('changePasswordPage')->with('errors', $created->msg);
         }
 
         // dd($created);
@@ -209,7 +209,43 @@ class AuthController extends Controller
 
         // dd($created);
 
-        return view('change-password')->with('success', $created->msg);
+        return redirect()->route('changePasswordPage')->with('success', $created->msg);
+
+
+    }
+
+    public function userPassReset()
+    {
+        // dd($request->all());
+        $url = config('global.url').'user/forgot_password/';
+        // dd($url);
+
+        $data = [
+            'email' => Session::get('user')->username,
+        ];
+
+        // dd($data);
+
+        $response = Http::post($url,$data);
+        // dd($response);
+
+        $created = json_decode($response->body());
+
+        // dd($created);
+
+        if(is_null($created))
+        {
+            return redirect()->back()->with('errors', 'An error occured.');
+        }
+
+        if(!$created->success)
+        {
+            return redirect()->back()->with('errors', $created->msg);
+        }
+
+        // dd($created);
+
+        return redirect()->route('changePasswordPage')->with('success', 'Please check your registered email for a unique password.');
 
 
     }

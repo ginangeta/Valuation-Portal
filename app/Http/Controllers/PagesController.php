@@ -25,6 +25,10 @@ class PagesController extends Controller
         // return view('objections', compact('LrNumber'));
         return view('objections')->with($LrNumbers);
     }
+
+    public function changePasswordPage(){
+        return view('change-password');
+    }
     public function receipt(){
         return view('receipt');
     }

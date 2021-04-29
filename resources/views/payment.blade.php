@@ -91,7 +91,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-lg-12 construction-form">
-                        <h2 class="site-heading text-black mb-5">Payment <strong>Form</strong></h2>
                         <div class="p-5 bg-white permit-form">
                             @csrf
                             @if (Session::has('success'))
@@ -106,7 +105,7 @@
                             <div class="form-header">
                                 <div class="active">
                                     <span class="flaticon-cellphone"></span>
-                                    <h4>Checkout</h4>
+                                    <h4>Payment Form</h4>
                                 </div>
                             </div>
 
@@ -143,7 +142,7 @@
                                                             class="form-control filter-input mt-0" id="phone-wallet"
                                                             placeholder="Enter mobile money number">
 
-                                                        <button class="btn btn-primary btn-payment" type="button"
+                                                        <button class="btn btn-primary btn-payment mt-2 px-4" type="button"
                                                             id="button-addon2">Pay</button>
                                                     </div>
 
@@ -187,6 +186,7 @@
     </div>
     <!--Blog section ends-->
 @endsection
+
 
 @section('scripts')
 
@@ -307,7 +307,17 @@
                             setTimeout(function() {
                                 getReceipt(reference);
                             }, 5000);
+                        }else if($('#mpesa-modal').is(':visible')){
+                            swal('Error!', 'Payment Cancelled Visible', 'error');
+                            return;
                         }
+
+                        $("#mpesa-modal").on("hidden.bs.modal", function() {
+                            swal('Error!', 'Payment Cancelled', 'error');
+                            return;
+                        });
+
+                        return;
 
                     }
                 });

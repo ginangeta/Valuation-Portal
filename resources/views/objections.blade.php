@@ -345,6 +345,11 @@
                                             </div>
 
                                             <div class="col-12 total-cost">
+                                                <p><strong class="text-danger">* </strong> The Valuation for Rating Act, Cap
+                                                    266
+                                                    (section 10 (1)) prescribes a charge of KES 500 for each objection to
+                                                    the draft
+                                                    valuation roll.</p>
                                                 <h6 class="text-left"><strong>Total Objection Cost</strong></h6>
                                                 <h3 class="text-left text-success objection-cost"></h3>
                                             </div>
@@ -391,35 +396,26 @@
                 var town_name = $('.filter-option-inner-inner').text();
                 var reasons = $('textarea[name="reasons[]"]');
                 var properties = $('input[name="properties[]"]');
-                var files = $('input[name="files"]');
+                var files = $('input[name="files[]"]');
                 var objectioncost = 0;
                 var objectionnumber = 0;
+                var list = $('.supporting-documents');
 
                 $('.objector-name').text(fullname);
                 $('.objector-number').text(phone);
                 $('.objector-address').text(address);
-                $('.objector-postal-address').text(postal_address + '-' + town_name);
-                
+                $('.objector-postal-address').text(postal_address + ' - ' + town_name);
+
                 if (files !== null) {
                     console.log(files);
-                    
-                    $(files).each(function(index, value) {
-                        alert('Here');
+                    var filesCount = $(files)[0].files;
+                    console.log(filesCount);
+                    for (var i = 0; i < filesCount.length; i++) {
+                        console.log(filesCount[i].name);
 
-                        var list = $('.supporting-documents');
-                        var file = $(this).val();
-                        var fullPath = $(this).val();
-                        
-                        var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') :
-                            fullPath.lastIndexOf('/'));
-                        var filename = fullPath.substring(startIndex);
-                        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
-                            filename = filename.substring(1);
-                        }
+                        list.append('<li class="mb-0">' + filesCount[i].name + '</li>');
+                    }
 
-                        list.append('<li class="mb-0">' + filename + '</li>');
-
-                    });
                 }
 
                 $(properties).each(function(index, value) {
@@ -458,6 +454,8 @@
             // alert('Gina');
             $('.objection-summary').html('');
             $('.objection-cost').text('');
+            $('.supporting-documents').html('');
+
 
         });
 

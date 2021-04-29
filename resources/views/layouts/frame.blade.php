@@ -93,12 +93,11 @@
                                                                         {{ Session::get('user')->username }}</p>
                                                                 </div>
                                                             </a>
-                                                            <hr>
-                                                            <div class="listview__item d-none">
+                                                            <hr class="mb-0 mt-0">
+                                                            <div class="listview__item">
                                                                 <div class="listview__content">
                                                                     <div class="listview__heading">
-                                                                        <a><i class="ti-unlock"></i><span>Client
-                                                                                Objections</span></a>
+                                                                        <a href="{{route('userPassReset')}}"><i class="ti-unlock"></i><span>Reset Password</span></a>
                                                                     </div>
                                                                 </div>
                                                             </div>

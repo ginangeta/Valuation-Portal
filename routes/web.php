@@ -30,7 +30,11 @@ Route::post('registration', 'AuthController@registration')->name('registration')
 Route::post('password-request', 'AuthController@requestPassword')->name('password.request');
 Route::post('change-password', 'AuthController@changePassword')->name('password.change');
 Route::post('password-reset', 'AuthController@resetPassword')->name('password.reset');
+Route::get('user-pass-reset', 'AuthController@userPassReset')->name('userPassReset');
 Route::post('sendMail', 'MailController@sendMail')->name('sendMail');
+
+Route::get('changePasswordPage', 'PagesController@changePasswordPage')->name('changePasswordPage');
+
 
 Route::get('logout', 'AuthController@logout')->name('logout');
 

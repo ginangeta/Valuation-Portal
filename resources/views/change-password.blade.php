@@ -42,16 +42,15 @@
                 <div class="login-content-overlay op-1"></div>
                 <div class="d-flex flex-column login-form-container">
                     <form id="reset_form" action="{{ route('password.change') }}" method="POST"
-                    class="w-100 filter hero__form v3 listing-filter">
-                    @csrf
+                        class="w-100 filter hero__form v3 listing-filter">
+                        @csrf
                         @if (Session::has('success'))
-                            <p class="alert alert-success">
-                                {{ Session::get('success') }}</p>
+                            <p class="alert alert-success">{{ Session::get('success') }}</p>
                         @endif
                         @if (Session::has('errors'))
-                            <p class="alert alert-danger">{{ Session::get('errors') }}
-                            </p>
+                            <p class="alert alert-danger">{{ Session::get('errors') }}</p>
                         @endif
+
                         <div class="login-form-header p-1">
                             <h2 class="mb-2">Reset Password</h2>
                             <small>Fill in the information below to get access</small>

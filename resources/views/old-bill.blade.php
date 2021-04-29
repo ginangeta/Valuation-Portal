@@ -218,7 +218,7 @@
         <div style="position:absolute;left:481.89px;top:86.80px" class="cls_004"><span class="cls_004">Customer
                 Copy</span></div>
         <div style="position:absolute;left:255.12px;top:101.63px" class="cls_003"><span class="cls_003">Email:
-                info@nairobi.go.ke</span></div>
+                valuation@nairobi.go.ke</span></div>
         <div style="position:absolute;left:283.46px;top:115.80px" class="cls_003"><span class="cls_003">Emergency</span>
         </div>
         <div style="position:absolute;left:28.35px;top:126.07px" class="cls_005"><span class="cls_005">Bill No:
@@ -284,7 +284,7 @@
                 Copy</span>
         </div>
         <div style="position:absolute;left:255.12px;top:429.80px" class="cls_004"><span class="cls_004">Email:
-                info@nairobi.go.ke</span></div>
+                valuation@nairobi.go.ke</span></div>
         <div style="position:absolute;left:283.46px;top:443.97px" class="cls_004"><span class="cls_004">Emergency</span>
         </div>
         <div style="position:absolute;left:28.35px;top:454.89px" class="cls_005"><span class="cls_005">Bill No:
