@@ -142,7 +142,7 @@
                                                             class="form-control filter-input mt-0" id="phone-wallet"
                                                             placeholder="Enter mobile money number">
 
-                                                        <button class="btn btn-primary btn-payment mt-2 px-4" type="button"
+                                                        <button class="btn btn-primary btn-payment mt-2 m" type="button"
                                                             id="button-addon2">Pay</button>
                                                     </div>
 
@@ -307,15 +307,7 @@
                             setTimeout(function() {
                                 getReceipt(reference);
                             }, 5000);
-                        }else if($('#mpesa-modal').is(':visible')){
-                            swal('Error!', 'Payment Cancelled Visible', 'error');
-                            return;
                         }
-
-                        $("#mpesa-modal").on("hidden.bs.modal", function() {
-                            swal('Error!', 'Payment Cancelled', 'error');
-                            return;
-                        });
 
                         return;
 
