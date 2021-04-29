@@ -17,7 +17,7 @@
             020-344194,0725-624489,0735-825383</span><span
             style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000"> </span><br>
     </div>
-    <div style="position:absolute;top:1.16in;left:3.01in;width:1.34in;line-height:0.13in;"><a
+    <div style="position:absolute;top:1.16in;left:2.9in;line-height:0.13in;"><a
             href="mailto:valuation@nairobi.go.ke"><span
                 style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">Email:
                 valuation@nairobi.go.ke</span></a>
