@@ -87,8 +87,8 @@
     <div style="position:absolute;top:3.62in;left:0.43in;width:0.27in;line-height:0.17in;"><span
             style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Times;color:#000000">For</span><span
             style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Times;color:#000000"> </span><br></div>
-    <div style="position:absolute;top:3.6in;left:1.0in;width:0.68in;line-height:0.14in;"><span
-            style="font-style:normal;font-weight:bold;font-size:11pt;font-family:Times;color:#000000;white-space:nowrap">{{ $receipt->receipt_desc }}
+    <div style="position:absolute;top:3.6in;left:0.8in;width:0.68in;line-height:0.14in;"><span
+            style="font-style:normal;font-weight:bold;font-size:9pt;font-family:Times;color:#000000;white-space:nowrap">{{ $receipt->receipt_desc }}
         </span><span style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Times;color:#000000">
         </span><br></div>
     <img style="position:absolute;top:3.73in;left:0.73in;width:5.29in;height:0.01in" src="receipt/vi_7.png">

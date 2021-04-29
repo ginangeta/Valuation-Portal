@@ -308,7 +308,6 @@
                                 getReceipt(reference);
                             }, 5000);
                         }
-
                         return;
 
                     }
