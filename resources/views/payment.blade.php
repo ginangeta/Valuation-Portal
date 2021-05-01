@@ -64,6 +64,40 @@
     </div>
     <!-- Modal -->
 
+    <!-- reverse_payment_warning modal -->
+    <div class="modal fade" id="objection-confirmation" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-light text-white py-3">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Make Objection to USV for LR: 20856/19</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">
+                            <i class="lnr lnr-cross"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4>5 Objections reasons by <strong>Objector's Name</strong></h4>
+                    <div class="warning-container">
+                        <img src="img/alarm.svg">
+                        <p class="font-16">
+                            Are you sure you want to objection this USV?
+                            Notice, once submission the only way to change this objections is through a physical
+                            visitation to the county offices.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-outline-dark" data-dismiss="modal">No, Dont
+                        object</button>
+                    <button type="button" class="btn  btn-danger btn--icon-text text-white" data-dismiss="modal"> <i
+                            class="ti-trash mr-3"></i>Yes, I want to object it</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- reverse_payment_warning modal -->
+
     <!--Breadcrumb section starts-->
     <div class="breadcrumb-section bg-h"
         style="background-image: url({{ asset('images/breadcrumb/breadcrumb_1.jpg') }}); height: 280px;">

@@ -346,10 +346,8 @@
 
                                             <div class="col-12 total-cost">
                                                 <p><strong class="text-danger">* </strong> The Valuation for Rating Act, Cap
-                                                    266
-                                                    (section 10 (1)) prescribes a charge of KES 500 for each objection to
-                                                    the draft
-                                                    valuation roll.</p>
+                                                    266 (section 10) prescribes a charge of KES 500 for each objection to
+                                                    the draft valuation roll.</p>
                                                 <h6 class="text-left"><strong>Total Objection Cost</strong></h6>
                                                 <h3 class="text-left text-success objection-cost"></h3>
                                             </div>

@@ -202,14 +202,15 @@
                         style="padding: 0.2in; margin-bottom: 0.05in; padding-bottom:1.5in; width: 7.9in; height: auto;">
                         <p
                             style="font-size: 15px; text-align: left; color:black; text-transform: capitalize; font-weight: 500;">
-                            The ratable owner is required within 28 days to raise an objection
-                            from the date of the publication of the notice.
+                            Ratable owners may submit any objections within 28 days from the date of the publication of
+                            the public notice dated <span class="home-date"></span> in the local daily and the Kenya
+                            gazette.
                         </p>
                         <p
                             style="font-size: 15px; text-align: left; color:black; text-transform: capitalize; font-weight: 500;">
-                            An objection can be lodged online through the Draft Valuation
-                            Inspection Portal (valuation.nairobi.go.ke) OR at the Valuation
-                            Department Office, 4th Floor, City Hall.
+                            An Objection Can Be Lodged Online Through The Online 2019 Draft Valuation Roll Inspection/
+                            Objection Platform (Valuation.nairobi.go.ke) OR At The Nairobi City County Government
+                            Office, City Hall.
                         </p>
                     </div>
                 </div>
@@ -230,6 +231,7 @@
         <script src="{{ asset('vendors/moment/moment.min.js') }}"></script>
         <script>
             $('#today').html("DATE: " + (moment().format('DD/MM/YYYY')));
+            $('.home-date').html((moment().format('DD/MM/YYYY')));
 
         </script>
 

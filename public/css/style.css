@@ -2404,7 +2404,7 @@ ul.hero_list li:last-child {
 
 .header-text.v2 span {
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -2417,7 +2417,7 @@ ul.hero_list li:last-child {
 
 .header-text.v1 h1,
 .header-text.v2 h1 {
-    font-size: 48px;
+    font-size: 38px;
     color: #fff;
     line-height: 1.2;
     text-transform: capitalize;
@@ -14013,7 +14013,7 @@ label {
 
     .header-text.v1 h1,
     .header-text.v2 h1 {
-        font-size: 42px;
+        font-size: 32px;
     }
 
     .pl-xs-0 {
@@ -14774,7 +14774,7 @@ label {
 
     .header-text.v1 h1,
     .header-text.v2 h1 {
-        font-size: 40px;
+        font-size: 30px;
     }
 
     .header-text.v2 span {

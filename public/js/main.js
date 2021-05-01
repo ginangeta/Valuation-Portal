@@ -959,6 +959,9 @@
         $('.mapPlace').children('.map-container').eq(theIndex).removeClass('d-none').siblings().addClass('d-none');
     }
 
+    var today = moment().format('DD/MM/YYYY');
+    $('.home-date').text(today);
+
     // date range picker manenos
     // $(function () {
 

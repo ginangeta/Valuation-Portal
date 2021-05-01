@@ -26,7 +26,7 @@
 
 
     <!-- Document Title -->
-    <title>NCCG - Online Valuation Roll Inspection</title>
+    <title>NCCG – Online 2019 Draft Valuation Roll Inspection/ Objection Platform</title>
 </head>
 
 <body>
@@ -45,16 +45,16 @@
                     <div class="site-navbar">
                         <div class="row align-items-center">
                             <div
-                                class="col-lg-5 col-md-11 col-9 order-2 order-xl-4 order-lg-1 order-md-1 d-flex align-items-center h-100">
+                                class="col-lg-6 col-md-11 col-9 order-2 order-xl-4 order-lg-1 order-md-1 d-flex align-items-center h-100">
                                 <a class="navbar-brand mr-3 mb-0" href="{{ route('home') }}"><img
                                         src="images/logo-white.png" alt="logo" class="img-fluid"></a>
                                 <div class="logo-text">
-                                    <h4 class="text-white m-0 p-0 text-nowrap">NCCG - Online Valuation Roll Inspection
+                                    <h4 class="text-white m-0 p-0 text-nowrap" style="font-size: 14px;">NCCG – Online 2019 Draft Valuation Roll Inspection/ Objection Platform
                                     </h4>
                                     <p class="text-white text-nowrap">Nairobi City County</p>
                                 </div>
                             </div>
-                            <div class="col-lg-7 col-md-1 col-3  order-3 order-xl-8 order-lg-2 order-md-3 pl-xs-0">
+                            <div class="col-lg-6 col-md-1 col-3  order-3 order-xl-8 order-lg-2 order-md-3 pl-xs-0">
                                 <nav class="site-navigation text-right">
                                     <div class="container">
                                         <ul class="site-menu js-clone-nav d-none d-lg-block">

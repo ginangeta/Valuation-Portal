@@ -11,29 +11,27 @@
                         <div class="row">
                             <div class="col-xl-7 col-lg-7 col-md-12 col-12">
                                 <div class="header-text v2">
-                                    <h1>Online Inspection Of The Draft Valuation Roll</h1>
+                                    <h1>Online inspection/objection of the 2019 Draft Valuation Roll </h1>
 
-                                    <p class="mb-3">The Nairobi City County Government has updated its valuation roll and is
-                                        now inviting
-                                        all ratable property owners to inspect the roll. While the roll is available at City
-                                        Hall for inspection by the public, an online platform has been provided to allow
-                                        owners who cannot make it to City Hall to inspect it.</p>
+                                    <p class="mb-3">The Nairobi City County Government is inviting all ratable property
+                                        owners to inspect the new draft valuation roll. While the roll is available at the
+                                        county offices for inspection by the public, an online platform has been provided to
+                                        allow ratable owners to inspect the draft valuation roll.</p>
                                     <br>
 
-                                    <p class="mb-3"> As per the provisions of the Valuation for Rating Act, CAP 266 Laws of
-                                        Kenya,
-                                        ratable owners will be able to submit objections to the valuation roll, and provide
-                                        reasons for such objections. Each objection will be evaluated by the Valuations
-                                        Department of the county government on payment of KES 500 as provided in the Act.
+                                    <p class="mb-3">As per the provisions of the Valuation for Rating Act, CAP 266 Laws of
+                                        Kenya, ratable owners may submit objections to the valuation roll, and provide
+                                        reasons for such objections. Each objection will be evaluated by the Nairobi City
+                                        County Government upon payment of statutory fee of KES 500.
                                     </p>
 
                                     <br>
 
                                     <p class="mb-3">A notice has been issued by the Nairobi City County Government for
-                                        ratable owners to
-                                        inspect the valuation roll and submit their comments, queries or objections. Ratable
-                                        owners will be required to submit their objections within 28 days from the date of
-                                        the publication of the notice. </p>
+                                        ratable owners to inspect the draft valuation roll and submit their comments,
+                                        queries or objections. Ratable owners may submit any objections within 28 days from
+                                        the date of the publication of the public notice dated <span class="home-date"></span> in the local
+                                            daily and the Kenya gazette. </p>
                                     <br>
                                 </div>
                             </div>
