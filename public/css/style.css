@@ -13080,6 +13080,7 @@ label {
     justify-content: center;
     align-items: center;
 }
+
 .login-form-container {
     opacity: 1;
     z-index: 20;
@@ -13108,6 +13109,10 @@ label {
 .login-content {
     background: url("../images/header/header_11.jpg");
     background-color: white;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 .login-content-overlay {
     background-color: white;
