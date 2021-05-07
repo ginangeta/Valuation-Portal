@@ -367,15 +367,14 @@
                             return;
                         }
                         if (data != null || data != '') {
-                            confirmationModal();
-
                             setTimeout(getReceiptData, 1000);
 
                             function getReceiptData() {
                                 if (data.data == null || data.data == '' || data.data.length == 0) {
                                     getReceipt(bill_number);
                                 } else if (data.data != null || data.data != '') {
-
+                                    confirmationModal();
+                                    
                                     var results = data.data[0];
 
                                     console.log(data.data[0]);

@@ -101,6 +101,13 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="listview__item">
+                                                                <div class="listview__content">
+                                                                    <div class="listview__heading">
+                                                                        <a href="{{route('ClientBills')}}"><i class="ti-unlock"></i><span>My Bills</span></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                             <div class="listview__item d-none">
                                                                 <div class="listview__content">
                                                                     <div class="listview__heading">

@@ -61,6 +61,10 @@ Route::group(['middleware' => ['active']], function () {
 
     //Bill
     Route::get('objectionBill/{BillNo}', 'ObjectionController@objectionBill')->name('objectionBill');
+
+    //Client Bills
+    Route::get('ClientBills', 'UserController@ClientBills')->name('ClientBills');
+
     
 });
 
