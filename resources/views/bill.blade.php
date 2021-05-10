@@ -1,4 +1,4 @@
-<html>
+<html moznomarginboxes mozdisallowselectionprint>
 
 <head>
     <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
@@ -183,6 +183,12 @@
             text-decoration: none
         }
 
+        @page {
+            size: auto;
+            /* auto is the initial value */
+            margin: 0;
+            /* this affects the margin in the printer settings */
+        }
     </style>
     <script type="text/javascript"
         src="a4c840de-5e10-11ea-8b25-0cc47a792c0a_id_a4c840de-5e10-11ea-8b25-0cc47a792c0a_files/wz_jsgraphics.js">
@@ -232,8 +238,7 @@
     </style>
 </head>
 
-<body
-    style="background: white; background-repeat: no-repeat;min-height: 100vh; margin: 0px;">
+<body style="background: white; background-repeat: no-repeat;min-height: 100vh; margin: 0px;">
     <main
         style="width: 8.368in;height: auto;min-height: 11.693in; background-color: white; border-style:solid 4px; border-color: black; padding: 15px;">
         <div class="header" style="display: flex; align-items: center;">
