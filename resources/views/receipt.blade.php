@@ -164,7 +164,8 @@
             </span>
         </div>
         <div style="">
-            <img style="" src="receipt/NBk.png">
+            <img style="width: 0.64in;"
+                src="receipt/NBk.png">
         </div>
     </div>
 </body>
