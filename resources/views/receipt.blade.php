@@ -1,13 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html moznomarginboxes mozdisallowselectionprint>
-    
+
 <style type="text/css" media="print">
     @page {
-        size: auto;   /* auto is the initial value */
-        margin: 0;  /* this affects the margin in the printer settings */
+        size: auto;
+        /* auto is the initial value */
+        margin: 0;
+        /* this affects the margin in the printer settings */
     }
+
 </style>
-        
+
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
@@ -160,7 +163,9 @@
                 <strong>{{ date('d-m-Y', strtotime($receipt->receipt_date)) }}</strong>
             </span>
         </div>
-        <img style="position:absolute;top: 5.25in;left:5.15in;width: 0.64in;/* height:0.34in */" src="receipt/NBk.png">
+        <div style="">
+            <img style="" src="receipt/NBk.png">
+        </div>
     </div>
 </body>
 
