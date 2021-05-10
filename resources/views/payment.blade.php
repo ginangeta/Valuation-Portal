@@ -178,6 +178,9 @@
 
                                                         <button class="btn btn-primary btn-payment mt-2 m" type="button"
                                                             id="button-addon2">Pay</button>
+
+                                                        <button class="btn btn-info btn-payment mt-2 m d-none" type="button"
+                                                            id="print-receipt-home">Print Receipt</button>
                                                     </div>
 
                                                     <div class="mb-3 mt-3 col-12">
@@ -374,7 +377,7 @@
                                     getReceipt(bill_number);
                                 } else if (data.data != null || data.data != '') {
                                     confirmationModal();
-                                    
+
                                     var results = data.data[0];
 
                                     console.log(data.data[0]);
@@ -427,6 +430,7 @@
                     "Transaction was successful. Click the button below to download receipt."
                 );
                 $('#mpesa-modal #getReceipt').removeClass('d-none');
+                $('#print-receipt-home').removeClass('d-none');
             }
 
             event.preventDefault();
@@ -453,6 +457,15 @@
             }
         });
 
+    </script>
+
+    <script type="text/javascript">
+    function getReceipt{
+        $('#print-receipt-home').on('click', function(){
+            $('#getReceipt').get(0).submit();
+        });
+
+    }
     </script>
 
 @endsection
