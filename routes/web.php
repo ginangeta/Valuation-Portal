@@ -31,6 +31,11 @@ Route::post('password-request', 'AuthController@requestPassword')->name('passwor
 Route::post('change-password', 'AuthController@changePassword')->name('password.change');
 Route::post('password-reset', 'AuthController@resetPassword')->name('password.reset');
 Route::get('user-pass-reset', 'AuthController@userPassReset')->name('userPassReset');
+
+Route::get('otp', 'AuthController@otp')->name('otp');
+Route::post('otpLogin', 'AuthController@otpLogin')->name('otpLogin');
+Route::post('validateOTP', 'AuthController@validateOTP')->name('validateOTP');
+
 Route::post('sendMail', 'MailController@sendMail')->name('sendMail');
 
 Route::get('changePasswordPage', 'PagesController@changePasswordPage')->name('changePasswordPage');

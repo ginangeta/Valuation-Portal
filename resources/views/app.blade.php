@@ -58,7 +58,7 @@
                                         @endif
                                         <div class="login-form-header p-1">
                                             <h2 class="mb-2">Login Form</h2>
-                                            <small>Fill in the information below to get access</small>
+                                            <small> <strong class="text-danger">*</strong> Find default password on your registered email <strong class="text-danger">*</strong></small>
                                         </div>
 
                                         <div class="form-group">
@@ -197,7 +197,6 @@
                                         <button type="button" class="close modal-close" data-dismiss="modal"
                                             aria-label="Close"><span aria-hidden="true"><i
                                                     class="lnr lnr-cross"></i></span></button>
-
                                     </div>
 
                                     <div class="login-wrapper">
@@ -255,7 +254,7 @@
                                                                 </label>
                                                                 <div class="input-pass-login">
                                                                     <input name="phone" type="number" class="form-control"
-                                                                        placeholder="Enter your mobile number" required>
+                                                                        placeholder="Enter your mobile number(07********)" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">

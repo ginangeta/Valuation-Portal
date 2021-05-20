@@ -15,6 +15,11 @@ class AuthController extends Controller
         return view('app');
     }
 
+    public function otp()
+    {
+        return view('otp');
+    }
+
     public function authenticate(Request $request)
     {
         // dd($request->all());
@@ -81,7 +86,7 @@ class AuthController extends Controller
 
         $created = json_decode($response->body());
 
-        // dd($created);
+        // dd($response);
 
         if(is_null($created))
         {
@@ -95,13 +100,17 @@ class AuthController extends Controller
 
         // dd($created);
 
+        $phone = substr($request->phone, 1);
         Session::put('register', $created->data);
-        return redirect()->back()->with('success', $created->msg);
+        Session::put('userphone', '+254'.$phone);
 
+        return redirect()->route('otp', [
+            'phoneNumber' => $phone
+            ] 
+        );
         // dd(Session::all());
 
     }
-
 
     public function forgotPassword()
     {
@@ -177,7 +186,6 @@ class AuthController extends Controller
 
     }   
 
-
     public function resetPassword(Request $request)
     {
         // dd($request->all());
@@ -211,6 +219,80 @@ class AuthController extends Controller
 
         return redirect()->route('changePasswordPage')->with('success', $created->msg);
 
+
+    }
+
+    public function otpLogin()
+    {
+        // dd($request->all());
+        $url = config('global.url').'otp_login/';
+        // dd($url);
+
+        $phone = Session::get('userphone');
+
+        $data = [
+            'phone' => $phone,
+        ];
+
+        // dd($data);
+
+        $response = Http::post($url,$data);
+        // dd($response);
+
+        $created = json_decode($response->body());
+
+        // dd($created);
+
+        if(is_null($created))
+        {
+            return redirect()->back()->with('errors', 'An error occured.');
+        }
+
+        if(!$created->success)
+        {
+            return redirect()->back()->with('errors', $created->msg);
+        }
+
+        // dd($created);
+
+        return redirect()->route('otp', [
+            'phoneNumber' => $phone] );
+
+    }
+
+    public function validateOTP(Request $request)
+    {
+        // dd($request->all());
+        $url = config('global.url').'validate_otp/';
+        // dd($url);
+
+        $data = [
+            'phone' => $request->phone,
+            'otp' => $request->otp,
+        ];
+
+        // dd($data);
+
+        $response = Http::post($url,$data);
+        // dd($response);
+        $created = json_decode($response->body());
+        // dd($created);
+
+        if(is_null($created))
+        {
+            return redirect()->back()->with('errors', 'An error occured.');
+        }
+
+        if(!$created->success)
+        {
+            return redirect()->back()->with('errors', $created->msg);
+        }
+
+        // dd($created);
+        Session::put('user', $created->data->data);
+        Session::put('Usertoken', $created->data->data->token);
+
+        return redirect()->route('details');
 
     }
 
