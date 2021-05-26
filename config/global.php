@@ -19,7 +19,8 @@ return [
     // 'url' => 'http://10.12.49.121:5006/api/',
     // 'url' => 'http://10.12.49.121:86/api/',
 
-    'url' => 'https://osha.biller.co.ke:8443/api/',
+    // 'url' => 'https://osha.biller.co.ke:8443/api/',
+    'url' => 'https://valuation.nairobi.go.ke:1443/api/',
 
 
 ];

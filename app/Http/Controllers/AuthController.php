@@ -71,6 +71,7 @@ class AuthController extends Controller
     public function registration(Request $request){
         // dd($request->all());
         $url = config('global.url').'register/client/';
+        // dd($url);
 
         $data = [
             'first_name' => $request->first_name,
@@ -86,7 +87,7 @@ class AuthController extends Controller
 
         $created = json_decode($response->body());
 
-        // dd($response);
+        // dd($created);
 
         if(is_null($created))
         {

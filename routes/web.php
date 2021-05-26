@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 //     return 'This is user' .$id' whose name is ' .$name;
 // });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('home', 'PagesController@home')->name('home');
+Route::get('/', 'PagesController@home')->name('home');
 
 // Authentication
 Route::get('forgot-password', 'AuthController@forgotPassword')->name('forgot-password');
