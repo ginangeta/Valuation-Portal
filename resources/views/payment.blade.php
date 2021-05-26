@@ -460,7 +460,7 @@
     </script>
 
     <script type="text/javascript">
-    function getReceipt{
+    function getReceipt(){
         $('#print-receipt-home').on('click', function(){
             $('#getReceipt').get(0).submit();
         });
