@@ -174,7 +174,8 @@
                                 <div class="form-group">
                                     <h3 class="site-heading text-black mb-0">Search For Property</h3>
                                     <p class="mb-0 mt-0">Enter property details as provided below</p>
-                                        <small class="multiple-suggestion d-none mb-2">Once obtained, one can search for yet another property which will allow
+                                    <small class="multiple-suggestion d-none mb-2">Once obtained, one can search for yet
+                                        another property which will allow
                                         multiple property objection</small>
                                     <div class="input-group mb-3">
                                         <input type="text" id="searchcriteria" name="searchcriteria"
@@ -204,7 +205,7 @@
                                                     USV</span>
                                                 <span class="zmdi zmdi-alert-triangle text-warning mb-1"> For single
                                                     property
-                                                    objection</span> 
+                                                    objection</span>
                                                 <span class="zmdi zmdi-delete text-danger"> To delete item from the
                                                     objection table</span>
                                             </div>
@@ -285,7 +286,7 @@
                     type: "GET",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                        'Authorization' : 'Bearer '+ '{{Session::get('Usertoken')}}',
+                        'Authorization': 'Bearer ' + '{{ Session::get('Usertoken') }}',
                     },
                     success: function(data) {
 
@@ -318,9 +319,13 @@
                                 var table = $("#data-table");
                                 var firstTd = $("td:first", table);
                                 var secondTd = firstTd.next();
+                                var Serial = results.serial_no;
+                                var SerialNo = Serial.split('-');
 
                                 if (firstTd.text() == term) {
-                                    swal('Error!', "You're trying to add an entry that already exists in the table", 'error');
+                                    swal('Error!',
+                                        "You're trying to add an entry that already exists in the table",
+                                        'error');
 
                                 } else {
                                     //first approach to add data (not flexible)
@@ -341,15 +346,15 @@
                                     rn.append('<td>KES ' + numberWithCommas(results.usv) +
                                         '</td>');
                                     rn.append(
-                                        '<td class="d-flex flex-row align-content-center"><a onclick="printUSV(' +
-                                        results.serial_no + ');"' +
-                                        `class="btn-print-usv ml-2 text-success" style="font-size: 20px !important; padding-right: 8px !important;"><i
-                                                                                                    class="zmdi zmdi-print"></i></a>` +
-                                        '<a class="ml-2 text-warning" style="font-size: 20px !important; padding-right: 8px !important;" onclick="objectSingleUsv(' +
-                                        results.serial_no + ');"><i' +
+                                        '<td class="d-flex flex-row align-content-center"><a href="usv.singleproperty/' +
+                                        Serial + '"' +
+                                        `target="_blank" class="btn-print-usv ml-2 text-success" style="font-size: 20px !important; padding-right: 8px !important;"><i
+                                                                                                                    class="zmdi zmdi-print"></i></a>` +
+                                        '<a class="ml-2 text-warning" style="font-size: 20px !important; padding-right: 8px !important;" href="objection.singleproperty/' +
+                                        Serial + '" target="_blank"><i' +
                                         ` class="zmdi zmdi-alert-triangle"></i></a>
-                                        <a class="ml-2 btn-remove-property text-info" style="font-size: 20px !important; padding-right: 8px !important;"><i
-                                        class="zmdi zmdi-delete text-danger"></i></a></td>`
+                                                        <a class="ml-2 btn-remove-property text-info" style="font-size: 20px !important; padding-right: 8px !important;"><i
+                                                        class="zmdi zmdi-delete text-danger"></i></a></td>`
                                     );
                                     $('#data-table tbody').append(rn);
                                     $('.property-heading').removeClass('d-none');
@@ -374,11 +379,16 @@
 
     </script>
     <script type="text/javascript">
-        function printUSV(SerialNo) {
-            // alert(LRNo1);
+        function printUSV(e) {
+            e.preventDefault();
+
+            var SerialNo = $(this).text();
+            alert(SerialNo);
+            console.log(SerialNo);
+
             let url =
                 "usv.singleproperty/:LRNo";
-            url = url.replace(':LRNo', SerialNo + '.0');
+            url = url.replace(':LRNo', SerialNo);
             // document.location.href = url;
             window.open(url);
 
@@ -399,10 +409,14 @@
 
     </script>
     <script type="text/javascript">
-        function objectSingleUsv(SerialNo) {
+        function objectSingleUsv() {
+
+            var SerialNo = String($(this).attr('id'));
+            console.log(SerialNo);
+
             let url =
                 "objection.singleproperty/:LRNo";
-            url = url.replace(':LRNo', SerialNo + '.0');
+            url = url.replace(':LRNo', SerialNo);
             // document.location.href = url;
             window.open(url);
         }

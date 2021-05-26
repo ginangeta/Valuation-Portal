@@ -169,7 +169,7 @@
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="mb-0"><strong>Address</strong></label>
+                                                    <label class="mb-0"><strong>Current Address</strong></label>
                                                     <input type="text" name="address" class="form-control filter-input mt-0"
                                                         placeholder="Address of your current address" required>
                                                 </div>

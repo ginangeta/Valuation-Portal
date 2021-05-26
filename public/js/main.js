@@ -73,7 +73,7 @@
                 alert("you can select max 10 files.");
             }else{
                 $(files).each(function(key, value){
-                    if(value.size > 20000){
+                    if(value.size > 200000){
                         alert(files.name +' File is too big')
                     }
                 });
