@@ -73,7 +73,7 @@ class ObjectionController extends Controller
         $created = json_decode($response->body());
 
         // dd($created);
-        $billerurl = 'https://pilot.revenuesure.co.ke/users/authenticate';
+        $billerurl = 'http://pilot.revenuesure.co.ke/users/authenticate';
 
         $billerdata = [
             'email' => "valuation@gmail.com",
@@ -120,7 +120,7 @@ class ObjectionController extends Controller
 
         // dd($created);
 
-        $billerurl = 'https://pilot.revenuesure.co.ke/users/authenticate';
+        $billerurl = 'http://pilot.revenuesure.co.ke/users/authenticate';
 
         $billerdata = [
             'email' => "valuation@gmail.com",
@@ -133,7 +133,7 @@ class ObjectionController extends Controller
         $BillerToken = $BillerResponseData->data->auth_token;
         // dd($BillerToken);
 
-        $billurl = 'https://pilot.revenuesure.co.ke/billing/invoice';
+        $billurl = 'http://pilot.revenuesure.co.ke/billing/invoice';
 
         $billdata = [
             'billNo' => $BillNo
