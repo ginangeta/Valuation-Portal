@@ -276,6 +276,7 @@
         $('.btn-searchcriteria').on('click', function(e) {
             e.preventDefault();
             var searchcriteria = $('#searchcriteria').val();
+            searchcriteria = searchcriteria.replace(/\s+/g, '');
             if (searchcriteria == '' || searchcriteria == null) {
                 return;
             } else {
