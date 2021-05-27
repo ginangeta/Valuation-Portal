@@ -178,7 +178,7 @@
 
                             <ul class="navigation">
                                 <li class="navigation__sub">
-                                    <a href="#">How do I inspect the draft valuation
+                                    <a href="#" style="font-size: 14px; font-weight: bold;">How do I inspect the draft valuation
                                         report online?</a>
                                     <ul>
                                         <li>Visit the Online Inspection/Objection of the 2019 Draft Valuation Roll
@@ -187,7 +187,7 @@
                                     </ul>
                                 </li>
                                 <li class="navigation__sub">
-                                    <a href="#">Why can I not find a property? </a>
+                                    <a href="#" style="font-size: 14px; font-weight: bold;">Why can I not find a property? </a>
                                     <ul>
                                         <li>Confirm if the property number is as per Title Number in the Certificate of
                                             Lease/ Title deed. For instance BLOCK999/XXXX be typed as
@@ -199,7 +199,7 @@
                                     </ul>
                                 </li>
                                 <li class="navigation__sub">
-                                    <a href="#">How do I raise an objection to the draft valuation?</a>
+                                    <a href="#" style="font-size: 14px; font-weight: bold;">How do I raise an objection to the draft valuation?</a>
                                     <ul>
                                         <li>On the Online Inspection/Objection of the 2019 Draft Valuation Roll website,
                                             search for a property using the Land Reference No/Title No/ Plot Number. A
@@ -212,7 +212,7 @@
                                     </ul>
                                 </li>
                                 <li class="navigation__sub">
-                                    <a href="#">How do pay for an objection?</a>
+                                    <a href="#" style="font-size: 14px; font-weight: bold;">How do pay for an objection?</a>
                                     <ul>
                                         <li>At the end of the objection process you checkout to make payment. This
                                             either can be done via an STK push sent by the mobile payment provider or
@@ -223,7 +223,7 @@
                                     </ul>
                                 </li>
                                 <li class="navigation__sub">
-                                    <a href="#">What next after submitting an objection?</a>
+                                    <a href="#" style="font-size: 14px; font-weight: bold;">What next after submitting an objection?</a>
                                     <ul>
                                         <li>Your application will be presented to a Valuation Court. Further details
                                             regarding the objection application will be communicated through a public
@@ -232,7 +232,7 @@
                                     </ul>
                                 </li>
                                 <li class="navigation__sub">
-                                    <a href="#">Can I withdraw a notice of objection?</a>
+                                    <a href="#" style="font-size: 14px; font-weight: bold;">Can I withdraw a notice of objection?</a>
                                     <ul class="">
                                         <li>Yes. You can withdraw a notice of objection before the first sitting of the
                                             Valuation Court</li>
@@ -367,6 +367,7 @@
 
     <!--Main js-->
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/app.min.js') }}"></script>
     @yield('scripts')
     <!--Scripts ends-->
 </body>
