@@ -203,7 +203,7 @@
                         <p
                             style="font-size: 15px; text-align: left; color:black; text-transform: capitalize; font-weight: 500;">
                             Ratable owners may submit any objections within 28 days from the date of the publication of
-                            the public notice dated <span class="home-date"></span> in the local daily and the Kenya
+                            the public notice dated <strong>21st May 2021</strong> in the local daily and the Kenya
                             gazette.
                         </p>
                         <p

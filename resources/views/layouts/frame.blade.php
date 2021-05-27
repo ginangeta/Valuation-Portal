@@ -273,7 +273,7 @@
                                             <i class="fas fa-envelope"></i>
                                         </div>
                                         <div class="text"><a
-                                                href="mailto:draftvaluation@nairobicitycounty.ke">draftvaluation@nairobicitycounty.ke.</a>
+                                                href="mailto:valuation@nairobi.go.ke">valuation@nairobi.go.ke.</a>
                                         </div>
                                     </div>
                                 </li>

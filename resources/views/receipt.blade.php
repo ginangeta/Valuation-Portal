@@ -28,9 +28,9 @@
             style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000"> </span><br>
     </div>
     <div style="position:absolute;top:1.16in;left:2.9in;line-height:0.13in;"><a
-            href="mailto:draftvaluation@nairobicitycounty.ke"><span
+            href="mailto:valuation@nairobi.go.ke"><span
                 style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000">Email:
-                draftvaluation@nairobicitycounty.ke</span></a>
+                valuation@nairobi.go.ke</span></a>
         <span style="font-style:italic;font-weight:normal;font-size:8pt;font-family:Times;color:#000000"> </span><br>
     </div>
     <div style="position:absolute;top:1.38in;left:3.44in;width:0.58in;line-height:0.13in;"><span

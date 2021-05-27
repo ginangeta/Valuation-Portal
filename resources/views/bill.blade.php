@@ -251,7 +251,7 @@
                 <span style="margin-left: 0.1in" class="cls_003">Tel No: 020-344194,0725-624489,0735-825383</span>
                 <span style="float: right; text-align:right;" class="cls_004">File Copy</span>
                 <br>
-                <span style="margin-left: 0.1in" class="cls_003">Email:draftvaluation@nairobicitycounty.ke</span>
+                <span style="margin-left: 0.1in" class="cls_003">Email:valuation@nairobi.go.ke</span>
                 <br>
                 <span style="margin-left: 0.1in" class="cls_003">Emergency</span>
                 <div class="cls_005">
@@ -355,7 +355,7 @@
                 <span style="margin-left: 0.1in" class="cls_003">Tel No: 020-344194,0725-624489,0735-825383</span>
                 <span style="float: right; text-align:right;" class="cls_004">Customer Copy</span>
                 <br>
-                <span style="margin-left: 0.1in" class="cls_003">Email: draftvaluation@nairobicitycounty.ke</span>
+                <span style="margin-left: 0.1in" class="cls_003">Email: valuation@nairobi.go.ke</span>
                 <br>
                 <span style="margin-left: 0.1in" class="cls_003">Emergency </span>
                 <div class="cls_005">
