@@ -66,14 +66,8 @@
 
         } else {
             $(this).parent().addClass("activated");
+            $(this).parent().children("small").text("File Selected");
             $(this).parent().children("small").addClass("text-success").removeClass("text-danger");
-
-            var files = $(this)[0].files;
-            if(files.length > 10){
-                alert("you can select max 10 files.");
-            }else{
-                $(this).parent().children("small").text(files.length +" Files Selected");
-            }
         }
         //id-container
     });
@@ -123,7 +117,7 @@
         //this area clones the new input fields
         $(cloneItem).clone(true, true).appendTo($('.clone-container')).addClass('gina');
         $('.gina').removeClass('d-none').removeClass('CloneMe');
-        $('.gina textarea').attr("name", "reasons[]");
+        $('.gina input').attr("name", "reasons[]");
     });
 
     $('body').on('click', '.permit-form .form-header div.clickMe', function () {
@@ -157,9 +151,8 @@
         var theParentIndex = theParent.index();
         var numOfChildren = $('.permit-form').children('fieldset').last().index();
         var theNavigation = $('.permit-form .form-header div').eq(theParentIndex - 2);
-        console.log(theParentIndex);
 
-        if (theParentIndex !== 0) {
+        if (theParentIndex !== 1) {
             $(this).parent().parent().parent().addClass('d-none');
             theParent.prev().removeClass('d-none');
             theNavigation.addClass('active').siblings().removeClass('active');
@@ -958,9 +951,6 @@
         $('.rideType').children('div').eq(theIndex).removeClass('d-none').siblings().addClass('d-none');
         $('.mapPlace').children('.map-container').eq(theIndex).removeClass('d-none').siblings().addClass('d-none');
     }
-
-    var today = moment().format('DD/MM/YYYY');
-    $('.home-date').text(today);
 
     // date range picker manenos
     // $(function () {
