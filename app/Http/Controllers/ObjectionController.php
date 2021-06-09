@@ -111,6 +111,103 @@ class ObjectionController extends Controller
         // dd(Session::all());
     }
 
+    public function sendNotFoundObjection(Request $request){
+        // dd($request->all());
+
+        $url = config('global.url').'property/not_found/objection/';
+        $Asseturl = config('global.url').'attach/objection/files/';
+
+        $files =  $request->files;
+        $fileIdsArray = [];
+        $uploadFiles = [];
+        $uploadFileNames = [];
+
+        $Assetresponse = Http::withToken(Session::get('Usertoken'));
+        foreach($files as $k => $filebag)
+        {
+            foreach($filebag as $k => $file){
+                 $file_name = $file->getClientOriginalName();
+                 $file_content = fopen($file, 'r');
+                 $data = file_get_contents($file);
+                 $Assetresponse = $Assetresponse->attach('files', $file_content, $file_name);
+
+                //  dd($Assetresponse);
+                 array_push($uploadFiles, $data);
+                 array_push($uploadFileNames, $file_name);
+            }
+        }
+
+        // dd($Assetresponse);
+
+        $Assetresponse = $Assetresponse->post($Asseturl);
+        $Assetcreated = json_decode($Assetresponse->body());
+        $DocumentIds = $Assetcreated->data->document_ids;
+
+        // dd($DocumentIds);
+
+        $data = [
+            'fullname' => $request->fullname,
+            'ratable_owner' => filter_var($request->ratable_owner, FILTER_VALIDATE_BOOLEAN),
+            'ratable_relation' => $request->ratable_relation,
+            'address' => $request->address,
+            'postal_address' => $request->postal_address,
+            'phone' => $request->phone,
+            'town_id' => $request->town_id,
+
+            'serial_no' => $request->serial_no,
+            'lr_no' => $request->lr_no,
+            'locality' => $request->locality,
+            'situation' => $request->situation,
+            'po_box' => $request->postal_address,
+            'approx_area' => $request->approx_area,
+            'land_use' => $request->land_use,
+            'documents' => $DocumentIds,
+        ];
+
+        // dd($data);
+
+        $response = Http::withToken(Session::get('Usertoken'))->post($url,$data);
+        $created = json_decode($response->body());
+
+        // dd($created);
+        $billerurl = 'https://pilot.revenuesure.co.ke/users/authenticate';
+
+        $billerdata = [
+            'email' => "valuation@gmail.com",
+            'password' => "123456789"
+        ];
+
+
+        $BillerResponse = Http::withToken(Session::get('Usertoken'))->post($billerurl,$billerdata);
+        $BillerResponseData = json_decode($BillerResponse->body());
+        // dd($BillerResponseData);
+
+        if(is_null($created))
+        {
+            // dd($created);
+            return redirect()->route('details')->with('errors', 'An error occured. Please try again');
+        }
+
+        // dd($created);
+
+        if(!$created->success)
+        {
+            return redirect()->route('details')->with('errors', $created->msg);
+        }
+
+        if(is_null($created->data)){
+            dd($created);
+        }
+
+        // dd($created);
+
+        return view('payment', [
+            'ObjectionBillInfo' => $created->data->bill_info,
+            'billerResponse' => $BillerResponseData->data->auth_token]);
+
+        // dd(Session::all());
+    }
+
     public function objectionBill($BillNo){
         // $url = config('global.url').'bills/?q='.$BillNo;
 

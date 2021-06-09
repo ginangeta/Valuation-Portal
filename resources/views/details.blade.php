@@ -145,6 +145,48 @@
         </div>
     </div>
 
+    <div class="modal fade" id="notfound" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLongTitle">PROPERTY NOT FOUND</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <center class="p-5">
+                        <img class="errorImg" style="height: 300px !important;" src="{{ asset('/img/not-found.jpg') }}">
+                    </center>
+                    <h4 class="text-center mb-2 pb-2">OBJECT TO THE NEW DRAFT VALUATION ROLL</h4>
+
+                    <h6 class="text-center" id="customer-info">Property NO: <strong id="property-number"></strong> could not
+                        be found. Would you like to place an objection to the roll?</h6>
+
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-success btn--icon-text px-5 d-none" data-dismiss="modal"
+                        aria-label="Close">OK</button>
+                    <form target="_blank" action="{{ route('objectNotFound') }}" method="post" id="get-objection">
+                        @csrf
+                        <input type="hidden" id="propertyNumber" name="propertyNumber" value="">
+
+                    </form>
+
+                    <button type="button" id="close" class="btn btn-outline-dark text-black btn--icon-text"
+                        data-dismiss="modal" aria-label="Close">Close</button>
+
+                    <button id="print-receipt" onclick="document.getElementById('get-objection').submit();"
+                        class="btn btn-success btn--icon-text" data-dismiss="modal" aria-label="Close"><i
+                            class="zmdi zmdi-check-all mr-2"></i>Yes, Object to the Roll</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--Header ends-->
     <!--Breadcrumb section starts-->
     <div class="breadcrumb-section bg-h" style="background-image: url({{ asset('images/breadcrumb/breadcrumb_1.jpg') }})">
@@ -283,7 +325,7 @@
                 console.log(searchcriteria);
 
                 $.ajax({
-                    url: "{{ config('global.url') }}" + 'properties/?q=' + searchcriteria,
+                    url: "searchProperty/" + searchcriteria,
                     type: "GET",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
@@ -293,13 +335,17 @@
 
                         // console.log(data);
                         if (data == "") {
-                            swal('Error!', 'Property not found', 'error');
+                            $('#notfound').modal('show');
+                            $('#property-number').text(searchcriteria);
+                            $('#propertyNumber').val(searchcriteria);
                             $('#searchcriteria').val('');
 
                             return;
                         }
                         if (data.count == 0) {
-                            swal('Error!', 'Property not found', 'error');
+                            $('#notfound').modal('show');
+                            $('#property-number').text(searchcriteria);
+                            $('#propertyNumber').val(searchcriteria);
                             $('#searchcriteria').val('');
 
                             return;
@@ -350,12 +396,12 @@
                                         '<td class="d-flex flex-row align-content-center"><a href="usv.singleproperty/' +
                                         Serial + '"' +
                                         `target="_blank" class="btn-print-usv ml-2 text-success" style="font-size: 20px !important; padding-right: 8px !important;"><i
-                                                                                                                    class="zmdi zmdi-print"></i></a>` +
+                                                                                                                                                                                    class="zmdi zmdi-print"></i></a>` +
                                         '<a class="ml-2 text-warning" style="font-size: 20px !important; padding-right: 8px !important;" href="objection.singleproperty/' +
                                         Serial + '" target="_blank"><i' +
                                         ` class="zmdi zmdi-alert-triangle"></i></a>
-                                                        <a class="ml-2 btn-remove-property text-info" style="font-size: 20px !important; padding-right: 8px !important;"><i
-                                                        class="zmdi zmdi-delete text-danger"></i></a></td>`
+                                                                                                                        <a class="ml-2 btn-remove-property text-info" style="font-size: 20px !important; padding-right: 8px !important;"><i
+                                                                                                                        class="zmdi zmdi-delete text-danger"></i></a></td>`
                                     );
                                     $('#data-table tbody').append(rn);
                                     $('.property-heading').removeClass('d-none');
