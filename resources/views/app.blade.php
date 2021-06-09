@@ -30,8 +30,9 @@
                                     <p class="mb-3">A notice has been issued by the Nairobi City County Government for
                                         ratable owners to inspect the draft valuation roll and submit their comments,
                                         queries or objections. Ratable owners may submit any objections within 28 days from
-                                        the date of the publication of the public notice dated <span class="home-date"></span> in the local
-                                            daily and the Kenya gazette. </p>
+                                        the date of the publication of the public notice dated <strong> 21st May 2021
+                                        </strong> in the local
+                                        daily and the Kenya gazette. </p>
                                     <br>
                                 </div>
                             </div>
@@ -58,7 +59,9 @@
                                         @endif
                                         <div class="login-form-header p-1">
                                             <h2 class="mb-2">Login Form</h2>
-                                            <small> <strong class="text-danger">*</strong> Find default password on your registered email <strong class="text-danger">*</strong></small>
+                                            <small class="text-danger"> <strong class="text-danger">*</strong> Find default
+                                                password on your registered email <strong
+                                                    class="text-danger">*</strong></small>
                                         </div>
 
                                         <div class="form-group">
@@ -254,7 +257,8 @@
                                                                 </label>
                                                                 <div class="input-pass-login">
                                                                     <input name="phone" type="number" class="form-control"
-                                                                        placeholder="Enter your mobile number(07********)" required>
+                                                                        placeholder="Enter your mobile number(07********)"
+                                                                        required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US">
-
+<html lang="en">
 
 <!-- Mirrored from demo.lion-coders.com/html/sarchholm-real-estate-template/home-v4.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 08 Jan 2021 15:05:57 GMT -->
 
@@ -8,7 +7,7 @@
     <!-- Metas -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="LionCoders" />
     <!-- Links -->
     <link rel="icon" type="image/png" href="{{ asset('images/logo-white.png') }}" />
@@ -49,7 +48,8 @@
                                 <a class="navbar-brand mr-3 mb-0" href="{{ route('home') }}"><img
                                         src="images/logo-white.png" alt="logo" class="img-fluid"></a>
                                 <div class="logo-text">
-                                    <h4 class="text-white m-0 p-0 text-nowrap" style="font-size: 14px;">NCCG – Online 2019 Draft Valuation Roll Inspection/ Objection Platform
+                                    <h4 class="text-white m-0 p-0 text-nowrap" style="font-size: 14px;">NCCG – Online
+                                        2019 Draft Valuation Roll Inspection/ Objection Platform
                                     </h4>
                                     <p class="text-white text-nowrap">Nairobi City County</p>
                                 </div>
@@ -97,14 +97,18 @@
                                                             <div class="listview__item">
                                                                 <div class="listview__content">
                                                                     <div class="listview__heading">
-                                                                        <a href="{{route('userPassReset')}}"><i class="ti-unlock"></i><span>Reset Password</span></a>
+                                                                        <a href="{{ route('userPassReset') }}"><i
+                                                                                class="ti-unlock"></i><span>Reset
+                                                                                Password</span></a>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="listview__item">
                                                                 <div class="listview__content">
                                                                     <div class="listview__heading">
-                                                                        <a href="{{route('ClientBills')}}"><i class="ti-unlock"></i><span>My Bills</span></a>
+                                                                        <a href="{{ route('ClientBills') }}"><i
+                                                                                class="ti-unlock"></i><span>My
+                                                                                Bills</span></a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -173,73 +177,64 @@
 
                             <ul class="navigation">
                                 <li class="navigation__sub">
-                                    <a href="#"><i class="flaticon-parking-7"></i>How do I check the valuation
-                                        report?</a>
-                                    <ul class="d-none">
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+                                    <a href="#" style="font-size: 14px; font-weight: bold;">How do I inspect the draft valuation
+                                        report online?</a>
+                                    <ul>
+                                        <li>Visit the Online Inspection/Objection of the 2019 Draft Valuation Roll
+                                            website and create an account. Therein you will be able to search for a
+                                            property using the Land Reference No/Title No/ Plot Number.</li>
                                     </ul>
                                 </li>
                                 <li class="navigation__sub">
-                                    <a href="#"><i class="flaticon-parking-7"></i>How do I challenge/object the
-                                        valuation?</a>
-                                    <ul class="d-none">
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-
-
-                                    </ul>
-                                </li>
-                                <li class="navigation__sub">
-                                    <a href="#"><i class="flaticon-parking-7"></i>Where can I report if I am not happy
-                                        with my property valuation?</a>
-                                    <ul class="d-none">
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+                                    <a href="#" style="font-size: 14px; font-weight: bold;">Why can I not find a property? </a>
+                                    <ul>
+                                        <li>Confirm if the property number is as per Title Number in the Certificate of
+                                            Lease/ Title deed. For instance BLOCK999/XXXX be typed as
+                                            NAIROBI/BLOCK999/XXXX. DAG/WAITHAKA/XX be typed as DAGORETTI/WAITHAKA/XX. If
+                                            the property search doesn’t yield any record, visit the Valuation Department
+                                            located at City Hall 4th floor. </li>
 
 
                                     </ul>
                                 </li>
                                 <li class="navigation__sub">
-                                    <a href="#"><i class="flaticon-parking-7"></i>Which improvements add the most to a
-                                        property’s value?</a>
-                                    <ul class="d-none">
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
+                                    <a href="#" style="font-size: 14px; font-weight: bold;">How do I raise an objection to the draft valuation?</a>
+                                    <ul>
+                                        <li>On the Online Inspection/Objection of the 2019 Draft Valuation Roll website,
+                                            search for a property using the Land Reference No/Title No/ Plot Number. A
+                                            successful record search will populate property details in a list view.
+                                            Select the property either by clicking on “submit objection to USV” or
+                                            clicking the yellow filled “For single property objection”. Thereafter
+                                            provide further details related to the objection.</li>
 
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-
-                                    </ul>
-                                </li>
-                                <li class="navigation__sub">
-                                    <a href="#"><i class="flaticon-parking-7"></i>What can I do to get ready for an
-                                        appraisal?</a>
-                                    <ul class="d-none">
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Compliant</li>
 
                                     </ul>
                                 </li>
                                 <li class="navigation__sub">
-                                    <a href="#"><i class="flaticon-parking-7"></i>What can I download from the NCCG
-                                        Valuation Portal</a>
+                                    <a href="#" style="font-size: 14px; font-weight: bold;">How do pay for an objection?</a>
+                                    <ul>
+                                        <li>At the end of the objection process you checkout to make payment. This
+                                            either can be done via an STK push sent by the mobile payment provider or
+                                            you can download pay later by downloading the bill and presenting it to the
+                                            any National Bank of Kenya branch payable to the Nairobi City County
+                                            Government revenue account. </li>
+
+                                    </ul>
+                                </li>
+                                <li class="navigation__sub">
+                                    <a href="#" style="font-size: 14px; font-weight: bold;">What next after submitting an objection?</a>
+                                    <ul>
+                                        <li>Your application will be presented to a Valuation Court. Further details
+                                            regarding the objection application will be communicated through a public
+                                            notice or via contact information provided. </li>
+
+                                    </ul>
+                                </li>
+                                <li class="navigation__sub">
+                                    <a href="#" style="font-size: 14px; font-weight: bold;">Can I withdraw a notice of objection?</a>
                                     <ul class="">
-                                        <li><i class="zmdi zmdi-check mx-2"></i>Property USV Report</li>
-                                        <li><i class="zmdi zmdi-check mx-2"></i>USV Objection Invoice</li>
-                                        <li><i class="zmdi zmdi-check mx-2"></i>USV Objection Recipt</li>
+                                        <li>Yes. You can withdraw a notice of objection before the first sitting of the
+                                            Valuation Court</li>
                                     </ul>
                                 </li>
                             </ul>
@@ -371,6 +366,7 @@
 
     <!--Main js-->
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/app.min.js') }}"></script>
     @yield('scripts')
     <!--Scripts ends-->
 </body>

@@ -169,7 +169,7 @@
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="mb-0"><strong>Address</strong></label>
+                                                    <label class="mb-0"><strong>Current Address</strong></label>
                                                     <input type="text" name="address" class="form-control filter-input mt-0"
                                                         placeholder="Address of your current address" required>
                                                 </div>
@@ -194,7 +194,7 @@
 
                                             <div class="col-md-6">
                                                 <label class="mb-0"><strong>Select town</strong></label>
-                                                <select name="town_id" id="" name="town_id"
+                                                <select name="town_id" id=""
                                                     title="Please select your postal city"
                                                     class="form-control custom-select city" placeholder="Country" required>
                                                     @foreach ($towns as $town)

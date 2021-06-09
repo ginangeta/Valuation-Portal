@@ -145,6 +145,48 @@
         </div>
     </div>
 
+    <div class="modal fade" id="notfound" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLongTitle">PROPERTY NOT FOUND</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <center class="p-5">
+                        <img class="errorImg" style="height: 300px !important;" src="{{ asset('/img/not-found.jpg') }}">
+                    </center>
+                    <h4 class="text-center mb-2 pb-2">OBJECT TO THE NEW DRAFT VALUATION ROLL</h4>
+
+                    <h6 class="text-center" id="customer-info">Property NO: <strong id="property-number"></strong> could not
+                        be found. Would you like to place an objection to the roll?</h6>
+
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-success btn--icon-text px-5 d-none" data-dismiss="modal"
+                        aria-label="Close">OK</button>
+                    <form target="_blank" action="{{ route('objectNotFound') }}" method="post" id="get-objection">
+                        @csrf
+                        <input type="hidden" id="propertyNumber" name="propertyNumber" value="">
+
+                    </form>
+
+                    <button type="button" id="close" class="btn btn-outline-dark text-black btn--icon-text"
+                        data-dismiss="modal" aria-label="Close">Close</button>
+
+                    <button id="print-receipt" onclick="document.getElementById('get-objection').submit();"
+                        class="btn btn-success btn--icon-text" data-dismiss="modal" aria-label="Close"><i
+                            class="zmdi zmdi-check-all mr-2"></i>Yes, Object to the Roll</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--Header ends-->
     <!--Breadcrumb section starts-->
     <div class="breadcrumb-section bg-h" style="background-image: url({{ asset('images/breadcrumb/breadcrumb_1.jpg') }})">
@@ -174,7 +216,8 @@
                                 <div class="form-group">
                                     <h3 class="site-heading text-black mb-0">Search For Property</h3>
                                     <p class="mb-0 mt-0">Enter property details as provided below</p>
-                                        <small class="multiple-suggestion d-none mb-2">Once obtained, one can search for yet another property which will allow
+                                    <small class="multiple-suggestion d-none mb-2">Once obtained, one can search for yet
+                                        another property which will allow
                                         multiple property objection</small>
                                     <div class="input-group mb-3">
                                         <input type="text" id="searchcriteria" name="searchcriteria"
@@ -204,7 +247,7 @@
                                                     USV</span>
                                                 <span class="zmdi zmdi-alert-triangle text-warning mb-1"> For single
                                                     property
-                                                    objection</span> 
+                                                    objection</span>
                                                 <span class="zmdi zmdi-delete text-danger"> To delete item from the
                                                     objection table</span>
                                             </div>
@@ -275,29 +318,34 @@
         $('.btn-searchcriteria').on('click', function(e) {
             e.preventDefault();
             var searchcriteria = $('#searchcriteria').val();
+            searchcriteria = searchcriteria.replace(/\s+/g, '');
             if (searchcriteria == '' || searchcriteria == null) {
                 return;
             } else {
                 console.log(searchcriteria);
 
                 $.ajax({
-                    url: "{{ config('global.url') }}" + 'properties/?q=' + searchcriteria,
+                    url: "searchProperty/" + searchcriteria,
                     type: "GET",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                        'Authorization' : 'Bearer '+ '{{Session::get('Usertoken')}}',
+                        'Authorization': 'Bearer ' + '{{ Session::get('Usertoken') }}',
                     },
                     success: function(data) {
 
                         // console.log(data);
                         if (data == "") {
-                            swal('Error!', 'Property not found', 'error');
+                            $('#notfound').modal('show');
+                            $('#property-number').text(searchcriteria);
+                            $('#propertyNumber').val(searchcriteria);
                             $('#searchcriteria').val('');
 
                             return;
                         }
                         if (data.count == 0) {
-                            swal('Error!', 'Property not found', 'error');
+                            $('#notfound').modal('show');
+                            $('#property-number').text(searchcriteria);
+                            $('#propertyNumber').val(searchcriteria);
                             $('#searchcriteria').val('');
 
                             return;
@@ -318,9 +366,13 @@
                                 var table = $("#data-table");
                                 var firstTd = $("td:first", table);
                                 var secondTd = firstTd.next();
+                                var Serial = results.serial_no;
+                                var SerialNo = Serial.split('-');
 
                                 if (firstTd.text() == term) {
-                                    swal('Error!', "You're trying to add an entry that already exists in the table", 'error');
+                                    swal('Error!',
+                                        "You're trying to add an entry that already exists in the table",
+                                        'error');
 
                                 } else {
                                     //first approach to add data (not flexible)
@@ -341,15 +393,15 @@
                                     rn.append('<td>KES ' + numberWithCommas(results.usv) +
                                         '</td>');
                                     rn.append(
-                                        '<td class="d-flex flex-row align-content-center"><a onclick="printUSV(' +
-                                        results.serial_no + ');"' +
-                                        `class="btn-print-usv ml-2 text-success" style="font-size: 20px !important; padding-right: 8px !important;"><i
-                                                                                                    class="zmdi zmdi-print"></i></a>` +
-                                        '<a class="ml-2 text-warning" style="font-size: 20px !important; padding-right: 8px !important;" onclick="objectSingleUsv(' +
-                                        results.serial_no + ');"><i' +
+                                        '<td class="d-flex flex-row align-content-center"><a href="usv.singleproperty/' +
+                                        Serial + '"' +
+                                        `target="_blank" class="btn-print-usv ml-2 text-success" style="font-size: 20px !important; padding-right: 8px !important;"><i
+                                                                                                                                                                                    class="zmdi zmdi-print"></i></a>` +
+                                        '<a class="ml-2 text-warning" style="font-size: 20px !important; padding-right: 8px !important;" href="objection.singleproperty/' +
+                                        Serial + '" target="_blank"><i' +
                                         ` class="zmdi zmdi-alert-triangle"></i></a>
-                                        <a class="ml-2 btn-remove-property text-info" style="font-size: 20px !important; padding-right: 8px !important;"><i
-                                        class="zmdi zmdi-delete text-danger"></i></a></td>`
+                                                                                                                        <a class="ml-2 btn-remove-property text-info" style="font-size: 20px !important; padding-right: 8px !important;"><i
+                                                                                                                        class="zmdi zmdi-delete text-danger"></i></a></td>`
                                     );
                                     $('#data-table tbody').append(rn);
                                     $('.property-heading').removeClass('d-none');
@@ -374,11 +426,16 @@
 
     </script>
     <script type="text/javascript">
-        function printUSV(SerialNo) {
-            // alert(LRNo1);
+        function printUSV(e) {
+            e.preventDefault();
+
+            var SerialNo = $(this).text();
+            alert(SerialNo);
+            console.log(SerialNo);
+
             let url =
                 "usv.singleproperty/:LRNo";
-            url = url.replace(':LRNo', SerialNo + '.0');
+            url = url.replace(':LRNo', SerialNo);
             // document.location.href = url;
             window.open(url);
 
@@ -399,10 +456,14 @@
 
     </script>
     <script type="text/javascript">
-        function objectSingleUsv(SerialNo) {
+        function objectSingleUsv() {
+
+            var SerialNo = String($(this).attr('id'));
+            console.log(SerialNo);
+
             let url =
                 "objection.singleproperty/:LRNo";
-            url = url.replace(':LRNo', SerialNo + '.0');
+            url = url.replace(':LRNo', SerialNo);
             // document.location.href = url;
             window.open(url);
         }
