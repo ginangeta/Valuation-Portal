@@ -66,6 +66,11 @@ Route::group(['middleware' => ['active']], function () {
     Route::post('sendObjection', 'ObjectionController@sendObjection')->name('sendObjection');
     Route::post('sendNotFoundObjection', 'ObjectionController@sendNotFoundObjection')->name('sendNotFoundObjection');
 
+    //Payment
+    Route::get('printReceipt/{billNo}', 'ObjectionController@printReceipt')->name('printReceipt');
+    Route::post('checkVerification', 'ObjectionController@checkVerification')->name('checkVerification');
+    Route::post('initiate-mpesa-payment', 'ObjectionController@initiateMpesaPayment')->name('initiate-mpesa-payment');
+
     //Bill
     Route::get('objectionBill/{BillNo}', 'ObjectionController@objectionBill')->name('objectionBill');
 

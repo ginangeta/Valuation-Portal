@@ -239,8 +239,8 @@
             console.log("Push Sendfunction: " + Sendfunction);
             var PayBillNumber = '367776';
             console.log("Push PayBillNumber: " + PayBillNumber);
-            var Amount = BillCost[0];
-            // var Amount = "5";
+            // var Amount = BillCost[0];
+            var Amount = "1";
             console.log("Push Amount: " + Amount);
             var PhoneNumber = $('input[name="mpesa_number"]').val();
             console.log("Push Number: " + PhoneNumber);
@@ -264,25 +264,23 @@
             var receipt_desc;
 
             $.ajax({
-                url: "https://payme.revenuesure.co.ke/api/index.php",
+                url: "{{ route('initiate-mpesa-payment') }}",
                 type: "POST",
                 headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
                 },
                 data: {
-                    function: Sendfunction,
-                    PayBillNumber: PayBillNumber,
-                    Amount: Amount,
-                    PhoneNumber: PhoneNumber,
-                    AccountReference: AccountReference,
-                    TransactionDesc: TransactionDesc,
-                    FullNames: FullNames
+                    amount: Amount,
+                    phoneNumber: PhoneNumber,
+                    accountReference: AccountReference,
+                    transactionDesc: TransactionDesc,
+                    name: FullNames
                 },
 
                 success: function(data) {
 
                     $('.phoner').text(PhoneNumber);
-                    var response = JSON.parse(data);
+                    var response = data;
                     console.log("Push Response: " + response);
 
                     if (response == "") {
@@ -309,19 +307,18 @@
                 var checkPaymentFuntion = 'checkPaymentVerification';
 
                 $.ajax({
-                    url: "https://payme.revenuesure.co.ke/api/index.php",
+                    url: "{{ route('checkVerification') }}",
                     type: "POST",
                     headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}",
                     },
                     data: {
-                        function: checkPaymentFuntion,
-                        account_reference: reference,
+                        billNo: reference,
 
                     },
 
                     success: function(data) {
-                        var response = JSON.parse(data);
+                        var response = data;
                         console.log('CheckPayment: ' + data);
                         if (response == "") {
                             console.log("Recalled");
@@ -356,10 +353,10 @@
                 console.log(bill_number);
                 console.log('{{ $ObjectionBillInfo->payer_name }}')
                 $.ajax({
-                    url: "{{ config('global.url') }}" + 'receipts/?q=' + bill_number,
+                    url: "printReceipt/" + bill_number,
                     type: "GET",
                     headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
                     },
 
                     success: function(data) {

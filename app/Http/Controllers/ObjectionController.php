@@ -256,6 +256,64 @@ class ObjectionController extends Controller
         // return view('usv')->with($lr_no);
     }
 
+    public function initiateMpesaPayment(Request $request)
+    {
+    	$url = 'https://payme.revenuesure.co.ke/index.php';
+
+    	$data = [
+    		'function' => 'CustomerPayBillOnlinePush',
+    		'PayBillNumber' => '367776',
+    		'Amount' => (int)$request->amount,
+    		'AccountReference' => $request->accountReference,
+    		'TransactionDesc' => $request->transactionDesc,
+    		'PhoneNumber' => $request->phoneNumber,
+    		'FullNames' => $request->name
+    	];
+
+    	// dd($data);
+
+    	$response = Http::asForm()->post($url, $data);
+
+    	// dd($response);
+
+    	$created =json_decode($response->body());
+
+    	return response()->json($created);
+
+    	// dd($created);
+    }
+
+    public function checkVerification(Request $request)
+    {
+    	$url = 'https://payme.revenuesure.co.ke/index.php';
+
+    	$data = [
+    		'function' => 'checkPaymentVerification',
+    		'account_reference' => $request->billNo
+    	];
+
+    	$response = Http::asForm()->post($url, $data);
+
+    	// dd($response);
+
+    	$created =json_decode($response->body());
+
+    	return response()->json($created);
+    }
+
+    public function printReceipt($billNo){
+        $url = config('global.url').'receipts/?q='.$billNo;
+
+        $response = Http::withToken(Session::get('Usertoken'))->get($url);
+
+        $created =json_decode($response->body());
+        // dd($response);
+        
+        return response()->json($created);
+
+        // dd($created);
+        
+    }
 
     public function to_curl($url, $data){
         $headers = array(
