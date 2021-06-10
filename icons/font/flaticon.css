@@ -1,0 +1,32 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("../font/flaticon.ttf?2621fab767d01961aaf6a2fa8f66dc99") format("truetype"),
+            url("../font/flaticon.woff?2621fab767d01961aaf6a2fa8f66dc99") format("woff"),
+            url("../font/flaticon.woff2?2621fab767d01961aaf6a2fa8f66dc99") format("woff2"),
+            url("../font/flaticon.eot?2621fab767d01961aaf6a2fa8f66dc99#iefix") format("embedded-opentype"),
+            url("../font/flaticon.svg?2621fab767d01961aaf6a2fa8f66dc99#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-cellphone:before {
+    content: "\f101";
+}
+.flaticon-commentator:before {
+    content: "\f102";
+}
+.flaticon-list-text:before {
+    content: "\f103";
+}
+.flaticon-report:before {
+    content: "\f104";
+}
