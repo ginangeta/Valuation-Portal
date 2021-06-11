@@ -168,8 +168,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-6 col-sm-12">
                                                             <div class="form-group">
-                                                                <label class="mb-0"><strong>Property Reference
-                                                                        Number</strong></label>
+                                                                <label class="mb-0"><strong>Title Number/Plot Number</strong></label>
                                                                 <input type="text" name="lr_no"
                                                                     class="form-control filter-input mt-0"
                                                                     value="{{ $objectingProperty }}"
