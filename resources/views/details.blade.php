@@ -324,7 +324,8 @@
             if (searchcriteria == '' || searchcriteria == null) {
                 return;
             } else {
-                searchcriteria = searchcriteria.replace("/", "-");
+                // searchcriteria = searchcriteria.replace("/", "-");
+                searchcriteria = searchcriteria.split('/').join('-');
                 console.log(searchcriteria);
 
                 $.ajax({
