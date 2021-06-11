@@ -109,8 +109,11 @@ class PropertiesController extends Controller
     
     public function searchProperty($searchcriteria)
     {
-        $url = config('global.url').'properties/?q='.$searchcriteria;
+        $searchcriteria = str_replace("-", "/", $searchcriteria);
 
+        // dd($searchcriteria);
+
+        $url = config('global.url').'properties/?q='.$searchcriteria;
 
         $response = Http::withToken(Session::get('Usertoken'))->get($url);
 

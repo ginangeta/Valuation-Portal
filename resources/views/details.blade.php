@@ -159,10 +159,12 @@
                     <center class="p-5">
                         <img class="errorImg" style="height: 300px !important;" src="{{ asset('/img/not-found.jpg') }}">
                     </center>
-                    <h4 class="text-center mb-2 pb-2">OBJECT TO THE NEW DRAFT VALUATION ROLL</h4>
+                    <h4 class="text-center mb-2 pb-2">OBJECT ON OMISSION OF RATEABLE PROPERTY TO 2019 DRAFT VALUATION ROLL
+                    </h4>
 
                     <h6 class="text-center" id="customer-info">Property NO: <strong id="property-number"></strong> could not
-                        be found. Would you like to place an objection to the roll?</h6>
+                        be found. Would you like to place an objection on omission of the rateable property to the draft
+                        valuation roll?</h6>
 
 
                 </div>
@@ -322,6 +324,7 @@
             if (searchcriteria == '' || searchcriteria == null) {
                 return;
             } else {
+                searchcriteria = searchcriteria.replace("/", "-");
                 console.log(searchcriteria);
 
                 $.ajax({
@@ -396,12 +399,12 @@
                                         '<td class="d-flex flex-row align-content-center"><a href="usv.singleproperty/' +
                                         Serial + '"' +
                                         `target="_blank" class="btn-print-usv ml-2 text-success" style="font-size: 20px !important; padding-right: 8px !important;"><i
-                                                                                                                                                                                    class="zmdi zmdi-print"></i></a>` +
+                                                                                                                                                                                        class="zmdi zmdi-print"></i></a>` +
                                         '<a class="ml-2 text-warning" style="font-size: 20px !important; padding-right: 8px !important;" href="objection.singleproperty/' +
                                         Serial + '" target="_blank"><i' +
                                         ` class="zmdi zmdi-alert-triangle"></i></a>
-                                                                                                                        <a class="ml-2 btn-remove-property text-info" style="font-size: 20px !important; padding-right: 8px !important;"><i
-                                                                                                                        class="zmdi zmdi-delete text-danger"></i></a></td>`
+                                                                                                                            <a class="ml-2 btn-remove-property text-info" style="font-size: 20px !important; padding-right: 8px !important;"><i
+                                                                                                                            class="zmdi zmdi-delete text-danger"></i></a></td>`
                                     );
                                     $('#data-table tbody').append(rn);
                                     $('.property-heading').removeClass('d-none');
@@ -442,7 +445,6 @@
         }
 
     </script>
-
     <script type="text/javascript">
         $('#searchcriteria').bind("enterKey", function(e) {
             $('.btn-searchcriteria').click();
