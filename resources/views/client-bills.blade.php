@@ -77,15 +77,17 @@
                                                             </td>
                                                             <td class="text-capitalize">KES {{ $payment->total }}
                                                             </td>
-                                                            <td>
+                                                            <td class="d-flex justify-content-between">
                                                                 &nbsp;
                                                                 <a href="#" data-toggle="modal"
                                                                     data-target="#payment-details{{ $payment->bill_no }}"
                                                                     class="btn btn-primary btn-sm btn--icon-text"><i
-                                                                        class="zmdi zmdi-eye"></i>View
-                                                                    details</a>
+                                                                        class="zmdi zmdi-eye mr-2 my-auto">View Details</i>
+                                                                    </a>
+                                                                <a href="getBillReceipt/{{$payment->bill_no}}" target="_blank" class="btn btn-warning btn-sm btn--icon-text"><i
+                                                                    class="zmdi zmdi-print mr-2 my-auto"></i> Print Receipt</a>
                                                             </td>
-                                                        </tr>
+                                                        </tr> 
                                                         <!-- objection modal -->
                                                         <div class="modal fade"
                                                             id="payment-details{{ $payment->bill_no }}" tabindex="-1"

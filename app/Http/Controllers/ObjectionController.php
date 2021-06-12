@@ -301,6 +301,26 @@ class ObjectionController extends Controller
     	return response()->json($created);
     }
 
+    public function getBillReceipt($BillNo)
+    {
+        $url = config('global.url').'receipts/?q='.$BillNo;
+
+        $response = Http::withToken(Session::get('Usertoken'))->get($url);
+
+        $created =json_decode($response->body());
+        // dd($response);
+    
+        // dd($created->data[0]);
+
+        $session = Session::get('Usertoken');
+
+        return view('receipt', [
+            'receipt' => $created->data[0], 
+            'session' => $session]);
+
+
+    }
+
     public function printReceipt($billNo){
         $url = config('global.url').'receipts/?q='.$billNo;
 

@@ -400,12 +400,12 @@
                                         '<td class="d-flex flex-row align-content-center"><a href="usv.singleproperty/' +
                                         Serial + '"' +
                                         `target="_blank" class="btn-print-usv ml-2 text-success" style="font-size: 20px !important; padding-right: 8px !important;"><i
-                                                                                                                                                                                        class="zmdi zmdi-print"></i></a>` +
+                                                      class="zmdi zmdi-print"></i></a>` +
                                         '<a class="ml-2 text-warning" style="font-size: 20px !important; padding-right: 8px !important;" href="objection.singleproperty/' +
                                         Serial + '" target="_blank"><i' +
                                         ` class="zmdi zmdi-alert-triangle"></i></a>
-                                                                                                                            <a class="ml-2 btn-remove-property text-info" style="font-size: 20px !important; padding-right: 8px !important;"><i
-                                                                                                                            class="zmdi zmdi-delete text-danger"></i></a></td>`
+                                        <a class="ml-2 btn-remove-property text-info" style="font-size: 20px !important; padding-right: 8px !important;"><i
+                                        class="zmdi zmdi-delete text-danger"></i></a></td>`
                                     );
                                     $('#data-table tbody').append(rn);
                                     $('.property-heading').removeClass('d-none');
