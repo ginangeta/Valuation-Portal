@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US">
-
+<html lang="en">
 
 <!-- Mirrored from demo.lion-coders.com/html/sarchholm-real-estate-template/home-v4.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 08 Jan 2021 15:05:57 GMT -->
 
@@ -8,7 +7,7 @@
     <!-- Metas -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="LionCoders" />
     <!-- Links -->
     <link rel="icon" type="image/png" href="{{ asset('images/logo-white.png') }}" />

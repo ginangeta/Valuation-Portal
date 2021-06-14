@@ -55,20 +55,28 @@ Route::group(['middleware' => ['active']], function () {
     Route::get('404', 'PagesController@error')->name('404');
 
     // Property Details
-    Route::get('searchProperty', 'PropertiesController@searchProperty')->name('searchProperty');
+    Route::get('searchProperty/{searchcriteria}', 'PropertiesController@searchProperty')->name('searchProperty');
     Route::get('usv.singleproperty/{lr_no}', 'PropertiesController@singlePropertyUsv')->name('usv.singleproperty');
     Route::get('objection.singleproperty/{lr_no}', 'PropertiesController@singlePropertyObjection')->name('objection.singleproperty');
     Route::post('createObjections', 'PropertiesController@createObjections')->name('createObjections');
+    Route::post('objectNotFound', 'PropertiesController@objectNotFound')->name('objectNotFound');
 
     // Objections
     Route::post('getReceipt', 'ObjectionController@getReceipt')->name('getReceipt');
     Route::post('sendObjection', 'ObjectionController@sendObjection')->name('sendObjection');
+    Route::post('sendNotFoundObjection', 'ObjectionController@sendNotFoundObjection')->name('sendNotFoundObjection');
+
+    //Payment
+    Route::get('printReceipt/{billNo}', 'ObjectionController@printReceipt')->name('printReceipt');
+    Route::post('checkVerification', 'ObjectionController@checkVerification')->name('checkVerification');
+    Route::post('initiate-mpesa-payment', 'ObjectionController@initiateMpesaPayment')->name('initiate-mpesa-payment');
 
     //Bill
     Route::get('objectionBill/{BillNo}', 'ObjectionController@objectionBill')->name('objectionBill');
 
     //Client Bills
     Route::get('ClientBills', 'UserController@ClientBills')->name('ClientBills');
+    Route::get('getBillReceipt/{BillNo}', 'ObjectionController@getBillReceipt')->name('getBillReceipt');
 
     
 });

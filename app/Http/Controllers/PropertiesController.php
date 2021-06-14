@@ -86,5 +86,42 @@ class PropertiesController extends Controller
             'session' => $session,
             'towns' => $towns->results]);
     }
+
+    public function objectNotFound(Request $request){
+
+        $objectingProperty = $request->propertyNumber;
+
+        $url = config('global.url').'towns';
+
+        $response = Http::withToken(Session::get('Usertoken'))->get($url);
+
+        $towns  = json_decode($response->body());
+
+        $session = Session::get('Usertoken');
+
+        // dd($objectingProperty);
+
+        return view('notfoundobjection', [
+            'objectingProperty' => $objectingProperty, 
+            'session' => $session,
+            'towns' => $towns->results]);
+    }
     
+    public function searchProperty($searchcriteria)
+    {
+        $searchcriteria = str_replace("-", "/", $searchcriteria);
+
+        // dd($searchcriteria);
+
+        $url = config('global.url').'properties/?q='.$searchcriteria;
+
+        $response = Http::withToken(Session::get('Usertoken'))->get($url);
+
+    	$created =json_decode($response->body());
+        // dd($response);
+        
+    	return response()->json($created);
+
+    	// dd($created);
+    }
 }

@@ -194,7 +194,7 @@
 
                                             <div class="col-md-6">
                                                 <label class="mb-0"><strong>Select town</strong></label>
-                                                <select name="town_id" id="" name="town_id"
+                                                <select name="town_id" id=""
                                                     title="Please select your postal city"
                                                     class="form-control custom-select city" placeholder="Country" required>
                                                     @foreach ($towns as $town)
