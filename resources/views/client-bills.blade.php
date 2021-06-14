@@ -77,15 +77,17 @@
                                                             </td>
                                                             <td class="text-capitalize">KES {{ $payment->total }}
                                                             </td>
-                                                            <td class="d-flex justify-content-between">
+                                                            <td class="d-flex justify-content-between flex-column">
                                                                 &nbsp;
                                                                 <a href="#" data-toggle="modal"
                                                                     data-target="#payment-details{{ $payment->bill_no }}"
                                                                     class="btn btn-primary btn-sm btn--icon-text"><i
                                                                         class="zmdi zmdi-eye mr-2 my-auto">View Details</i>
                                                                     </a>
-                                                                <a href="getBillReceipt/{{$payment->bill_no}}" target="_blank" class="btn btn-warning btn-sm btn--icon-text"><i
-                                                                    class="zmdi zmdi-print mr-2 my-auto"></i> Print Receipt</a>
+                                                                    @if ($payment->status === "Paid")
+                                                                    <a href="getBillReceipt/{{$payment->bill_no}}" target="_blank" class="btn btn-warning btn-sm btn--icon-text"><i
+                                                                        class="zmdi zmdi-print mr-2 my-auto"></i> Print Receipt</a> 
+                                                                    @endif
                                                             </td>
                                                         </tr> 
                                                         <!-- objection modal -->
