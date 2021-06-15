@@ -260,7 +260,7 @@
                                                             <p class="objector-address"></p>
 
                                                             <h6><strong>Objector's Postal Address</strong></h6>
-                                                            <p class="objector-postal-address"></p>s
+                                                            <p class="objector-postal-address"></p>
                                                         </div>
 
                                                         <div class="col-sm-12 col-lg-4">
