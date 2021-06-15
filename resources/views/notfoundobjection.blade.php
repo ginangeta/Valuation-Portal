@@ -261,15 +261,14 @@
                                                             <p class="objector-address"></p>
 
                                                             <h6><strong>Objector's Postal Address</strong></h6>
-                                                            <p class="objector-postal-address"></p>
+                                                            <p class="objector-postal-address"></p>s
                                                         </div>
 
                                                         <div class="col-sm-12 col-lg-4">
                                                             <h6><strong>Supporting Documents</strong></h6>
                                                             <ul class="supporting-documents"></ul>
                                                         </div>
-                                                    </div>
-                                                    <div class="row objection-summary">
+
                                                         <div class="col-sm-12 col-lg-4">
                                                             <h6><strong>Property's Reference Number</strong></h6>
                                                             <p class="objector-lrno"></p>
