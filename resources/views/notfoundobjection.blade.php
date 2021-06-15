@@ -193,8 +193,8 @@
                                                                     data-live-search="true" name="land_use">
                                                                     @foreach ($landUse as $item)
                                                                         <option data-tokens="select"
-                                                                            value="{{ $landUse->id }}">
-                                                                            {{ $landUse->description }}</option>
+                                                                            value="{{ $item->id }}">
+                                                                            {{ $item->description }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
