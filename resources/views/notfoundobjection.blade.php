@@ -340,7 +340,7 @@
                 var town_name = $('.filter-option-inner-inner').text();
                 var lrno = $('input[name="lr_no"]').val();
                 var approx_area = $('input[name="approx_area"]').val();
-                var land_use = $('input[name="land_use"]').val();
+                var land_use = $('select[name="land_use"]').val();
                 var files = $('input[name="files[]"]');
                 var objectioncost = 0;
                 var objectionnumber = 1;
