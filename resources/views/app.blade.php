@@ -70,7 +70,7 @@
                                             </label>
                                             {{-- <input name="user_name" value="{{old('user_name')}}" type="email" class="form-control" placeholder="Enter your email address" required> --}}
                                             <div class="input-email-login">
-                                                <input name="email" type="email" class="form-control"
+                                                <input name="email" type="email" class="form-control text-lowercase"
                                                     placeholder="Enter your email address" required>
                                             </div>
 
@@ -162,7 +162,7 @@
                                 <input type="text" class="form-control" id="fname" name="Mail_Name" placeholder="Name*">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" id="email_address" name="Mail_Email"
+                                <input type="email" class="form-control text-lowercase" id="email_address" name="Mail_Email"
                                     placeholder="Email*">
                             </div>
                             <div class="form-group">
@@ -245,7 +245,7 @@
                                                                         class="text-danger">*</strong>
                                                                 </label>
                                                                 <div class="input-email-login">
-                                                                    <input name="email" type="email" class="form-control"
+                                                                    <input name="email" type="email" class="form-control text-lowercase"
                                                                         placeholder="Enter your email address" required>
                                                                 </div>
                                                             </div>
@@ -324,7 +324,7 @@
                                             <label>
                                                 <strong>Email</strong> <strong class="text-danger">*</strong>
                                             </label>
-                                            <input name="Forgot_email" type="email" class="form-control"
+                                            <input name="Forgot_email" type="email" class="form-control text-lowercase"
                                                 placeholder="Enter your email address" required>
                                         </div>
 

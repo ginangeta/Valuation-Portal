@@ -72,6 +72,11 @@
             if(files.length > 10){
                 alert("you can select max 10 files.");
             }else{
+                $(files).each(function(key, value){
+                    if(value.size/1024/1024 > 14){
+                        alert(files.name +' size exceeds 2 MiB')
+                    }
+                });
                 $(this).parent().children("small").text(files.length +" Files Selected");
             }
         }
