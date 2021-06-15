@@ -189,11 +189,10 @@
                                                             <div class="form-group">
                                                                 <label class="mb-0"><strong>Property
                                                                         Use</strong></label>
-                                                                <select class="selectpicker w-100 show-tick"
+                                                                <select class="form-control custom-select city"
                                                                     data-live-search="true" name="land_use">
                                                                     @foreach ($landUse as $item)
-                                                                        <option data-tokens="select"
-                                                                            value="{{ $item->id }}">
+                                                                        <option value="{{ $item->id }}">
                                                                             {{ $item->description }}</option>
                                                                     @endforeach
                                                                 </select>
@@ -337,10 +336,10 @@
                 var postal_address = $('input[name="postal_address"]').val();
                 var phone = $('input[name="phone"]').val();
                 var town_id = $('select[name="town_id"]').val();
-                var town_name = $('select[name="town_id"]').children('.filter-option-inner-inner').text();
+                var town_name = $('select[name="town_id"]').parent().children('.btn dropdown-toggle').attr('title');
                 var lrno = $('input[name="lr_no"]').val();
                 var approx_area = $('input[name="approx_area"]').val();
-                var land_use = $('select[name="land_use"]').children('.filter-option-inner-inner').text();
+                var land_use = $('select[name="land_use"]').parent().children('.btn dropdown-toggle').attr('title');
                 var files = $('input[name="files[]"]');
                 var objectioncost = 0;
                 var objectionnumber = 1;
