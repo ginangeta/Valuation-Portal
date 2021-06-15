@@ -153,11 +153,7 @@ class ObjectionController extends Controller
             'postal_address' => $request->postal_address,
             'phone' => $request->phone,
             'town_id' => $request->town_id,
-
-            'serial_no' => $request->serial_no,
             'lr_no' => $request->lr_no,
-            'locality' => $request->locality,
-            'situation' => $request->situation,
             'po_box' => $request->postal_address,
             'approx_area' => $request->approx_area,
             'land_use' => $request->land_use,

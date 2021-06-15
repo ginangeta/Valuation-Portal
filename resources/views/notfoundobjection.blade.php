@@ -166,38 +166,14 @@
 
                                                 <div class="col-sm-12 col-md-8">
                                                     <div class="row">
-                                                        <div class="col-lg-6 col-sm-12">
+                                                        <div class="col-12">
                                                             <div class="form-group">
-                                                                <label class="mb-0"><strong>Title Number/Plot Number</strong></label>
+                                                                <label class="mb-0"><strong>Title Number/Plot
+                                                                        Number</strong></label>
                                                                 <input type="text" name="lr_no"
                                                                     class="form-control filter-input mt-0"
                                                                     value="{{ $objectingProperty }}"
                                                                     placeholder="Enter property reference number" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-12">
-                                                            <div class="form-group">
-                                                                <label class="mb-0"><strong>Serial
-                                                                        Number</strong></label>
-                                                                <input type="text" name="serial_no"
-                                                                    class="form-control filter-input mt-0"
-                                                                    placeholder="Enter property serial number" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-12">
-                                                            <div class="form-group">
-                                                                <label class="mb-0"><strong>Localty</strong></label>
-                                                                <input type="text" name="locality"
-                                                                    class="form-control filter-input mt-0"
-                                                                    placeholder="Enter property locality" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-12">
-                                                            <div class="form-group">
-                                                                <label class="mb-0"><strong>Situation</strong></label>
-                                                                <input type="text" name="situation"
-                                                                    class="form-control filter-input mt-0"
-                                                                    placeholder="Enter property situation" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-sm-12">
@@ -213,9 +189,14 @@
                                                             <div class="form-group">
                                                                 <label class="mb-0"><strong>Property
                                                                         Use</strong></label>
-                                                                <input type="text" name="land_use"
-                                                                    class="form-control filter-input mt-0"
-                                                                    placeholder="Enter property land use" required>
+                                                                <select class="selectpicker w-100 show-tick"
+                                                                    data-live-search="true" name="land_use">
+                                                                    @foreach ($landUse as $item)
+                                                                        <option data-tokens="select"
+                                                                            value="{{ $landUse->id }}">
+                                                                            {{ $landUse->description }}</option>
+                                                                    @endforeach
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -292,13 +273,9 @@
                                                         <div class="col-sm-12 col-lg-4">
                                                             <h6><strong>Property's Reference Number</strong></h6>
                                                             <p class="objector-lrno"></p>
-                                                            <h6><strong>Serial Number</strong></h6>
-                                                            <p class="objector-serialno"></p>
                                                         </div>
 
                                                         <div class="col-sm-12 col-lg-4">
-                                                            <h6><strong>Localty and Situation</strong></h6>
-                                                            <p class="objector-locality"></p>
                                                             <h6><strong>Area Approximation</strong></h6>
                                                             <p class="objector-area"></p>
                                                         </div>
@@ -363,9 +340,6 @@
                 var town_id = $('select[name="town_id"]').val();
                 var town_name = $('.filter-option-inner-inner').text();
                 var lrno = $('input[name="lr_no"]').val();
-                var serial_no = $('input[name="serial_no"]').val();
-                var locality = $('input[name="locality"]').val();
-                var situation = $('input[name="situation"]').val();
                 var approx_area = $('input[name="approx_area"]').val();
                 var land_use = $('input[name="land_use"]').val();
                 var files = $('input[name="files[]"]');
@@ -377,10 +351,7 @@
                 $('.objector-number').text(phone);
                 $('.objector-address').text(address);
                 $('.objector-postal-address').text(postal_address + ' - ' + town_name);
-
                 $('.objector-lrno').text(lrno);
-                $('.objector-serialno').text(serial_no);
-                $('.objector-locality').text(locality + "-" + situation);
                 $('.objector-area').text(approx_area);
                 $('.objector-use').text(land_use);
 

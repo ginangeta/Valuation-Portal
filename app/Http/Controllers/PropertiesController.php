@@ -93,17 +93,23 @@ class PropertiesController extends Controller
 
         $url = config('global.url').'towns';
 
+        $landuseUrl = config('global.url').'land_use_list/';
+
         $response = Http::withToken(Session::get('Usertoken'))->get($url);
+        $LandUseresponse = Http::withToken(Session::get('Usertoken'))->get($landuseUrl);
 
         $towns  = json_decode($response->body());
+        $landUse  = json_decode($LandUseresponse->body());
 
         $session = Session::get('Usertoken');
 
+        // dd($landUse);
         // dd($objectingProperty);
 
         return view('notfoundobjection', [
             'objectingProperty' => $objectingProperty, 
             'session' => $session,
+            'landUse' => $landUse->results,
             'towns' => $towns->results]);
     }
     
