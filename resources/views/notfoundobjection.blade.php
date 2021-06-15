@@ -337,10 +337,10 @@
                 var postal_address = $('input[name="postal_address"]').val();
                 var phone = $('input[name="phone"]').val();
                 var town_id = $('select[name="town_id"]').val();
-                var town_name = $('.filter-option-inner-inner').text();
+                var town_name = $('select[name="town_id"]').children('.filter-option-inner-inner').text();
                 var lrno = $('input[name="lr_no"]').val();
                 var approx_area = $('input[name="approx_area"]').val();
-                var land_use = $('select[name="land_use"]').val();
+                var land_use = $('select[name="land_use"]').children('.filter-option-inner-inner').text();
                 var files = $('input[name="files[]"]');
                 var objectioncost = 0;
                 var objectionnumber = 1;
