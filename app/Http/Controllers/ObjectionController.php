@@ -318,9 +318,30 @@ class ObjectionController extends Controller
     }
 
     public function printReceipt($billNo){
-        $url = config('global.url').'receipts/?q='.$billNo;
+        $billerurl = 'https://pilot.revenuesure.co.ke/users/authenticate';
 
-        $response = Http::withToken(Session::get('Usertoken'))->get($url);
+        $billerdata = [
+            'email' => "valuation@gmail.com",
+            'password' => "123456789"
+        ];
+
+
+        $BillerResponse = Http::withToken(Session::get('Usertoken'))->post($billerurl,$billerdata);
+        $BillerResponseData = json_decode($BillerResponse->body());
+        $BillerToken = $BillerResponseData->data->auth_token;
+
+        // $url = config('global.url').'receipts/?q='.$billNo;
+        $url = "https://pilot.revenuesure.co.ke/invoice/receipt";
+
+        $data = [
+            'billNo' => $billNo,
+            'payReferenceNo' => "",
+            'receiptNo' => "",
+            'multi' => ""
+        ];
+
+        $response = Http::withToken($BillerToken)->post($url, $data);
+        
 
         $created =json_decode($response->body());
         // dd($response);

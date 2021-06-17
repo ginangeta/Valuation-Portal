@@ -239,8 +239,8 @@
             console.log("Push Sendfunction: " + Sendfunction);
             var PayBillNumber = '367776';
             console.log("Push PayBillNumber: " + PayBillNumber);
-            var Amount = BillCost[0];
-            // var Amount = "1";
+            // var Amount = BillCost[0];
+            var Amount = "1";
             console.log("Push Amount: " + Amount);
             var PhoneNumber = $('input[name="mpesa_number"]').val();
             console.log("Push Number: " + PhoneNumber);
@@ -380,23 +380,38 @@
                                     console.log(data.data[0]);
                                     var d = new Date("2021-04-07T16:14:09.000Z");
 
-                                    var new_date = results.date_recieved.split('T');
-                                    var billAmount = results.bill_total.split('.');
-                                    var paidAmount = results.amount_paid.split('.');
-                                    var billBalance = results.balance.split('.');
+                                    // var new_date = results.date_recieved.split('T');
+                                    // var billAmount = results.bill_total.split('.');
+                                    // var paidAmount = results.amount_paid.split('.');
+                                    // var billBalance = results.balance.split('.');
 
-                                    receipt_no = results.receipt_no;
-                                    receipt_name = results.billed_user;
+                                    // receipt_no = results.receipt_no;
+                                    // receipt_name = results.billed_user;
+                                    // receipt_amount = paidAmount[0];
+                                    // billed_amount = billAmount[0];
+                                    // bill_balance = billBalance[0];
+                                    // receipt_desc = results.description;
+                                    // receipt_date = new_date;
+                                    // receipt_amount_words = inWords(receipt_amount);
+
+                                    var new_date = results.receiptInfo.receiptDate.split('T');
+                                    var billAmount = results.receiptInfo.billAmount.split('.');
+                                    var paidAmount = results.receiptInfo.receiptAmount.split('.');
+                                    var billBalance = results.receiptInfo.billBalance.split('.');
+
+                                    receipt_no = results.receiptInfo.receiptNo;
+                                    receipt_name = results.receiptInfo.paidBy;
                                     receipt_amount = paidAmount[0];
                                     billed_amount = billAmount[0];
                                     bill_balance = billBalance[0];
-                                    receipt_desc = results.description;
+                                    receipt_desc = results.receiptDetail[0].feeAccountDesc;
                                     receipt_date = new_date;
                                     receipt_amount_words = inWords(receipt_amount);
 
                                     console.log(receipt_amount);
                                     console.log(billed_amount);
                                     console.log(bill_balance);
+                                    console.log(receipt_desc);
                                     console.log(receipt_amount_words);
 
                                     $('input[name="receipt_no"]').val(receipt_no);
