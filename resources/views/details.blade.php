@@ -182,8 +182,42 @@
                         data-dismiss="modal" aria-label="Close">Close</button>
 
                     <button id="print-receipt" onclick="document.getElementById('get-objection').submit();"
-                        class="btn btn-success btn--icon-text" data-dismiss="modal" aria-label="Close"><i
+                        class="btn btn-success btn--icon-text d-none" data-dismiss="modal" aria-label="Close"><i
                             class="zmdi zmdi-check-all mr-2"></i>Yes, Object to the Roll</button>
+                    <button type="button" data-toggle="modal" data-target="#timeout" class="btn btn-success btn--icon-text"
+                        data-dismiss="modal" aria-label="Close"><i class="zmdi zmdi-check-all mr-2"></i>Yes, Object to the
+                        Roll</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="timeout" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLongTitle">OBJECTION PERIOD</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <center class="">
+                        <img class="errorImg" style="height: 300px !important;" src="{{ asset('/img/sadman.jpg') }}">
+                    </center>
+                    <h4 class="text-center mb-2 pb-2">OBJECT TO 2019 DRAFT VALUATION ROLL
+                    </h4>
+
+                    <h6 class="text-center" id="customer-info">Sorry, the time
+                        allocated for submission of objections lapsed on <strong><b>18 June 2021.</b></strong>
+                    </h6>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="close" class="btn btn-outline-dark text-black btn--icon-text"
+                        data-dismiss="modal" aria-label="Close">Close</button>
                 </div>
             </div>
         </div>
@@ -292,8 +326,12 @@
                                             </table>
                                         </div>
                                         <div class="usv-btns d-none">
-                                            <button type="submit" class="btn btn-danger center mb-3 py-2 btn-control">Submit
-                                                Objection To USV</a>
+                                            <button type="submit"
+                                                class="btn d-none btn-danger center mb-3 py-2 btn-control">Submit
+                                                Objection To USV</button>
+                                            <button type="button" data-toggle="modal" data-target="#timeout"
+                                                class="btn btn-danger center mb-3 py-2 btn-control">
+                                                Objection To USV </button>
                                         </div>
                                     </form>
                                 </div>
@@ -400,12 +438,15 @@
                                         '<td class="d-flex flex-row align-content-center"><a href="usv.singleproperty/' +
                                         Serial + '"' +
                                         `target="_blank" class="btn-print-usv ml-2 text-success" style="font-size: 20px !important; padding-right: 8px !important;"><i
-                                                      class="zmdi zmdi-print"></i></a>` +
-                                        '<a class="ml-2 text-warning" style="font-size: 20px !important; padding-right: 8px !important;" href="objection.singleproperty/' +
+                                                                                                      class="zmdi zmdi-print"></i></a>` +
+                                        '<a class="ml-2 text-warning d-none" style="font-size: 20px !important; padding-right: 8px !important;" href="objection.singleproperty/' +
                                         Serial + '" target="_blank"><i' +
                                         ` class="zmdi zmdi-alert-triangle"></i></a>
-                                        <a class="ml-2 btn-remove-property text-info" style="font-size: 20px !important; padding-right: 8px !important;"><i
-                                        class="zmdi zmdi-delete text-danger"></i></a></td>`
+                                                            <a data-toggle="modal" data-target="#timeout"
+                                                                    class="ml-2 text-warning" style="font-size: 20px !important; padding-right: 8px !important;"><i'
+                                                            class="zmdi zmdi-alert-triangle"></i></a>
+                                                            <a class="ml-2 btn-remove-property text-info" style="font-size: 20px !important; padding-right: 8px !important;"><i
+                                                            class="zmdi zmdi-delete text-danger"></i></a></td>`
                                     );
                                     $('#data-table tbody').append(rn);
                                     $('.property-heading').removeClass('d-none');

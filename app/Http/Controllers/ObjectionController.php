@@ -127,6 +127,12 @@ class ObjectionController extends Controller
         {
             foreach($filebag as $k => $file){
                  $file_name = $file->getClientOriginalName();
+                 if(empty($file_name)){
+                    return redirect()->route('details')->with('errors', 'An error occured. Rename your file with just letters and try again. Please try again');
+                 }else if(!isset($file_name)){
+                    return redirect()->route('details')->with('errors', 'An error occured. Rename your file with just letters and try again. Please try again');
+                 }
+                 
                  $file_content = fopen($file, 'r');
                  $data = file_get_contents($file);
                  $Assetresponse = $Assetresponse->attach('files', $file_content, $file_name);
