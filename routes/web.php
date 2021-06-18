@@ -78,6 +78,11 @@ Route::group(['middleware' => ['active']], function () {
     Route::get('ClientBills', 'UserController@ClientBills')->name('ClientBills');
     Route::get('getBillReceipt/{BillNo}', 'ObjectionController@getBillReceipt')->name('getBillReceipt');
 
+    //Client Objections
+    Route::get('ClientObjections', 'UserController@ClientObjections')->name('ClientObjections');
+    Route::post('withdrawObjection', 'UserController@withdrawObjection')->name('withdrawObjection');
+    // Route::get('getBillReceipt/{BillNo}', 'ObjectionController@getBillReceipt')->name('getBillReceipt');
+
     
 });
 
