@@ -117,11 +117,15 @@
                                                                 data-target="#details{{ $Objection->id }}"><i
                                                                     class="zmdi zmdi-eye my-auto"></i>Details</a>
                                                             <br>
-                                                            <a data-toggle="modal"
-                                                                data-target="#withdraw{{ $Objection->id }}"
-                                                                class="btn btn-danger text-white btn-sm btn--icon-text mt-2"><i
-                                                                    class="zmdi zmdi-print mr-2 my-auto"></i>
-                                                                Withdraw Objection </a>
+
+                                                            @if ($Objection->property->is_objected)
+                                                                <a data-toggle="modal"
+                                                                    data-target="#withdraw{{ $Objection->id }}"
+                                                                    class="btn btn-danger text-white btn-sm btn--icon-text mt-2"><i
+                                                                        class="zmdi zmdi-print mr-2 my-auto"></i>
+                                                                    Withdraw Objection </a>
+
+                                                            @endif
                                                         </td>
 
                                                         <!-- Modals -->
