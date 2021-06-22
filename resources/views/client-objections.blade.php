@@ -34,6 +34,11 @@
                                             <h4 class="overview-content-header">Client Objections</h4>
                                             <div class="overview-content-details">
                                                 <p class="">Below are the details objections you have raised.</p>
+                                                <p>
+                                                    <small>
+                                                        <b>Objections of <span style="color: #f8d7da;"> * this color *</span>
+                                                            have been withdrawn</b></small>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
